@@ -24,7 +24,7 @@ class Game:
     
     def run(self):
         while True:
-            self.clock.tick(30)
+            self.clock.tick(30  )
             if self.screen_status == 'menu':
                 if self.menu.run() == 'level1':
                     self.screen_status = 'level1'

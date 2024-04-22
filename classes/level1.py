@@ -21,9 +21,11 @@ class Level1:
     
     
     def run(self):
-        self.clock.tick(10)
+        self.clock.tick(14)
         self.screen.blit(self.bg_play, (0,0))
                
+        
+        
         self.frog_1.show()
         self.frog_1.movement()
         self.frog_1.collision_screen()
@@ -48,7 +50,7 @@ class Level1:
         self.character.skin()
         self.character.animation()
         self.character.movement()
-    
+        self.character.collision_screen()
 
         if self.character.collision_plate('quiz', [270, 105], [44, 50]) == 'quiz':
             return 'quiz'

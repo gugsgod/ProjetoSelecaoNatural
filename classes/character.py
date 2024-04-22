@@ -5,7 +5,7 @@ class Character:
     def __init__(self, character_img, sprite_charactery, sprite_characterx, character_size, character_pos, skiny):
         self.screen = pygame.display.set_mode((1920, 1080))
         self.character_img = pygame.image.load(character_img).convert_alpha()
-        self.character_img = pygame.transform.scale(self.character_img, (736 * 2, 512 * 2))
+        self.character_img = pygame.transform.scale(self.character_img, (736 * 3, 512 * 3))
         self.sprite_charactery = sprite_charactery
         self.sprite_characterx = sprite_characterx
         self.character_size = character_size
@@ -14,7 +14,7 @@ class Character:
         self.clock = pygame.time.Clock()
     
     def show(self):
-        self.screen.blit(self.character_img, self.character_pos, (self.sprite_characterx* 64, self.sprite_charactery, 64, 64))
+        self.screen.blit(self.character_img, self.character_pos, (self.sprite_characterx* 96, self.sprite_charactery, 96, 96))
     
     def skin(self):
         key = pygame.key.get_pressed()
@@ -27,22 +27,22 @@ class Character:
         if key[K_4]:
             self.skin_y = 12
         
-        self.sprite_charactery = 64 * self.skin_y 
+        self.sprite_charactery = 96 * self.skin_y 
     
     def movement(self):
         key = pygame.key.get_pressed() 
         if key[K_w]:
             self.character_pos[1] -= 14
-            self.sprite_charactery = 64 * (self.skin_y + 1)
+            self.sprite_charactery = 96 * (self.skin_y + 1)
         if key[K_s]:
             self.character_pos[1] += 14
-            self.sprite_charactery = 64 * (self.skin_y + 1)
+            self.sprite_charactery = 96 * (self.skin_y + 1)
         if key[K_d]:
             self.character_pos[0] += 14
-            self.sprite_charactery = 64 * (self.skin_y + 1)
+            self.sprite_charactery = 96 * (self.skin_y + 1)
         if key[K_a]:
             self.character_pos[0] -= 14
-            self.sprite_charactery = 64 * (self.skin_y + 1)
+            self.sprite_charactery = 96 * (self.skin_y + 1)
          
     def animation(self):
         self.sprite_characterx += 1
