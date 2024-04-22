@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 from text import Text
-
 class Pergunta:
     def __init__(self):
         self.p11= ['  Essa semelhança é resultado de mutações', 'aleatórias que foram selecionadas ao longo', '   do tempo devido à pressão seletiva dos', '                         predadores']

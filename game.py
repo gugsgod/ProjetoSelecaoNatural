@@ -2,13 +2,13 @@ import pygame
 from pygame.locals import *
 import sys
 import random
-from text import Text
-from pergunta import Pergunta
-from button_menu import ButtonMenu
-from characater import Character
-from fade_in import FadeIn
-from frog import Frog
-from play import Play
+from classes.text import Text
+from classes.pergunta import Pergunta
+from classes.button_menu import ButtonMenu
+from classes.characater import Character
+from classes.fade_in import FadeIn
+from classes.frog import Frog
+from classes.play import Play
 class Game:
     
     def __init__(self):
@@ -17,28 +17,28 @@ class Game:
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
         self.play = Play()
-        self.bg_play = pygame.image.load('bg_game.png').convert_alpha()
+        self.bg_play = pygame.image.load('imagens/bg_game.png').convert_alpha()
         self.clicked_menu = True
         self.clicked_quiz1 = False
         self.clicked_1 = True
         self.clicked_2 = True
         self.fade = FadeIn(pygame.Surface((1920, 1080)).convert_alpha(), 255, (0, 0, 1920, 1080))
-        self.tree = pygame.image.load('trees.png').convert_alpha()
-        self.quiz_bg = pygame.image.load('quiz_bg.png').convert_alpha()
-        self.bg_acerto_certo = pygame.image.load('bg_acerto_certo.png').convert_alpha()
-        self.bg_acerto_errado = pygame.image.load('bg_acerto_errado.png').convert_alpha()
-        self.button_menu_1 = pygame.image.load('img.button_menu_1.png').convert_alpha()
-        self.button_menu_2 = pygame.image.load('img.button_menu_2.png').convert_alpha()
+        self.tree = pygame.image.load('imagens/trees.png').convert_alpha()
+        self.quiz_bg = pygame.image.load('imagens/quiz_bg.png').convert_alpha()
+        self.bg_acerto_certo = pygame.image.load('imagens/bg_acerto_certo.png').convert_alpha()
+        self.bg_acerto_errado = pygame.image.load('imagens/bg_acerto_errado.png').convert_alpha()
+        self.button_menu_1 = pygame.image.load('imagens/img.button_menu_1.png').convert_alpha()
+        self.button_menu_2 = pygame.image.load('imagens/img.button_menu_2.png').convert_alpha()
         self.tamanho_button_menu = [293, 112]
         self.pos_button_rank = [813.5, 525]
         self.pos_button_quit = [813.5, 750]
         self.tree_pos = [320, 30, 200, 260]
         self.player_pos = [10, 110]
         self.player_tamanho = [50, 110]
-        self.menu_bg = pygame.image.load('menu_bg.png')
-        self.font = pygame.font.Font('upheavtt.ttf', 80)
-        self.font_pergunta = pygame.font.Font('upheavtt.ttf', 48)
-        self.font_alternativa = pygame.font.Font('upheavtt.ttf', 25)
+        self.menu_bg = pygame.image.load('imagens/menu_bg.png')
+        self.font = pygame.font.Font('fonte/upheavtt.ttf', 80)
+        self.font_pergunta = pygame.font.Font('fonte/upheavtt.ttf', 48)
+        self.font_alternativa = pygame.font.Font('fonte/upheavtt.ttf', 25)
         self.p11= ['  Essa semelhança é resultado de mutações', 'aleatórias que foram selecionadas ao longo', '   do tempo devido à pressão seletiva dos', '                         predadores']
         self.p12= [' Os insetos desenvolveram essa semelhança', '  para atrair mais facilmente suas presas', '', '']
         self.p13= [' Os insetos adotam essa camuflagem para se', '     protegerem das mudanças climáticas', '', '']
