@@ -24,7 +24,6 @@ class Game:
     
     def run(self):
         while True:
-            self.clock.tick(30  )
             if self.screen_status == 'menu':
                 if self.menu.run() == 'level1':
                     self.screen_status = 'level1'
@@ -32,12 +31,7 @@ class Game:
             if self.screen_status == 'level1':
                 match self.level1.run():
                     case 'menu':
-                        self.screen_status = 'menu'
-                    case 'quiz':
-                        self.screen_status = 'quiz1'
-            
-            if self.screen_status == 'quiz1':
-                pass
+                       self.screen_status = 'menu'
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

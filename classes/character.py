@@ -11,10 +11,12 @@ class Character:
         self.character_size = character_size
         self.character_pos = character_pos
         self.skin_y = skiny
-        self.clock = pygame.time.Clock()
     
     def show(self):
         self.screen.blit(self.character_img, self.character_pos, (self.sprite_characterx* 96, self.sprite_charactery, 96, 96))
+    
+    def pos(self, character_pos):
+        self.character_pos = character_pos
     
     def skin(self):
         key = pygame.key.get_pressed()
@@ -52,15 +54,15 @@ class Character:
     def collision_screen(self):
         if self.character_pos[0] < -20:
             self.character_pos[0] += 14
-        if self.character_pos[0] > 1890:
+        if self.character_pos[0] > 1850:
             self.character_pos[0] -= 14
-        if self.character_pos[1] < -10:
+        if self.character_pos[1] < -20:
             self.character_pos[1] += 14
-        if self.character_pos[1] > 1040:
+        if self.character_pos[1] > 990:
             self.character_pos[1] -= 14
 
     def collision_plate(self, action, obstacle_pos, obstacle_size):
-        character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1], self.character_size[0], self.character_size[1])
+        character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
         obstacle_surface = pygame.Rect(obstacle_pos[0], obstacle_pos[1], obstacle_size[0], obstacle_size[1])
         
         if character_surface.colliderect(obstacle_surface):
