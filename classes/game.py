@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import sys
 import random
-from text import textBotao
+from text import Text
 
 from button_menu import ButtonMenu
 from character import Character

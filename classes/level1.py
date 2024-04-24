@@ -30,7 +30,7 @@ class Level1:
         self.alt3 = TextFormat.FormatText('Os insetos adotam essa camuflagem para se protegerem das mudanças climáticas')
         self.alt4 = TextFormat.FormatText('A semelhança com folhas e ramos permite que os insetos se comuniquem de forma eficiente entre si')
         #Objeto Quiz
-        self.quiz_1 = Quiz(' Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?',
+        self.quiz_1 = Quiz('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?',
                            self.alt1,
                            self.alt2,
                            self.alt3,
@@ -92,9 +92,9 @@ class Level1:
             
         if self.status == 'quiz_1':
             self.quiz_1.show()
-            self.quiz_1.discover_alt_correct()
-            if self.quiz_1.click() == 'level1':
-                self.status = 'level1'
+            #self.quiz_1.discover_alt_correct()
+            #if self.quiz_1.click() == 'level1':
+            #    self.status = 'level1'
 
 
                 

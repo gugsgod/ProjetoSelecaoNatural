@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import sys
 from button_menu import ButtonMenu
-from text import textBotao
+from text import Text
 from fade_in import FadeIn
 
 class Menu:
@@ -16,10 +16,10 @@ class Menu:
         self.pos_button_rank = [813.5, 525]
         self.pos_button_quit = [813.5, 750]
         self.font = pygame.font.Font('fonts/upheavtt.ttf', 80)
-        self.text_name = textBotao('SN GAME', self.font, 'BLACK', self.pos_name[0], self.pos_name[1])
-        self.text_play = textBotao('Play', self.font, 'BLACK', self.pos_button_play[0] + 51, self.pos_button_play[1] + 15)
-        self.text_rank = textBotao('Rank', self.font, 'BLACK', self.pos_button_rank[0] + 50, self.pos_button_rank[1] + 15)
-        self.text_quit = textBotao('Quit', self.font, 'BLACK', self.pos_button_quit[0] + 60, self.pos_button_quit[1] + 15)
+        self.text_name = Text('SN GAME', self.font, 'BLACK', self.pos_name[0], self.pos_name[1])
+        self.text_play = Text('Play', self.font, 'BLACK', self.pos_button_play[0] + 51, self.pos_button_play[1] + 15)
+        self.text_rank = Text('Rank', self.font, 'BLACK', self.pos_button_rank[0] + 50, self.pos_button_rank[1] + 15)
+        self.text_quit = Text('Quit', self.font, 'BLACK', self.pos_button_quit[0] + 60, self.pos_button_quit[1] + 15)
         self.button_level1 = ButtonMenu(self.pos_button_play[0],  self.pos_button_play[1], 'level1')
         self.button_rank = ButtonMenu(self.pos_button_rank[0], self.pos_button_rank[1])
         self.button_quit = ButtonMenu(self.pos_button_quit[0],  self.pos_button_quit[1], 'quit')

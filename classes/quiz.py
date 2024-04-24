@@ -23,72 +23,94 @@ class Quiz:
         
         #Criação dos objeto da classe BotaoShow
         
-        textBotao = BotaoShow()
+        self.textBotao = BotaoShow(self.font_alt, 'BLACK')
         
-        #Criação das superfícies dos botões
+        #Criação dos retângulos dos botões
         self.altRect1 = pygame.Rect(254, 370, 676, 294)
         self.altRect2 = pygame.Rect(254, 724, 676, 294)
         self.altRect3 = pygame.Rect(990, 370, 676, 294)
         self.altRect4 = pygame.Rect(990, 724, 676, 294)
+        
+        #Criação das superficies dos retângulos dos botões
+        self.supBot1 = pygame.Surface((676, 294))
+        self.supBot2 = pygame.Surface((676, 294))
+        self.supBot3 = pygame.Surface((676, 294))
+        self.supBot4 = pygame.Surface((676, 294))
+        #Fill para checar posicionamento
+        self.supBot1.fill('aqua')
+        self.supBot2.fill('aqua')
+        self.supBot3.fill('aqua')
+        self.supBot4.fill('aqua')
+        #Colorkey para deixar trasparente o fundo
+        self.supBot1.set_colorkey('aqua')
+        self.supBot2.set_colorkey('aqua')
+        self.supBot3.set_colorkey('aqua')
+        self.supBot4.set_colorkey('aqua')
+        
 
     def show(self):
         self.screen.blit(self.quiz_bg, (0, 0))
         self.text_question_1.show()
-        Text.showBotao(self.alt1, self.altRect1)
-        Text.showBotao(self.alt2, self.altRect2)
-        Text.showBotao(self.alt3, self.altRect3)
-        Text.showBotao(self.alt4, self.altRect4)
+        #Colocando a surface em cima do botão
+        self.screen.blit(self.supBot1, (254, 370))
+        self.screen.blit(self.supBot2, (254, 724))
+        self.screen.blit(self.supBot3, (990, 370))
+        self.screen.blit(self.supBot4, (990, 724))
+        self.textBotao.showBotao(self.alt1, self.supBot1)
+        self.textBotao.showBotao(self.alt2, self.supBot2)
+        self.textBotao.showBotao(self.alt3, self.supBot3)
+        self.textBotao.showBotao(self.alt4, self.supBot4)
         
     
     def shuffle_alt(self):
         random.shuffle(self.alternatives)
 
-    def discover_alt_correct(self):
-        if self.alt1 == self.alternatives[0]:
-            self.alt_correct = self.alt_rect1
-            self.alt_wrong_1 = self.alt_rect2
-            self.alt_wrong_2 = self.alt_rect3
-            self.alt_wrong_3 = self.alt_rect4
-        elif self.alt1 == self.alternatives[1]:
-            self.alt_correct = self.alt_rect2
-            self.alt_wrong_1 = self.alt_rect1
-            self.alt_wrong_2 = self.alt_rect3
-            self.alt_wrong_3 = self.alt_rect4
-        elif self.alt1 == self.alternatives[2]:
-            self.alt_correct = self.alt_rect3
-            self.alt_wrong_1 = self.alt_rect2
-            self.alt_wrong_1 = self.alt_rect1
-            self.alt_wrong_1 = self.alt_rect4
-        elif self.alt1 == self.alternatives[3]:
-            self.alt_correct = self.alt_rect4
-            self.alt_wrong_1 = self.alt_rect2
-            self.alt_wrong_2 = self.alt_rect3
-            self.alt_wrong_3 = self.alt_rect1
+    # def discover_alt_correct(self):
+    #     if self.alt1 == self.alternatives[0]:
+    #         self.alt_correct = self.alt_rect1
+    #         self.alt_wrong_1 = self.alt_rect2
+    #         self.alt_wrong_2 = self.alt_rect3
+    #         self.alt_wrong_3 = self.alt_rect4
+    #     elif self.alt1 == self.alternatives[1]:
+    #         self.alt_correct = self.alt_rect2
+    #         self.alt_wrong_1 = self.alt_rect1
+    #         self.alt_wrong_2 = self.alt_rect3
+    #         self.alt_wrong_3 = self.alt_rect4
+    #     elif self.alt1 == self.alternatives[2]:
+    #         self.alt_correct = self.alt_rect3
+    #         self.alt_wrong_1 = self.alt_rect2
+    #         self.alt_wrong_1 = self.alt_rect1
+    #         self.alt_wrong_1 = self.alt_rect4
+    #     elif self.alt1 == self.alternatives[3]:
+    #         self.alt_correct = self.alt_rect4
+    #         self.alt_wrong_1 = self.alt_rect2
+    #         self.alt_wrong_2 = self.alt_rect3
+    #         self.alt_wrong_3 = self.alt_rect1
     
-    def click(self):         
-        clicked_1 = False 
-        clicked_2 = False
+    # def click(self):         
+    #     clicked_1 = False 
+    #     clicked_2 = False
 
 
-        mouse = pygame.mouse.get_pos()
-        if clicked_1 == False and clicked_2 == False:
-            if self.alt_correct.collidepoint(mouse):
-                if pygame.mouse.get_pressed()[0] == 1:
-                    clicked_1 = True
-                    return 'clicked'
-            if self.alt_wrong_1.collidepoint(mouse) or self.alt_wrong_2.collidepoint(mouse) or self.alt_wrong_3.collidepoint(mouse):
-                if pygame.mouse.get_pressed()[0] == 1:
-                    clicked_2 = True
-                    return 'clicked'
+    #     mouse = pygame.mouse.get_pos()
+    #     if clicked_1 == False and clicked_2 == False:
+    #         if self.alt_correct.collidepoint(mouse):
+    #             if pygame.mouse.get_pressed()[0] == 1:
+    #                 clicked_1 = True
+    #                 return 'clicked'
+    #         if self.alt_wrong_1.collidepoint(mouse) or self.alt_wrong_2.collidepoint(mouse) or self.alt_wrong_3.collidepoint(mouse):
+    #             if pygame.mouse.get_pressed()[0] == 1:
+    #                 clicked_2 = True
+    #                 return 'clicked'
             
-        if clicked_1 == True:
-            self.screen.blit(self.bg_acerto_certo, (0, 0))
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return 'level1'
+    #     if clicked_1 == True:
+    #         self.screen.blit(self.bg_acerto_certo, (0, 0))
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+    #                 return 'level1'
               
-        if clicked_2 == True:
-            self.screen.blit(self.bg_acerto_errado, (0, 0))
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return 'level1'
+    #     if clicked_2 == True:
+    #         self.screen.blit(self.bg_acerto_errado, (0, 0))
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+    #                 return 'level1'
