@@ -78,8 +78,6 @@ class Level1:
             self.character.movement()
             self.character.collision_screen()
             
-            self.quiz_1.shuffle_alt()
-            
             if self.character.collision_plate('quiz_1', [270, 105], [44, 50]) == 'quiz_1':
                 self.character.pos([150, 125])
                 self.status = 'quiz_1'
@@ -92,9 +90,9 @@ class Level1:
             
         if self.status == 'quiz_1':
             self.quiz_1.show()
-            #self.quiz_1.discover_alt_correct()
-            #if self.quiz_1.click() == 'level1':
-            #    self.status = 'level1'
+            self.quiz_1.discover_alt_correct()
+            if self.quiz_1.click() == 'level1':
+                self.status = 'level1'
 
 
                 

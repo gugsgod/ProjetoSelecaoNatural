@@ -14,7 +14,7 @@ class TextFormat:
                     list_sep.append(stringDesejada[i+1:quantidadeChar])
                     break
                     
-        if 60 < quantidadeChar<= 80:
+        elif 60 < quantidadeChar<= 80:
             for i in range (40):
                 i = 43-i
                 if stringDesejada[i] == " ":
@@ -22,7 +22,7 @@ class TextFormat:
                     list_sep.append(stringDesejada[i+1:quantidadeChar])                    
                     break
                 
-        if 80 < quantidadeChar <= 100:
+        elif 80 < quantidadeChar <= 100:
             list_1 = []
             for i in range(int(quantidadeChar/3)+5):
                 i =  35 - i
@@ -38,7 +38,7 @@ class TextFormat:
                     list_sep.append(stringDesejada[j+1:quantidadeChar])
                     break
                             
-        if 100 < quantidadeChar <= 120:
+        elif 100 < quantidadeChar <= 120:
             list_1 = []
             for i in range(int(quantidadeChar/3)+5):
                 i =  44 - i
@@ -54,7 +54,7 @@ class TextFormat:
                     list_sep.append(stringDesejada[j+1:quantidadeChar])
                     break
                     
-        if 120 < quantidadeChar <= 140:
+        elif 120 < quantidadeChar <= 140:
             list_1 = []
             list_2 = []
             
@@ -81,7 +81,7 @@ class TextFormat:
                     break
                 
                                                         
-        if 140 < quantidadeChar <= 160:
+        elif 140 < quantidadeChar <= 160:
             list_1 = []
             list_2 = []
             
@@ -106,7 +106,6 @@ class TextFormat:
                     list_sep.append(stringDesejada[j+1:g])
                     list_sep.append(stringDesejada[g+1:quantidadeChar])
                     break
-                                    
-        print(list_sep)
+        
         return list_sep
     
