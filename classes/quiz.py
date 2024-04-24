@@ -107,17 +107,17 @@ class Quiz:
                 if pygame.mouse.get_pressed()[0] == 1:
                     clicked_2 = True
                     # TESTE CLICK NO ERRADO
-                    print(clicked_2)
+                    # print(clicked_2)
                     return 'clicked'
             
         if clicked_1 == True:
             self.screen.blit(self.bg_acerto_certo, (0, 0))
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return 'level1'
+                    return "self.status = 'level1'"
               
         if clicked_2 == True:
             self.screen.blit(self.bg_acerto_errado, (0, 0))
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return 'level1'
+                    return "self.status = 'level1'"

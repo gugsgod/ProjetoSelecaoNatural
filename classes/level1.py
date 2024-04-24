@@ -91,8 +91,8 @@ class Level1:
         if self.status == 'quiz_1':
             self.quiz_1.show()
             self.quiz_1.discover_alt_correct()
-            if self.quiz_1.click() == 'level1':
-                self.status = 'level1'
+            self.quiz_1.click()
+            
 
 
                 
