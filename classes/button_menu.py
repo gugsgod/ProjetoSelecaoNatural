@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 import sys
-from text import Text
+from text import textBotao
 
 class ButtonMenu:
     def __init__(self, posx, posy, click_action = ''):
