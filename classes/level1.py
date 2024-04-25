@@ -91,7 +91,13 @@ class Level1:
         if self.status == 'quiz_1':
             self.quiz_1.show()
             self.quiz_1.discover_alt_correct()
-            self.quiz_1.click()
+            run = self.quiz_1.click()
+            if run == True:
+                self.status = self.quiz_1.clicked_true()
+            elif run == False:
+                self.status = self.quiz_1.clicked_false()
+            
+        
             
 
 
