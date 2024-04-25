@@ -88,36 +88,19 @@ class Quiz:
             self.alt_wrong_1 = self.alt_rect3
             self.alt_wrong_2 = self.alt_rect1
     
-    def click(self):         
-        clicked_1 = False 
-        clicked_2 = False
-
-
+    def click(self, i):       
         mouse = pygame.mouse.get_pos()
-        if clicked_1 == False and clicked_2 == False:
-            if self.alt_correct.collidepoint(mouse):
-                # TESTE PARA COLISAO DO MOUSE E BOTAO
-                # print('Em cima')
-                if pygame.mouse.get_pressed()[0] == 1:
-                    clicked_1 = True
-                    # TESTE CLICK NO CERTO
-                    # print(clicked_1)
-                    return 'clicked'
-            if self.alt_wrong.collidepoint(mouse) or self.alt_wrong_1.collidepoint(mouse) or self.alt_wrong_2.collidepoint(mouse):
-                if pygame.mouse.get_pressed()[0] == 1:
-                    clicked_2 = True
-                    # TESTE CLICK NO ERRADO
-                    # print(clicked_2)
-                    return 'clicked'
-            
-        if clicked_1 == True:
-            self.screen.blit(self.bg_acerto_certo, (0, 0))
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return "self.status = 'level1'"
-              
-        if clicked_2 == True:
-            self.screen.blit(self.bg_acerto_errado, (0, 0))
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return "self.status = 'level1'"
+        if self.alt_correct.collidepoint(mouse):
+            if pygame.mouse.get_pressed()[0] == 1:
+                i = 1
+                return True, i
+        if self.alt_wrong.collidepoint(mouse) or self.alt_wrong_1.collidepoint(mouse) or self.alt_wrong_2.collidepoint(mouse):
+            if pygame.mouse.get_pressed()[0] == 1:
+                i = 2
+                return True, i
+        
+    def clicked_true(self):
+        self.screen.blit(self.bg_acerto_certo, (0, 0))
+        
+    def clicked_false(self):
+        self.screen.blit(self.bg_acerto_errado, (0, 0))
