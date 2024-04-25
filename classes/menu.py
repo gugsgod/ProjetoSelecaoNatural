@@ -10,7 +10,7 @@ class Menu:
         
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
-        self.menu_bg = pygame.image.load('images/menu_bg.png')
+        self.menu_bg = pygame.image.load('images/digital-art-horizon-mountains-forest-pinkish.jpg')
         self.pos_name = [803.5, 100]
         self.pos_button_play = [813.5, 300]
         self.pos_button_rank = [813.5, 525]

@@ -14,6 +14,8 @@ class Level1:
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
         
+        self.bg_acerto_certo = pygame.image.load('images/bg_acerto_certo.png').convert_alpha()
+        self.bg_acerto_errado = pygame.image.load('images/bg_acerto_errado.png').convert_alpha()
         #Objeto Character
         self.character = Character('images/Scientists.png', 0, 0, [75, 60], [10,110], 0)
         
@@ -88,6 +90,7 @@ class Level1:
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
             
+<<<<<<< HEAD
         if self.status == 'quiz_1':
             self.quiz_1.show()
             self.quiz_1.discover_alt_correct()
@@ -98,8 +101,27 @@ class Level1:
                 self.status = self.quiz_1.clicked_false()
             
         
+=======
+        # if self.status == 'quiz_1':
+        #     true_or_false = 0
+        #     self.quiz_1.show()
+        #     self.quiz_1.discover_alt_correct()
+        #     boolena = self.quiz_1.click(true_or_false)
+>>>>>>> 26528534b3d8de91284f85b457d80667794667da
             
-
+        #     if boolena == True:
+        #         if true_or_false == "1":
+        #             self.quiz_1.clicked_true()
+        #             for event in pygame.event.get():
+        #                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+        #                     self.status =  'level1'
+        #         elif true_or_false == "2":
+        #             self.quiz_1.clicked_false()
+        #             for event in pygame.event.get():
+        #                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+        #                     self.status =  'level1'
+                
+                        
 
                 
         
