@@ -88,7 +88,7 @@ class Quiz:
             self.alt_wrong_1 = self.alt_rect3
             self.alt_wrong_2 = self.alt_rect1
     
-<<<<<<< HEAD
+
     def click(self):         
         mouse = pygame.mouse.get_pos()
 
@@ -101,30 +101,9 @@ class Quiz:
             
     def clicked_true(self):            
         self.screen.blit(self.bg_acerto_certo, (0, 0))
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                return 'level1'
               
     def clicked_false(self):
         self.screen.blit(self.bg_acerto_errado, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                 return 'level1'
-=======
-    def click(self, i):       
-        mouse = pygame.mouse.get_pos()
-        if self.alt_correct.collidepoint(mouse):
-            if pygame.mouse.get_pressed()[0] == 1:
-                i = 1
-                return True, i
-        if self.alt_wrong.collidepoint(mouse) or self.alt_wrong_1.collidepoint(mouse) or self.alt_wrong_2.collidepoint(mouse):
-            if pygame.mouse.get_pressed()[0] == 1:
-                i = 2
-                return True, i
-        
-    def clicked_true(self):
-        self.screen.blit(self.bg_acerto_certo, (0, 0))
-        
-    def clicked_false(self):
-        self.screen.blit(self.bg_acerto_errado, (0, 0))
->>>>>>> 26528534b3d8de91284f85b457d80667794667da

@@ -90,38 +90,18 @@ class Level1:
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
             
-<<<<<<< HEAD
+
         if self.status == 'quiz_1':
             self.quiz_1.show()
             self.quiz_1.discover_alt_correct()
             run = self.quiz_1.click()
             if run == True:
-                self.status = self.quiz_1.clicked_true()
+                self.quiz_1.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
             elif run == False:
-                self.status = self.quiz_1.clicked_false()
-            
-        
-=======
-        # if self.status == 'quiz_1':
-        #     true_or_false = 0
-        #     self.quiz_1.show()
-        #     self.quiz_1.discover_alt_correct()
-        #     boolena = self.quiz_1.click(true_or_false)
->>>>>>> 26528534b3d8de91284f85b457d80667794667da
-            
-        #     if boolena == True:
-        #         if true_or_false == "1":
-        #             self.quiz_1.clicked_true()
-        #             for event in pygame.event.get():
-        #                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-        #                     self.status =  'level1'
-        #         elif true_or_false == "2":
-        #             self.quiz_1.clicked_false()
-        #             for event in pygame.event.get():
-        #                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-        #                     self.status =  'level1'
-                
-                        
-
-                
-        
+                self.quiz_1.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
