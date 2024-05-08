@@ -7,9 +7,9 @@ import random
 class Quiz:
     def __init__(self, question_1, alt1, alt2, alt3, alt4):
         self.screen = pygame.display.set_mode((1920, 1080))
-        self.quiz_bg = pygame.image.load('images/quiz_bg.png').convert_alpha()
-        self.bg_acerto_certo = pygame.image.load('images/bg_acerto_certo.png').convert_alpha()
-        self.bg_acerto_errado = pygame.image.load('images/bg_acerto_errado.png').convert_alpha()
+        self.quiz_bg = pygame.image.load('images/backgrounds/quiz_bg.png').convert_alpha()
+        self.bg_acerto_certo = pygame.image.load('images/backgrounds/bg_acerto_certo.png').convert_alpha()
+        self.bg_acerto_errado = pygame.image.load('images/backgrounds/bg_acerto_errado.png').convert_alpha()
         self.question_1 = question_1
         self.alt1 = alt1
         self.alt2 = alt2

@@ -6,8 +6,8 @@ from text import Text
 class ButtonMenu:
     def __init__(self, posx, posy, click_action = ''):
         self.screen = pygame.display.set_mode((1920, 1080))
-        self.button_menu_1 = pygame.image.load('images/img.button_menu_1.png').convert_alpha()
-        self.button_menu_2 = pygame.image.load('images/img.button_menu_2.png').convert_alpha()
+        self.button_menu_1 = pygame.image.load('images/buttons/img.button_menu_1.png').convert_alpha()
+        self.button_menu_2 = pygame.image.load('images/buttons/img.button_menu_2.png').convert_alpha()
         self.posx = posx
         self.posy = posy
         self.buttom_size = [293, 112]

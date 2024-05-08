@@ -14,17 +14,17 @@ class Level1:
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
         
-        self.bg_acerto_certo = pygame.image.load('images/bg_acerto_certo.png').convert_alpha()
-        self.bg_acerto_errado = pygame.image.load('images/bg_acerto_errado.png').convert_alpha()
+        self.bg_acerto_certo = pygame.image.load('images/backgrounds/bg_acerto_certo.png').convert_alpha()
+        self.bg_acerto_errado = pygame.image.load('images/backgrounds/bg_acerto_errado.png').convert_alpha()
         #Objeto Character
-        self.character = Character('images/Scientists.png', 0, 0, [75, 60], [10,110], 0)
+        self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [10,110], 0)
         
         #Objetos Sapo
-        self.frog_1 = Frog('images/frog.png', [500, 100])
-        self.frog_2 = Frog('images/frog.png', [100, 700])
-        self.frog_3 = Frog('images/frog.png', [800, 300])
-        self.frog_4 = Frog('images/frog.png', [1400, 200])
-        self.frog_5 = Frog('images/frog.png', [1700, 900])
+        self.frog_1 = Frog('images/animals/frog.png', [500, 100])
+        self.frog_2 = Frog('images/animals/frog.png', [100, 700])
+        self.frog_3 = Frog('images/animals/frog.png', [800, 300])
+        self.frog_4 = Frog('images/animals/frog.png', [1400, 200])
+        self.frog_5 = Frog('images/animals/frog.png', [1700, 900])
         
         #Alternativas
         self.alt1 = TextFormat.FormatText('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
@@ -39,7 +39,7 @@ class Level1:
                            self.alt4
                            )
         
-        self.bg_play = pygame.image.load('images/bg_game.png').convert_alpha()
+        self.bg_play = pygame.image.load('images/backgrounds/bg_game.png').convert_alpha()
         self.status = 'level1'
     
     def run(self):
