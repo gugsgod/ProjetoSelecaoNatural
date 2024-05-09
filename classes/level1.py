@@ -6,7 +6,7 @@ from character import Character
 from fade_in import FadeIn
 from frog import Frog
 from quiz import Quiz
-from classes.transform_text import *
+from transform_text import *
 
 class Level1:
     def __init__(self):
@@ -41,7 +41,9 @@ class Level1:
         
         self.bg_play = pygame.image.load('images/backgrounds/bg_game.png').convert_alpha()
         self.status = 'level1'
-    
+        self.status_quiz1 = None
+
+
     def run(self):
         self.clock.tick(14)
         
@@ -91,17 +93,4 @@ class Level1:
                     return 'menu'
             
 
-        if self.status == 'quiz_1':
-            self.quiz_1.show()
-            self.quiz_1.discover_alt_correct()
-            run = self.quiz_1.click()
-            if run == True:
-                self.quiz_1.clicked_true()
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level1'
-            elif run == False:
-                self.quiz_1.clicked_false()
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level1'
+        

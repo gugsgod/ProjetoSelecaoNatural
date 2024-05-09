@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from text import Text
-from classes.show_button import BotaoShow
+from show_button import ShowButton
 import random
 
 class Quiz:
@@ -26,7 +26,7 @@ class Quiz:
                 
         #Criação dos objeto da classe BotaoShow
         
-        self.textBotao = BotaoShow(self.font_alt, 'BLACK')
+        self.textBotao = ShowButton(self.font_alt, 'BLACK')
         
         #Criação dos retângulos dos botões
         self.alt_rect1 = pygame.Rect(254, 370, 676, 294)
