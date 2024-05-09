@@ -104,6 +104,3 @@ class Quiz:
               
     def clicked_false(self):
         self.screen.blit(self.bg_acerto_errado, (0, 0))
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                return 'level1'
