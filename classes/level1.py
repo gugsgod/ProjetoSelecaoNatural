@@ -24,6 +24,18 @@ class Level1:
         self.frog_4 = Frog('images/animals/frog.png', [1400, 200])
         self.frog_5 = Frog('images/animals/frog.png', [1700, 900])
         
+        #Placas LOAD
+        self.placa1 = pygame.image.load("images/placas/placa_1.png")
+        self.placa2 = pygame.image.load("images/placas/placa_2.png")
+        self.placa3 = pygame.image.load("images/placas/placa_3.png")
+        self.placa4 = pygame.image.load("images/placas/placa_4.png")
+        self.placa5 = pygame.image.load("images/placas/placa_5.png")
+        self.placa6 = pygame.image.load("images/placas/placa_6.png")
+        self.placa7 = pygame.image.load("images/placas/placa_7.png")
+        self.placa8 = pygame.image.load("images/placas/placa_8.png")
+        self.placa9 = pygame.image.load("images/placas/placa_9.png")
+        #self.placa10 = pygame.image.load()
+        
         #Pergunta e alternativas Q1
         self.pergunta1 = 'Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?'
         self.Q1_alt1 = TextFormat.FormatText('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
