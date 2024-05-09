@@ -1,11 +1,7 @@
 import pygame
 from pygame.locals import *
 from text import Text
-<<<<<<< HEAD
 from show_button import ShowButton
-=======
-from classes.show_button import ShowButton
->>>>>>> fb15168f0d9f257134fe84ddd4ebaee975414cef
 import random
 
 class Quiz:

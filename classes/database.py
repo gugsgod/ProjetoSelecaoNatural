@@ -1,106 +1,81 @@
 import mysql.connector
-    
+
 class Database:
-    def __init__(self):
-        self.config={"user":'root', "password":'imtdb', "host":'localhost', "database": 'JogoDb'}
-    def connect_to_db(self):
+    def __init__(self, host, user, password, database):
+        self.host = host
+        self.user = user
+        self.password = password
+        self.database = database
+        self.connection = None
+
+    def connect(self):
         try:
-            cnx = mysql.connector.connect(**self.config)
-            cursor = cnx.cursor()
-            print("Connected to the database successfully!")
-            return cnx, cursor
+            self.connection = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password,
+                database=self.database
+            )
+            print("Conexão estabelecida com sucesso!")
         except mysql.connector.Error as err:
-            print(f"Error connecting to the database: {err}")
-            return None, None
-    def create_database(self, db_name):
+            print("Erro ao conectar ao banco de dados:", err)
+
+    def disconnect(self):
+        if self.connection.is_connected():
+            self.connection.close()
+            print("Conexão encerrada.")
+
+    def execute_query(self, query, values=None):
+        cursor = self.connection.cursor()
         try:
-            cnx, cursor = self.connect_to_db()
-            if cnx is not None:
-                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
-                cnx.commit()
-                print(f"Database '{db_name}' created successfully!")
-                return True
+            if values:
+                cursor.execute(query, values)
             else:
-                print("Error: Unable to connect to the database.")
-                return False
+                cursor.execute(query)
+            self.connection.commit()
+            print("Query executada com sucesso!")
         except mysql.connector.Error as err:
-            print(f"Error creating database: {err}")
-            return False
-    def check_table_exists(self, db_name, table_name):
-        try:
-            cnx, cursor = self.connect_to_db()
-            if cnx is not None:
-                cursor.execute(f"USE {db_name}")
-                cursor.execute(f"SHOW TABLES LIKE '{table_name}'")
-                result = cursor.fetchone()
-                if result is not None:
-                    return True
-                else:
-                    return False
-            else:
-                print("Error: Unable to connect to the database.")
-                return False
-        except mysql.connector.Error as err:
-            print(f"Error checking table existence: {err}")
-            return False
-    def create_table(self, db_name, table_name, columns):
-        try:
-            cnx, cursor = self.connect_to_db()
-            if cnx is not None:
-                cursor.execute(f"USE {db_name}")
-                cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})")
-                cnx.commit()
-                print(f"Table '{table_name}' created successfully!")
-                return True
-            else:
-                print("Error: Unable to connect to the database.")
-                return False
-        except mysql.connector.Error as err:
-            print(f"Error creating table: {err}")
-            return False
-    def pull_data(self, db_name, table_name, columns):
-        try:
-            cnx, cursor = self.connect_to_db()
-            if cnx is not None:
-                cursor.execute(f"USE {db_name}")
-                cursor.execute(f"SELECT {columns} FROM {table_name}")
-                result = cursor.fetchall()
-                return result
-            else:
-                print("Error: Unable to connect to the database.")
-                return None
-        except mysql.connector.Error as err:
-            print(f"Error pulling data: {err}")
-            return None
-    def pull_table(self, db_name, table_name):
-        try:
-            cnx, cursor = self.connect_to_db()
-            if cnx is not None:
-                cursor.execute(f"USE {db_name}")
-                cursor.execute(f"SELECT * FROM {table_name}")
-                result = cursor.fetchall()
-                return result
-            else:
-                print("Error: Unable to connect to the database.")
-                return None
-        except mysql.connector.Error as err:
-            print(f"Error pulling table: {err}")
-            return None
-    def insert_data(self, db_name, table_name, data):
-        try:
-            cnx, cursor = self.connect_to_db()
-            if cnx is not None:
-                cursor.execute(f"USE {db_name}")
-                cursor.executemany(f"INSERT INTO {table_name} VALUES (%s)", data)
-                cnx.commit()
-                print(f"Data inserted successfully into table '{table_name}'!")
-                return True
-            else:
-                print("Error: Unable to connect to the database.")
-                return False
-        except mysql.connector.Error as err:
-            print(f"Error inserting data: {err}")
-            return False
-    
-db = Database()
-db.connect_to_db()
+            print("Erro ao executar a query:", err)
+        finally:
+            cursor.close()
+            
+def criar_tabelas():
+    # Conectar ao banco de dados
+    conexao = mysql.connector.connect(
+        host="localhost",
+        user="seu_usuario",
+        password="sua_senha",
+        database="seu_banco_de_dados"
+    )
+
+    # Cursor para executar comandos SQL
+    cursor = conexao.cursor()
+
+    # Criar tabela 'cargos'
+    cursor.execute("CREATE TABLE IF NOT EXISTS cargos (cargo INT PRIMARY KEY, nome_cargo VARCHAR(25))")
+
+    # Criar tabela 'usuarios'
+    cursor.execute("CREATE TABLE IF NOT EXISTS usuarios (ID INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(45), email VARCHAR(60), senha VARCHAR(16), cargo INT, FOREIGN KEY (cargo) REFERENCES cargos(cargo))")
+
+    # Criar tabela 'pontuacao'
+    cursor.execute("CREATE TABLE IF NOT EXISTS pontuacao (ID INT, pontos INT, vzsJogadas INT, FOREIGN KEY (ID) REFERENCES usuarios(ID))")
+
+    # Criar tabela 'perguntas'
+    cursor.execute("CREATE TABLE IF NOT EXISTS perguntas (NPergunta INT PRIMARY KEY, pergunta VARCHAR(300), a1 VARCHAR(160), a2 VARCHAR(160), a3 VARCHAR(160), a4 VARCHAR(160))")
+
+    # Confirmar as alterações
+    conexao.commit()
+
+    # Fechar o cursor e a conexão
+    cursor.close()
+    conexao.close()
+
+# Exemplo de uso:
+db = Database(host="localhost", user="seu_usuario", password="sua_senha", database="seu_banco_de_dados")
+db.connect()
+
+# Exemplo de execução de uma query
+query = "CREATE TABLE IF NOT EXISTS exemplo (id INT AUTO_INCREMENT PRIMARY KEY, nome VARCHAR(255))"
+db.execute_query(query)
+
+db.disconnect()
