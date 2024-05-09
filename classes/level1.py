@@ -6,7 +6,7 @@ from character import Character
 from fade_in import FadeIn
 from frog import Frog
 from quiz import Quiz
-from FuncTransformText import *
+from classes.transform_text import *
 
 class Level1:
     def __init__(self):

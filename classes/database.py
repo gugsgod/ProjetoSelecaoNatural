@@ -1,6 +1,6 @@
 import mysql.connector
     
-class Database:
+class bancoDeDados:
     def __init__(self):
         self.config={"user":'root', "password":'imtdb', "host":'localhost', "database": 'JogoDb'}
     def connect_to_db(self):

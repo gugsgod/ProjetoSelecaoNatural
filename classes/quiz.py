@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from text import Text
-from ShowNoBotao import BotaoShow
+from classes.show_button import BotaoShow
 import random
 
 class Quiz:
