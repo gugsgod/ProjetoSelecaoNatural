@@ -107,19 +107,15 @@ class Level1:
         self.Q10_alt4 = None
         
         #Objeto Quiz 1
-        
-        self.quiz_1 = Quiz('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?', self.Q1_alt1, self.Q1_alt2, self.Q1_alt3, self.Q1_alt4)
+        self.quiz_1 = Quiz(self.pergunta1, self.Q1_alt1, self.Q1_alt2, self.Q1_alt3, self.Q1_alt4)
         
         #Objeto Quiz 2
-        
         self.quiz_2 = Quiz(self.pergunta2, self.Q2_alt1, self.Q2_alt2, self.Q2_alt3, self.Q2_alt4)
         
         #Objeto Quiz 3
-        
         self.quiz_3 = Quiz(self.pergunta3, self.Q3_alt1, self.Q3_alt2, self.Q3_alt3, self.Q3_alt4)
         
         #Objeto Quiz 4
-        
         self.quiz_4 = Quiz(self.pergunta4, self.Q4_alt1, self.Q4_alt2, self.Q4_alt3, self.Q4_alt4)
         
         #Objeto Quiz 5
@@ -208,6 +204,11 @@ class Level1:
             self.frog_5.movement()
             self.frog_5.collision_screen()
                     
+            #Blit placas
+            self.screen.blit(self.placa1, (270,105))
+            self.screen.blit(self.placa2, (180,470))
+            
+            
             #Character Módulos
             self.character.show()
             self.character.skin()
@@ -220,8 +221,9 @@ class Level1:
                     #Onde o player sai depois do quiz
                     self.character.pos([150, 60])
                     self.status = 'quiz_1'
-            else:       
-                pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(270, 105, 44, 50))
+            # else:       
+            #     pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(270, 105, 44, 50))
+                
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
@@ -249,7 +251,7 @@ class Level1:
                         self.status = 'level1'
                         self.status_quiz1 = None
                         self.quiz1_complete = False
-
+                        
         if self.status == 'quiz_2':
             if self.status_quiz2 == None:
                 self.quiz_2.show()
