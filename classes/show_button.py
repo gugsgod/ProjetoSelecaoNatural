@@ -1,12 +1,12 @@
 import pygame
 
-class BotaoShow:
+class ShowButton:
     
     def __init__(self, font, text_col):
         self.font = font
         self.text_col = text_col
 
-    def showBotao(self, lista, botao):
+    def ShowButton(self, lista, botao):
         tamanho = len(lista)
         standard_y = 125
         for i in range(tamanho):

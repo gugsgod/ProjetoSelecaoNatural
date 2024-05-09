@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from text import Text
-from classes.show_button import BotaoShow
+from classes.show_button import ShowButton
 import random
 
 class Quiz:
@@ -24,9 +24,9 @@ class Quiz:
         random.shuffle(self.list_alternatives_random)
         self.index_correct = self.list_alternatives_random.index(self.alt1)
                 
-        #Criação dos objeto da classe BotaoShow
+        #Criação dos objeto da classe ShowBotao
         
-        self.textBotao = BotaoShow(self.font_alt, 'BLACK')
+        self.textBotao = ShowButton(self.font_alt, 'BLACK')
         
         #Criação dos retângulos dos botões
         self.alt_rect1 = pygame.Rect(254, 370, 676, 294)
@@ -59,10 +59,10 @@ class Quiz:
         self.screen.blit(self.sup_bot2, (254, 724))
         self.screen.blit(self.sup_bot3, (990, 370))
         self.screen.blit(self.sup_bot4, (990, 724))
-        self.textBotao.showBotao(self.list_alternatives_random[0], self.sup_bot1)
-        self.textBotao.showBotao(self.list_alternatives_random[1], self.sup_bot2)
-        self.textBotao.showBotao(self.list_alternatives_random[2], self.sup_bot3)
-        self.textBotao.showBotao(self.list_alternatives_random[3], self.sup_bot4)
+        self.textBotao.ShowButton(self.list_alternatives_random[0], self.sup_bot1)
+        self.textBotao.ShowButton(self.list_alternatives_random[1], self.sup_bot2)
+        self.textBotao.ShowButton(self.list_alternatives_random[2], self.sup_bot3)
+        self.textBotao.ShowButton(self.list_alternatives_random[3], self.sup_bot4)
         
         return self.index_correct
 
