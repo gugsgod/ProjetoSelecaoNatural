@@ -93,4 +93,18 @@ class Level1:
                     return 'menu'
             
 
-        
+        if self.status == 'quiz_1':
+            if self.status_quiz1 == None:
+                self.quiz_1.show()
+                self.quiz_1.discover_alt_correct()
+                self.status_quiz1 = self.quiz_1.click()
+            if self.status_quiz1 == True:
+                self.quiz_1.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz1 == False:
+                self.quiz_1.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
