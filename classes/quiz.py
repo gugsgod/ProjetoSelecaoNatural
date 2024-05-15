@@ -10,18 +10,13 @@ class Quiz:
         self.quiz_bg = pygame.image.load('images/backgrounds/quiz_bg.png').convert_alpha()
         self.bg_acerto_certo = pygame.image.load('images/backgrounds/bg_acerto_certo.png').convert_alpha()
         self.bg_acerto_errado = pygame.image.load('images/backgrounds/bg_acerto_errado.png').convert_alpha()
-        self.question_1 = question_1
-        pergunta_sep = [question_1]
+        self.pergunta_sep = question_1
         self.alt1 = alt1
         self.alt2 = alt2
         self.alt3 = alt3
         self.alt4 = alt4
-        self.pos_question_1 = ShowButton.show_question(pergunta_sep)
         self.font_question = pygame.font.Font('fonts/upheavtt.ttf', 48)
         self.font_alt = pygame.font.Font('fonts/upheavtt.ttf', 25)
-        self.text_question_1 = Text(self.question_1[0], self.font_question, 'BLACK', pergunta_sep[0])
-        if len(pergunta_sep) > 1:
-            self.text_question_2 = Text(self.question_1[1],self.font_question, 'BLACK', pergunta_sep[1])
         self.list_alternatives_random = [self.alt1, self.alt2, self.alt3, self.alt4]
         self.index_correct = None
         random.shuffle(self.list_alternatives_random)
@@ -30,6 +25,7 @@ class Quiz:
         #Criação dos objeto da classe ShowBotao
         
         self.textBotao = ShowButton(self.font_alt, 'BLACK')
+        self.textPergunta = ShowButton(self.font_question, 'BLACK', self.screen)
         
         #Criação dos retângulos dos botões
         self.alt_rect1 = pygame.Rect(254, 370, 676, 294)
@@ -42,6 +38,7 @@ class Quiz:
         self.sup_bot2 = pygame.Surface((676, 294))
         self.sup_bot3 = pygame.Surface((676, 294))
         self.sup_bot4 = pygame.Surface((676, 294))
+        
         #Fill para checar posicionamento
         self.sup_bot1.fill('aqua')
         self.sup_bot2.fill('aqua')
@@ -56,14 +53,12 @@ class Quiz:
 
     def show(self):
         self.screen.blit(self.quiz_bg, (0, 0))
-        self.text_question_1.show()
-        if len(self.pergunta_sep) > 1:
-            self.text_question_2.show()
         #Colocando a surface em cima do botão
         self.screen.blit(self.sup_bot1, (254, 370))
         self.screen.blit(self.sup_bot2, (254, 724))
         self.screen.blit(self.sup_bot3, (990, 370))
         self.screen.blit(self.sup_bot4, (990, 724))
+        self.textPergunta.show_question(self.pergunta_sep)
         self.textBotao.ShowButton(self.list_alternatives_random[0], self.sup_bot1)
         self.textBotao.ShowButton(self.list_alternatives_random[1], self.sup_bot2)
         self.textBotao.ShowButton(self.list_alternatives_random[2], self.sup_bot3)

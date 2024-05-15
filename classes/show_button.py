@@ -2,9 +2,10 @@ import pygame
 
 
 class ShowButton:
-    def __init__(self, font, text_col):
+    def __init__(self, font, text_col,screen = None):
         self.font = font
         self.text_col = text_col
+        self.screen = screen
 
     def ShowButton(self, lista, botao):
         tamanho = len(lista)
@@ -47,15 +48,18 @@ class ShowButton:
                 break
             
     def show_question(self, lista):
-        tamanho = len(list)
+        tamanho = len(lista)
         y_padrao = 140
-        jorge = pygame.font.Font('fonts/upheavtt.ttf', 48)
-        font_size = jorge.size(lista[i])
-        lista
         for i in range(tamanho):
+            img = self.font.render(lista[i], True, self.text_col)
             if i == 0 and tamanho == 1:
-                lista.append((1920/2 - font_size[0]/2 , y_padrao))
+                font_size = self.font.size(lista[i])
+                self.screen.blit(img, (1920/2 + font_size[0]/2 , y_padrao))
+                break
             if i == 0 and tamanho == 2:
-                lista.append((1920/2 - font_size[1]/2 , y_padrao - 12.5))
+                font_size = self.font.size(lista[i])
+                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_padrao - 12.5))
             if i == 1 and tamanho == 2:
-                lista.append((1920/2 - font_size[1]/2 , y_padrao +12.5))
+                font_size = self.font.size(lista[i])
+                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_padrao + 15))
+                break
