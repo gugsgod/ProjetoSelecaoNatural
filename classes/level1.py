@@ -37,7 +37,7 @@ class Level1:
         #self.placa10 = pygame.image.load()
         
         #Pergunta e alternativas Q1
-        self.pergunta1 = 'Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?'
+        self.pergunta1 = TextFormat.FormatPergunta('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
         self.Q1_alt1 = TextFormat.FormatText('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
         self.Q1_alt2 = TextFormat.FormatText('Os insetos desenvolveram essa semelhança para atrair mais facilmente suas presas')
         self.Q1_alt3 = TextFormat.FormatText('Os insetos adotam essa camuflagem para se protegerem das mudanças climáticas')

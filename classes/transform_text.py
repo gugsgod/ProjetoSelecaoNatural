@@ -106,6 +106,28 @@ class TextFormat:
                     list_sep.append(stringDesejada[j+1:g])
                     list_sep.append(stringDesejada[g+1:quantidadeChar])
                     break
-        
         return list_sep
+        
+    def FormatPergunta(perguntaDesejada):
+        lista_separada = []
+        qtdChar = len(perguntaDesejada)
+        if qtdChar <= 60:
+            perguntaDesejada = perguntaDesejada
     
+        if 60 < qtdChar <=90:
+            for i in range(int(qtdChar/2)+5):
+                i = int(qtdChar/2)+5-i
+                if perguntaDesejada[i] == " ":
+                    lista_separada.append(perguntaDesejada[0:i])
+                    lista_separada.append(perguntaDesejada[i+1:qtdChar])
+                    break
+
+        if 90 < qtdChar <= 120:
+            for i in range(int(qtdChar/2)):
+                i = 61-i
+                if perguntaDesejada[i] == " ":
+                    lista_separada.append(perguntaDesejada[0:i])
+                    lista_separada.append(perguntaDesejada[i+1:qtdChar])
+                    break
+            
+        return lista_separada
