@@ -223,6 +223,11 @@ class Level1:
                     self.status = 'quiz_1'
             # else:       
             #     pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(270, 105, 44, 50))
+            if self.character.collision_plate('quiz_2', [180, 470], [44, 50]) == 'quiz_2':
+                if self.quiz2_complete == False:
+                    #Onde o player sai depois do quiz
+                    self.character.pos([150, 60])
+                    self.status = 'quiz_2'
                 
 
             for event in pygame.event.get():

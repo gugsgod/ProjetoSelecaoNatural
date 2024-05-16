@@ -53,7 +53,9 @@ class Quiz:
 
     def show(self):
         self.screen.blit(self.quiz_bg, (0, 0))
+        
         #Colocando a surface em cima do botão
+        
         self.screen.blit(self.sup_bot1, (254, 370))
         self.screen.blit(self.sup_bot2, (254, 724))
         self.screen.blit(self.sup_bot3, (990, 370))
