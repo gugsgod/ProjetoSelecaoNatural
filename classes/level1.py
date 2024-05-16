@@ -36,6 +36,9 @@ class Level1:
         self.placa9 = pygame.image.load("images/placas/placa_9.png")
         #self.placa10 = pygame.image.load()
         
+        self.placacorreto = pygame.image.load("images/placas/placa_certo.png")
+        self.placaerrado = pygame.image.load("images/placas/placa_errada.png")
+        
         #Pergunta e alternativas Q1
         self.pergunta1 = TextFormat.FormatPergunta('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
         self.Q1_alt1 = TextFormat.FormatText('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
@@ -44,11 +47,12 @@ class Level1:
         self.Q1_alt4 = TextFormat.FormatText('A semelhança com folhas e ramos permite que os insetos se comuniquem de forma eficiente entre si')
         
         #Pergunta e alternativas Q2
-        self.pergunta2 = None
-        self.Q2_alt1 = None
-        self.Q2_alt2 = None
-        self.Q2_alt3 = None
-        self.Q2_alt4 = None
+        
+        self.pergunta2 = TextFormat.FormatPergunta("Porque os tentilhões possuem diferentes formas de bico aqui nas ilhas de Galápagos?")
+        self.Q2_alt1 = TextFormat.FormatText("Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.")
+        self.Q2_alt2 = TextFormat.FormatText("Os tentilhões fizeram cirurgias plásticas em seus bicos para se adaptarem.")
+        self.Q2_alt3 = TextFormat.FormatText("Os tentilhões começaram a frequentar restaurantes diferentes na ilha, resultando em uma variedade de bicos.")
+        self.Q2_alt4 = TextFormat.FormatText("Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento.")
         
         #Pergunta e alternativas Q3
         self.pergunta3 = None
@@ -204,11 +208,46 @@ class Level1:
             self.frog_5.movement()
             self.frog_5.collision_screen()
                     
+            
             #Blit placas
-            self.screen.blit(self.placa1, (270,105))
-            self.screen.blit(self.placa2, (180,470))
+            self.screen.blit(self.placa1, (270, 105))
+            self.screen.blit(self.placa2, (180, 470))
+            self.screen.blit(self.placa3, (650, 360))
+            self.screen.blit(self.placa4, (560, 850))
+            self.screen.blit(self.placa5, (1030, 750))
+            self.screen.blit(self.placa6, (970,600))
             
+            #If's para mudar placa
             
+            if self.status_quiz1 == True:
+                self.placa1 = self.placacorreto
+            elif self.status_quiz1 == False:
+                self.placa1 = self.placaerrado
+            
+            if self.status_quiz2 == True:
+                self.placa2 = self.placacorreto
+            elif self.status_quiz2 == False:
+                self.placa2 = self.placaerrado
+                
+            if self.status_quiz3 == True:
+                self.placa3 = self.placacorreto
+            elif self.status_quiz3 == False:
+                self.placa3 = self.placaerrado
+                
+            if self.status_quiz4 == True:
+                self.placa4 = self.placacorreto
+            elif self.status_quiz4 == False:
+                self.placa4 = self.placaerrado
+                
+            if self.status_quiz5 == True:
+                self.placa5 = self.placacorreto
+            elif self.status_quiz5 == False:
+                self.placa5 = self.placaerrado
+                
+            if self.status_quiz6 == True:
+                self.placa6 = self.placacorreto
+            elif self.status_quiz6 == False:
+                self.placa6 = self.placaerrado
             #Character Módulos
             self.character.show()
             self.character.skin()
@@ -228,6 +267,12 @@ class Level1:
                     #Onde o player sai depois do quiz
                     self.character.pos([150, 60])
                     self.status = 'quiz_2'
+                    
+            if self.character.collision_plate('quiz_3', [650, 360], [44, 50]) == 'quiz_3':
+                if self.quiz3_complete == False:
+                    #Onde o player sai depois do quiz
+                    self.character.pos([150, 60])
+                    self.status = 'quiz_3'
                 
 
             for event in pygame.event.get():
@@ -248,14 +293,15 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.status_quiz1 = True
                         self.quiz1_complete = True
             if self.status_quiz1 == False:
                 self.quiz_1.clicked_false()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
-                        self.status_quiz1 = None
-                        self.quiz1_complete = False
+                        self.status_quiz1 = False
+                        self.quiz1_complete = True
                         
         if self.status == 'quiz_2':
             if self.status_quiz2 == None:
@@ -270,11 +316,104 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.status_quiz2 = True
                         self.quiz2_complete = True
             if self.status_quiz2 == False:
                 self.quiz_2.clicked_false()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
-                        self.status_quiz2 = None
+                        self.status_quiz2 = False
                         self.quiz2_complete = False
+                        
+        if self.status == 'quiz_3':
+            if self.status_quiz3 == None:
+                self.quiz_3.show()
+                self.quiz_3.discover_alt_correct()
+                self.status_quiz3 = self.quiz_3.click()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz3 == True:
+                self.quiz_3.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz3 = True
+                        self.quiz3_complete = True
+            if self.status_quiz3 == False:
+                self.quiz_3.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz3 = False
+                        self.quiz3_complete = False
+                        
+        if self.status == 'quiz_4':
+            if self.status_quiz4 == None:
+                self.quiz_4.show()
+                self.quiz_4.discover_alt_correct()
+                self.status_quiz4 = self.quiz_4.click()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz4 == True:
+                self.quiz_4.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz4 = True
+                        self.quiz4_complete = True
+            if self.status_quiz4 == False:
+                self.quiz_4.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz4 = False
+                        self.quiz4_complete = False
+                        
+        if self.status == 'quiz_5':
+            if self.status_quiz5 == None:
+                self.quiz_5.show()
+                self.quiz_5.discover_alt_correct()
+                self.status_quiz5 = self.quiz_5.click()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz5 == True:
+                self.quiz_5.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz5 = True
+                        self.quiz5_complete = True
+            if self.status_quiz5 == False:
+                self.quiz_5.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz5 = False
+                        self.quiz5_complete = False
+                        
+        if self.status == 'quiz_6':
+            if self.status_quiz6 == None:
+                self.quiz_6.show()
+                self.quiz_6.discover_alt_correct()
+                self.status_quiz6 = self.quiz_6.click()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz6 == True:
+                self.quiz_6.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz6 = True
+                        self.quiz6_complete = True
+            if self.status_quiz6 == False:
+                self.quiz_6.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz6 = False
+                        self.quiz6_complete = False
