@@ -10,8 +10,8 @@ class ButtonMenu:
         self.button_menu_2 = pygame.image.load('images/buttons/img.button_menu_2.png').convert_alpha()
         self.posx = posx
         self.posy = posy
-        self.buttom_size = [293, 112]
-        self.rect_button = pygame.Rect(self.posx, self.posy, self.buttom_size[0], self.buttom_size[1])
+        self.button_size = [293, 112]
+        self.rect_button = pygame.Rect(self.posx, self.posy, self.button_size[0], self.button_size[1])
         self.click_action = click_action
 
     def show(self):
