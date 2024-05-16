@@ -55,11 +55,11 @@ class Level1:
         self.Q2_alt4 = TextFormat.FormatText("Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento.")
         
         #Pergunta e alternativas Q3
-        self.pergunta3 = None
-        self.Q3_alt1 = None
-        self.Q3_alt2 = None
-        self.Q3_alt3 = None
-        self.Q3_alt4 = None
+        self.pergunta3 = TextFormat.FormatPergunta("De que maneira o ambiente influencia na forma e organização dos animais?")
+        self.Q3_alt1 = TextFormat.FormatText("Os animais se adaptam às mudanças ambientais ao longo do tempo.")
+        self.Q3_alt2 = TextFormat.FormatText("A adaptação dos animais ao ambiente é um processo irrelevante.")
+        self.Q3_alt3 = TextFormat.FormatText("As características dos animais são imutáveis, independentemente do ambiente.")
+        self.Q3_alt4 = TextFormat.FormatText("Os animais são resistentes a qualquer alteração ambiental.")
         
         #Pegunta e alternativas Q4
         self.pergunta4 = None
@@ -248,6 +248,19 @@ class Level1:
                 self.placa6 = self.placacorreto
             elif self.status_quiz6 == False:
                 self.placa6 = self.placaerrado
+            
+            if self.status_quiz7 == True:
+                self.placa7 = self.placacorreto
+            elif self.status_quiz7 == False:
+                self.placa7 = self.placaerrado
+            
+            if self.status_quiz8 == True:
+                self.placa8 = self.placacorreto
+            elif self.status_quiz8 == False:
+                self.placa8 = self.placaerrado
+                
+                
+                
             #Character Módulos
             self.character.show()
             self.character.skin()
@@ -262,11 +275,13 @@ class Level1:
                     self.status = 'quiz_1'
             # else:       
             #     pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(270, 105, 44, 50))
-            if self.character.collision_plate('quiz_2', [180, 470], [44, 50]) == 'quiz_2':
+            if self.character.collision_plate('quiz_2', [180, 460], [44, 50]) == 'quiz_2':
                 if self.quiz2_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([150, 60])
+                    self.character.pos([155, 325])
                     self.status = 'quiz_2'
+            #else:
+            #    pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(180, 460, 44, 50))
                     
             if self.character.collision_plate('quiz_3', [650, 360], [44, 50]) == 'quiz_3':
                 if self.quiz3_complete == False:
