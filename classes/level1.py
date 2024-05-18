@@ -5,6 +5,7 @@ import random
 from character import Character
 from fade_in import FadeIn
 from frog import Frog
+from butterfly import Butterfly
 from quiz import Quiz
 from transform_text import *
 
@@ -24,20 +25,25 @@ class Level1:
         self.frog_4 = Frog('images/animals/frog.png', [1400, 200])
         self.frog_5 = Frog('images/animals/frog.png', [1700, 900])
         
+        #Objetos Borboleta
+        self.butterfly1 = Butterfly('images/animals/butterfly.png', [600, 200])
+        self.butterfly2 = Butterfly('images/animals/butterfly.png', [640, 200])
+        self.butterfly3 = Butterfly('images/animals/butterfly.png', [600, 240])
+        
         #Placas LOAD
-        self.placa1 = pygame.image.load("images/placas/placa_1.png")
-        self.placa2 = pygame.image.load("images/placas/placa_2.png")
-        self.placa3 = pygame.image.load("images/placas/placa_3.png")
-        self.placa4 = pygame.image.load("images/placas/placa_4.png")
-        self.placa5 = pygame.image.load("images/placas/placa_5.png")
-        self.placa6 = pygame.image.load("images/placas/placa_6.png")
-        self.placa7 = pygame.image.load("images/placas/placa_7.png")
-        self.placa8 = pygame.image.load("images/placas/placa_8.png")
-        self.placa9 = pygame.image.load("images/placas/placa_9.png")
+        self.placa1 = pygame.image.load("images/plates/placa_1.png")
+        self.placa2 = pygame.image.load("images/plates/placa_2.png")
+        self.placa3 = pygame.image.load("images/plates/placa_3.png")
+        self.placa4 = pygame.image.load("images/plates/placa_4.png")
+        self.placa5 = pygame.image.load("images/plates/placa_5.png")
+        self.placa6 = pygame.image.load("images/plates/placa_6.png")
+        self.placa7 = pygame.image.load("images/plates/placa_7.png")
+        self.placa8 = pygame.image.load("images/plates/placa_8.png")
+        self.placa9 = pygame.image.load("images/plates/placa_9.png")
         #self.placa10 = pygame.image.load()
         
-        self.placacorreto = pygame.image.load("images/placas/placa_certo.png")
-        self.placaerrado = pygame.image.load("images/placas/placa_errada.png")
+        self.placacorreto = pygame.image.load("images/plates/placa_certo.png")
+        self.placaerrado = pygame.image.load("images/plates/placa_errada.png")
         
         #Pergunta e alternativas Q1
         self.pergunta1 = TextFormat.FormatPergunta('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
@@ -185,29 +191,43 @@ class Level1:
             
             #Sapo Spawn 1
             self.frog_1.show()
-            self.frog_1.movement()
+            self.frog_1.movement(10)
             self.frog_1.collision_screen()
             
             #Sapo Spawn 2    
             self.frog_2.show()
-            self.frog_2.movement()
+            self.frog_2.movement(12)
             self.frog_2.collision_screen()
             
             #Sapo Spawn 3
             self.frog_3.show()
-            self.frog_3.movement()
+            self.frog_3.movement(8)
             self.frog_3.collision_screen()
 
             #Sapo Spawn 4
             self.frog_4.show()
-            self.frog_4.movement()
+            self.frog_4.movement(9)
             self.frog_4.collision_screen()
 
             #Sapo Spawn 5
             self.frog_5.show()
-            self.frog_5.movement()
+            self.frog_5.movement(13)
             self.frog_5.collision_screen()
-                    
+            
+            #Butterfly Spawn 1
+            self.butterfly1.show()
+            self.butterfly1.movement(100, 2)
+            self.butterfly1.collision_screen()
+
+            #Butterfly Spawn 2
+            self.butterfly2.show()
+            self.butterfly2.movement(90, 2)
+            self.butterfly2.collision_screen()
+
+            #Butterfly Spawn 3
+            self.butterfly3.show()
+            self.butterfly3.movement(100, 2)
+            self.butterfly3.collision_screen()
             
             #Blit placas
             self.screen.blit(self.placa1, (270, 105))
