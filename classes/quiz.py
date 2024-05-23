@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from text import Text
-from show_button import ShowButton
+from show_button import CentralizeText
 import random
 
 class Quiz:
@@ -24,8 +24,8 @@ class Quiz:
                 
         #Criação dos objeto da classe ShowBotao
         
-        self.textBotao = ShowButton(self.font_alt, 'BLACK')
-        self.textPergunta = ShowButton(self.font_question, 'BLACK', self.screen)
+        self.textBotao = CentralizeText(self.font_alt, 'BLACK')
+        self.textPergunta = CentralizeText(self.font_question, 'BLACK', self.screen)
         
         #Criação dos retângulos dos botões
         self.alt_rect1 = pygame.Rect(254, 370, 676, 294)
@@ -61,10 +61,10 @@ class Quiz:
         self.screen.blit(self.sup_bot3, (990, 370))
         self.screen.blit(self.sup_bot4, (990, 724))
         self.textPergunta.show_question(self.pergunta_sep)
-        self.textBotao.ShowButton(self.list_alternatives_random[0], self.sup_bot1)
-        self.textBotao.ShowButton(self.list_alternatives_random[1], self.sup_bot2)
-        self.textBotao.ShowButton(self.list_alternatives_random[2], self.sup_bot3)
-        self.textBotao.ShowButton(self.list_alternatives_random[3], self.sup_bot4)
+        self.textBotao.show_button(self.list_alternatives_random[0], self.sup_bot1)
+        self.textBotao.show_button(self.list_alternatives_random[1], self.sup_bot2)
+        self.textBotao.show_button(self.list_alternatives_random[2], self.sup_bot3)
+        self.textBotao.show_button(self.list_alternatives_random[3], self.sup_bot4)
         
         return self.index_correct
 
