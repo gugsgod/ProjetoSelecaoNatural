@@ -10,8 +10,8 @@ class Butterfly(Animal):
     def show(self):
         super().show()
 
-    def movement(self):
-        super().movement()
+    def movement(self, time, dis):
+        super().movement(time, dis)
         
     def collision_screen(self):
         super().collision_screen()

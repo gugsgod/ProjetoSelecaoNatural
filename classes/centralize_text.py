@@ -1,13 +1,13 @@
 import pygame
 
 
-class ShowButton:
+class CentralizeText:
     def __init__(self, font, text_col,screen = None):
         self.font = font
         self.text_col = text_col
         self.screen = screen
 
-    def ShowButton(self, lista, botao):
+    def show_button(self, lista, botao):
         tamanho = len(lista)
         standard_y = 125
         for i in range(tamanho):

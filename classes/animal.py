@@ -13,22 +13,22 @@ class Animal:
     def show(self):
         self.screen.blit(self.img, (self.pos[0], self.pos[1]))
 
-    def movement(self):
+    def movement(self, time, dis):
         
-        self.movement_time += 4
-        if self.movement_time > 100:
-            self.movement_time = 0
-        
-        if self.movement_time == 100:
+        self.movement_time += time
+        if self.movement_time >= 100:
             random.shuffle(self.movement_random)
             if self.movement_random[0] == 1:
-                self.pos[0] += 10
+                self.pos[0] += dis
             if self.movement_random[0] == 2:
-                self.pos[0] -= 10
+                self.pos[0] -= dis
             if self.movement_random[0] == 3:
-                self.pos[1] -= 10
+                self.pos[1] -= dis
             if self.movement_random[0] == 4:
-                self.pos[1] += 10
+                self.pos[1] += dis
+        
+        if self.movement_time >= 100:
+            self.movement_time = 0
                 
     
     def collision_screen(self):

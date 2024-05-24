@@ -10,8 +10,8 @@ class Frog(Animal):
     def show(self):
         super().show()
 
-    def movement(self):
-        super().movement()
+    def movement(self, time):
+        super().movement(time, 10)
         
     def collision_screen(self):
         super().collision_screen()

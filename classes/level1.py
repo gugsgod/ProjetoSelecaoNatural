@@ -5,6 +5,7 @@ import random
 from character import Character
 from fade_in import FadeIn
 from frog import Frog
+from butterfly import Butterfly
 from quiz import Quiz
 from transform_text import *
 
@@ -14,8 +15,17 @@ class Level1:
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
         
+        #Atributos Placa
+        self.plate1_pos = (260, 100)
+        self.plate2_pos = (170, 460)
+        self.plate3_pos = (650, 360)
+        self.plate4_pos = (560, 850)
+        self.plate5_pos = (1030, 750)
+        self.plate6_pos = (970 ,600)
+        self.plate_size = [44, 50]
+        
         #Objeto Character
-        self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [10,110], 0)
+        self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [0, 50], 0)
         
         #Objetos Sapo
         self.frog_1 = Frog('images/animals/frog.png', [500, 100])
@@ -24,20 +34,25 @@ class Level1:
         self.frog_4 = Frog('images/animals/frog.png', [1400, 200])
         self.frog_5 = Frog('images/animals/frog.png', [1700, 900])
         
+        #Objetos Borboleta
+        self.butterfly1 = Butterfly('images/animals/butterfly.png', [600, 200])
+        self.butterfly2 = Butterfly('images/animals/butterfly.png', [640, 200])
+        self.butterfly3 = Butterfly('images/animals/butterfly.png', [600, 240])
+        
         #Placas LOAD
-        self.placa1 = pygame.image.load("images/placas/placa_1.png")
-        self.placa2 = pygame.image.load("images/placas/placa_2.png")
-        self.placa3 = pygame.image.load("images/placas/placa_3.png")
-        self.placa4 = pygame.image.load("images/placas/placa_4.png")
-        self.placa5 = pygame.image.load("images/placas/placa_5.png")
-        self.placa6 = pygame.image.load("images/placas/placa_6.png")
-        self.placa7 = pygame.image.load("images/placas/placa_7.png")
-        self.placa8 = pygame.image.load("images/placas/placa_8.png")
-        self.placa9 = pygame.image.load("images/placas/placa_9.png")
+        self.placa1 = pygame.image.load("images/plates/placa_1.png")
+        self.placa2 = pygame.image.load("images/plates/placa_2.png")
+        self.placa3 = pygame.image.load("images/plates/placa_3.png")
+        self.placa4 = pygame.image.load("images/plates/placa_4.png")
+        self.placa5 = pygame.image.load("images/plates/placa_5.png")
+        self.placa6 = pygame.image.load("images/plates/placa_6.png")
+        self.placa7 = pygame.image.load("images/plates/placa_7.png")
+        self.placa8 = pygame.image.load("images/plates/placa_8.png")
+        self.placa9 = pygame.image.load("images/plates/placa_9.png")
         #self.placa10 = pygame.image.load()
         
-        self.placacorreto = pygame.image.load("images/placas/placa_certo.png")
-        self.placaerrado = pygame.image.load("images/placas/placa_errada.png")
+        self.placacorreto = pygame.image.load("images/plates/placa_certo.png")
+        self.placaerrado = pygame.image.load("images/plates/placa_errada.png")
         
         #Pergunta e alternativas Q1
         self.pergunta1 = TextFormat.FormatPergunta('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
@@ -55,11 +70,11 @@ class Level1:
         self.Q2_alt4 = TextFormat.FormatText("Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento.")
         
         #Pergunta e alternativas Q3
-        self.pergunta3 = TextFormat.FormatPergunta("De que maneira o ambiente influencia na forma e organização dos animais?")
-        self.Q3_alt1 = TextFormat.FormatText("Os animais se adaptam às mudanças ambientais ao longo do tempo.")
-        self.Q3_alt2 = TextFormat.FormatText("A adaptação dos animais ao ambiente é um processo irrelevante.")
-        self.Q3_alt3 = TextFormat.FormatText("As características dos animais são imutáveis, independentemente do ambiente.")
-        self.Q3_alt4 = TextFormat.FormatText("Os animais são resistentes a qualquer alteração ambiental.")
+        self.pergunta3 = None
+        self.Q3_alt1 = None
+        self.Q3_alt2 = None
+        self.Q3_alt3 = None
+        self.Q3_alt4 = None
         
         #Pegunta e alternativas Q4
         self.pergunta4 = None
@@ -185,37 +200,51 @@ class Level1:
             
             #Sapo Spawn 1
             self.frog_1.show()
-            self.frog_1.movement()
+            self.frog_1.movement(10)
             self.frog_1.collision_screen()
             
             #Sapo Spawn 2    
             self.frog_2.show()
-            self.frog_2.movement()
+            self.frog_2.movement(12)
             self.frog_2.collision_screen()
             
             #Sapo Spawn 3
             self.frog_3.show()
-            self.frog_3.movement()
+            self.frog_3.movement(8)
             self.frog_3.collision_screen()
 
             #Sapo Spawn 4
             self.frog_4.show()
-            self.frog_4.movement()
+            self.frog_4.movement(9)
             self.frog_4.collision_screen()
 
             #Sapo Spawn 5
             self.frog_5.show()
-            self.frog_5.movement()
+            self.frog_5.movement(13)
             self.frog_5.collision_screen()
-                    
+            
+            #Butterfly Spawn 1
+            self.butterfly1.show()
+            self.butterfly1.movement(100, 2)
+            self.butterfly1.collision_screen()
+
+            #Butterfly Spawn 2
+            self.butterfly2.show()
+            self.butterfly2.movement(90, 2)
+            self.butterfly2.collision_screen()
+
+            #Butterfly Spawn 3
+            self.butterfly3.show()
+            self.butterfly3.movement(100, 2)
+            self.butterfly3.collision_screen()
             
             #Blit placas
-            self.screen.blit(self.placa1, (270, 105))
-            self.screen.blit(self.placa2, (180, 470))
-            self.screen.blit(self.placa3, (650, 360))
-            self.screen.blit(self.placa4, (560, 850))
-            self.screen.blit(self.placa5, (1030, 750))
-            self.screen.blit(self.placa6, (970,600))
+            self.screen.blit(self.placa1, self.plate1_pos)
+            self.screen.blit(self.placa2, self.plate2_pos)
+            self.screen.blit(self.placa3, self.plate3_pos)
+            self.screen.blit(self.placa4, self.plate4_pos)
+            self.screen.blit(self.placa5, self.plate5_pos)
+            self.screen.blit(self.placa6, self.plate6_pos)
             
             #If's para mudar placa
             
@@ -248,19 +277,6 @@ class Level1:
                 self.placa6 = self.placacorreto
             elif self.status_quiz6 == False:
                 self.placa6 = self.placaerrado
-            
-            if self.status_quiz7 == True:
-                self.placa7 = self.placacorreto
-            elif self.status_quiz7 == False:
-                self.placa7 = self.placaerrado
-            
-            if self.status_quiz8 == True:
-                self.placa8 = self.placacorreto
-            elif self.status_quiz8 == False:
-                self.placa8 = self.placaerrado
-                
-                
-                
             #Character Módulos
             self.character.show()
             self.character.skin()
@@ -268,25 +284,23 @@ class Level1:
             self.character.movement()
             self.character.collision_screen()
             
-            if self.character.collision_plate('quiz_1', [270, 105], [44, 50]) == 'quiz_1':
+            if self.character.collision_plate('quiz_1', self.plate1_pos, self.plate_size) == 'quiz_1':
                 if self.quiz1_complete == False:
                     #Onde o player sai depois do quiz
                     self.character.pos([150, 60])
                     self.status = 'quiz_1'
             # else:       
             #     pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(270, 105, 44, 50))
-            if self.character.collision_plate('quiz_2', [180, 460], [44, 50]) == 'quiz_2':
+            if self.character.collision_plate('quiz_2', self.plate2_pos, self.plate_size) == 'quiz_2':
                 if self.quiz2_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([155, 325])
+                    self.character.pos([150, 330])
                     self.status = 'quiz_2'
-            #else:
-            #    pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(180, 460, 44, 50))
                     
-            if self.character.collision_plate('quiz_3', [650, 360], [44, 50]) == 'quiz_3':
+            if self.character.collision_plate('quiz_3', self.plate3_pos, self.plate_size) == 'quiz_3':
                 if self.quiz3_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([150, 60])
+                    self.character.pos([450, 330])
                     self.status = 'quiz_3'
                 
 
@@ -339,7 +353,7 @@ class Level1:
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
                         self.status_quiz2 = False
-                        self.quiz2_complete = False
+                        self.quiz2_complete = True
                         
         if self.status == 'quiz_3':
             if self.status_quiz3 == None:
@@ -362,7 +376,7 @@ class Level1:
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
                         self.status_quiz3 = False
-                        self.quiz3_complete = False
+                        self.quiz3_complete = True
                         
         if self.status == 'quiz_4':
             if self.status_quiz4 == None:
