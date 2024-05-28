@@ -101,5 +101,5 @@ VALUES (
     "seleção de adaptações em função do meio ambiente em que vivem.", 
     "lei do uso e desuso.", 
     "atrofia do pulmão devido ao uso contínuo da pele.", 
-    "transmissão de caracteres adquiridos aos descendentes."),
+    "transmissão de caracteres adquiridos aos descendentes.")
 );

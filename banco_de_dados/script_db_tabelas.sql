@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS pontuacao(
 ); 
 
 CREATE TABLE IF NOT EXISTS questoes(
-	idQuestao int,
+	idQuestao INT,
     pergunta VARCHAR(120),
     alternativa_a VARCHAR(160),
     alternativa_b VARCHAR(160),
-	alternatica_c VARCHAR(160),
-	alternatica_d VARCHAR(160)
+	alternativa_c VARCHAR(160),
+	alternativa_d VARCHAR(160)
 );
