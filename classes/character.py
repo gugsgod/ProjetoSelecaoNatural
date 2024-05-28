@@ -11,6 +11,7 @@ class Character:
         self.character_size = character_size
         self.character_pos = character_pos
         self.skin_y = skiny
+        
     
     def show(self):
         self.screen.blit(self.character_img, self.character_pos, (self.sprite_characterx* 96, self.sprite_charactery, 96, 96))
@@ -61,9 +62,14 @@ class Character:
         if self.character_pos[1] > 990:
             self.character_pos[1] -= 14
 
-    def collision_plate(self, action, obstacle_pos, obstacle_size):
+    def collision_tree(self, pos):
+        tree_size = [0, 0]
         character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
-        obstacle_surface = pygame.Rect(obstacle_pos[0], obstacle_pos[1], obstacle_size[0], obstacle_size[1])
-        
-        if character_surface.colliderect(obstacle_surface):
+        tree_surface_top = pygame.Rect(pos[0], pos[1], tree_size[0], 1)
+
+    def collision_plate(self, action, pos):
+        plate_size = [44, 50]
+        character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
+        plate_surface = pygame.Rect(pos[0], pos[1], plate_size[0], plate_size[1])
+        if character_surface.colliderect(plate_surface):
             return action
