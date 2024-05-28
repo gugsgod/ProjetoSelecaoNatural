@@ -5,17 +5,16 @@ USE jogodb;
 CREATE TABLE IF NOT EXISTS usuarios(
 	idUsuario INT,
     nome VARCHAR(255),
-    email VARCHAR(255),
-	senha VARCHAR(16),
+    email VARCHAR(255) UNIQUE,
+	senha VARCHAR(255),
     ident INT,
     PRIMARY KEY (idUsuario)
-);
+    );
 
 CREATE TABLE IF NOT EXISTS pontuacao(
 	idUsuario INT,
     pontos INT,
     rodada INT,
-    PRIMARY KEY (rodada),
     FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario)
 ); 
 
