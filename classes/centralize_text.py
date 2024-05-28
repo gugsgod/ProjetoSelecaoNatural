@@ -7,7 +7,7 @@ class CentralizeText:
         self.text_col = text_col
         self.screen = screen
 
-    def show_button(self, lista, botao):
+    def centralize_alternative(self, lista, botao):
         tamanho = len(lista)
         standard_y = 125
         for i in range(tamanho):
@@ -47,7 +47,7 @@ class CentralizeText:
                 botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 50.5))
                 break
             
-    def show_question(self, lista):
+    def centralize_question(self, lista):
         tamanho = len(lista)
         y_padrao = 140
         for i in range(tamanho):
