@@ -7,59 +7,59 @@ class CentralizeText:
         self.text_col = text_col
         self.screen = screen
 
-    def centralize_alternative(self, lista, botao):
-        tamanho = len(lista)
+    def centralize_alternative(self, list, button):
+        size = len(list)
         standard_y = 125
-        for i in range(tamanho):
-            img = self.font.render(lista[i], True, self.text_col)
-            if i == 0 and tamanho == 1:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 11.5))
+        for i in range(size):
+            img = self.font.render(list[i], True, self.text_col)
+            if i == 0 and size == 1:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y + 11.5))
                 break
-            elif i == 0 and tamanho == 2:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y - 1.5))
-            elif i == 1 and tamanho == 2:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 24.5))
+            elif i == 0 and size == 2:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y - 1.5))
+            elif i == 1 and size == 2:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y + 24.5))
                 break
-            elif i == 0 and tamanho == 3:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y - 14.5))
-            elif i == 1 and tamanho == 3:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 11.5))
-            elif i == 2 and tamanho == 3:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 37.5))
+            elif i == 0 and size == 3:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y - 14.5))
+            elif i == 1 and size == 3:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y + 11.5))
+            elif i == 2 and size == 3:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y + 37.5))
                 break
-            elif i == 0 and tamanho == 4:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y - 27.5))
-            elif i == 1 and tamanho == 4:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y - 1.5))
-            elif i == 2 and tamanho == 4:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 24.5))
-            elif i == 3 and tamanho == 4:
-                tamanhoFont = self.font.size(lista[i])
-                botao.blit(img, (338 - tamanhoFont[0]/2, standard_y + 50.5))
+            elif i == 0 and size == 4:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y - 27.5))
+            elif i == 1 and size == 4:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y - 1.5))
+            elif i == 2 and size == 4:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y + 24.5))
+            elif i == 3 and size == 4:
+                sizeFont = self.font.size(list[i])
+                button.blit(img, (338 - sizeFont[0]/2, standard_y + 50.5))
                 break
             
-    def centralize_question(self, lista):
-        tamanho = len(lista)
-        y_padrao = 140
-        for i in range(tamanho):
-            img = self.font.render(lista[i], True, self.text_col)
-            if i == 0 and tamanho == 1:
-                font_size = self.font.size(lista[i])
-                self.screen.blit(img, (1920/2 + font_size[0]/2 , y_padrao))
+    def centralize_question(self, list):
+        size = len(list)
+        y_standart = 140
+        for i in range(size):
+            img = self.font.render(list[i], True, self.text_col)
+            if i == 0 and size == 1:
+                font_size = self.font.size(list[i])
+                self.screen.blit(img, (1920/2 + font_size[0]/2 , y_standart))
                 break
-            if i == 0 and tamanho == 2:
-                font_size = self.font.size(lista[i])
-                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_padrao - 12.5))
-            if i == 1 and tamanho == 2:
-                font_size = self.font.size(lista[i])
-                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_padrao + 15))
+            if i == 0 and size == 2:
+                font_size = self.font.size(list[i])
+                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_standart - 12.5))
+            if i == 1 and size == 2:
+                font_size = self.font.size(list[i])
+                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_standart + 15))
                 break

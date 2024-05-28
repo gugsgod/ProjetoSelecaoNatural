@@ -44,6 +44,7 @@ class Quiz:
         self.sup_bot2.fill('aqua')
         self.sup_bot3.fill('aqua')
         self.sup_bot4.fill('aqua')
+        
         #Colorkey para deixar trasparente o fundo
         self.sup_bot1.set_colorkey('aqua')
         self.sup_bot2.set_colorkey('aqua')
