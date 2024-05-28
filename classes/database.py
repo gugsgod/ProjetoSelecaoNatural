@@ -1,4 +1,5 @@
 import mysql.connector
+
 class Database:
     def login(db, email, senha):
         mycursor = db.cursor()
