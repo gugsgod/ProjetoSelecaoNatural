@@ -7,7 +7,9 @@ from fade_in import FadeIn
 from frog import Frog
 from butterfly import Butterfly
 from quiz import Quiz
-from transform_text import *
+from text_format import *
+from database import Database
+import mysql.connector
 
 class Level1:
     def __init__(self):
@@ -15,14 +17,36 @@ class Level1:
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
         
+        #Banco de dados
+        
+        mydb = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "imtdb"
+        )
+        
+        db = Database()
+        
+        p1 = db.get_questions(mydb, 1)
+        p2 = db.get_questions(mydb, 2)
+        p3 = db.get_questions(mydb, 3)
+        p4 = db.get_questions(mydb, 4)
+        p5 = db.get_questions(mydb, 5)
+        p6 = db.get_questions(mydb, 6)
+        p7 = db.get_questions(mydb, 7)
+        p8 = db.get_questions(mydb, 8)
+        p9 = db.get_questions(mydb, 9)
+        p10 = db.get_questions(mydb, 10)
+        
         #Atributos Placa
         self.plate1_pos = (260, 100)
         self.plate2_pos = (170, 460)
         self.plate3_pos = (650, 360)
         self.plate4_pos = (560, 850)
         self.plate5_pos = (1030, 750)
-        self.plate6_pos = (970 ,600)
-        self.plate_size = [44, 50]
+        self.plate6_pos = (940 , 540)
+        self.plate7_pos = (1450 , 620)
+        self.plate8_pos = (1360 , 220)
         
         #Objeto Character
         self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [0, 50], 0)
@@ -54,112 +78,112 @@ class Level1:
         self.placacorreto = pygame.image.load("images/plates/placa_certo.png")
         self.placaerrado = pygame.image.load("images/plates/placa_errada.png")
         
-        #Pergunta e alternativas Q1
-        self.pergunta1 = TextFormat.FormatPergunta('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
-        self.Q1_alt1 = TextFormat.FormatText('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
-        self.Q1_alt2 = TextFormat.FormatText('Os insetos desenvolveram essa semelhança para atrair mais facilmente suas presas')
-        self.Q1_alt3 = TextFormat.FormatText('Os insetos adotam essa camuflagem para se protegerem das mudanças climáticas')
-        self.Q1_alt4 = TextFormat.FormatText('A semelhança com folhas e ramos permite que os insetos se comuniquem de forma eficiente entre si')
+        #Pergunta e alternativas q1
+        self.pergunta1 = TextFormat.format_question('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
+        self.q1_alt1 = TextFormat.format_text('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
+        self.q1_alt2 = TextFormat.format_text('Os insetos desenvolveram essa semelhança para atrair mais facilmente suas presas')
+        self.q1_alt3 = TextFormat.format_text('Os insetos adotam essa camuflagem para se protegerem das mudanças climáticas')
+        self.q1_alt4 = TextFormat.format_text('A semelhança com folhas e ramos permite que os insetos se comuniquem de forma eficiente entre si')
         
-        #Pergunta e alternativas Q2
+        #Pergunta e alternativas q2
         
-        self.pergunta2 = TextFormat.FormatPergunta("Porque os tentilhões possuem diferentes formas de bico aqui nas ilhas de Galápagos?")
-        self.Q2_alt1 = TextFormat.FormatText("Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.")
-        self.Q2_alt2 = TextFormat.FormatText("Os tentilhões fizeram cirurgias plásticas em seus bicos para se adaptarem.")
-        self.Q2_alt3 = TextFormat.FormatText("Os tentilhões começaram a frequentar restaurantes diferentes na ilha, resultando em uma variedade de bicos.")
-        self.Q2_alt4 = TextFormat.FormatText("Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento.")
+        self.pergunta2 = TextFormat.format_question("Porque os tentilhões possuem diferentes formas de bico aqui nas ilhas de Galápagos?")
+        self.q2_alt1 = TextFormat.format_text("Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.")
+        self.q2_alt2 = TextFormat.format_text("Os tentilhões fizeram cirurgias plásticas em seus bicos para se adaptarem.")
+        self.q2_alt3 = TextFormat.format_text("Os tentilhões começaram a frequentar restaurantes diferentes na ilha, resultando em uma variedade de bicos.")
+        self.q2_alt4 = TextFormat.format_text("Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento.")
         
-        #Pergunta e alternativas Q3
+        #Pergunta e alternativas q3
         self.pergunta3 = None
-        self.Q3_alt1 = None
-        self.Q3_alt2 = None
-        self.Q3_alt3 = None
-        self.Q3_alt4 = None
+        self.q3_alt1 = None
+        self.q3_alt2 = None
+        self.q3_alt3 = None
+        self.q3_alt4 = None
         
-        #Pegunta e alternativas Q4
+        #Pegunta e alternativas q4
         self.pergunta4 = None
-        self.Q4_alt1 = None
-        self.Q4_alt2 = None
-        self.Q4_alt3 = None
-        self.Q4_alt4 = None
+        self.q4_alt1 = None
+        self.q4_alt2 = None
+        self.q4_alt3 = None
+        self.q4_alt4 = None
         
-        #Pegunta e alternativas Q5
+        #Pegunta e alternativas q5
         self.pergunta5 = None
-        self.Q5_alt1 = None
-        self.Q5_alt2 = None
-        self.Q5_alt3 = None
-        self.Q5_alt4 = None
+        self.q5_alt1 = None
+        self.q5_alt2 = None
+        self.q5_alt3 = None
+        self.q5_alt4 = None
         
-        #Pegunta e alternativas Q6
+        #Pegunta e alternativas q6
         self.pergunta6 = None
-        self.Q6_alt1 = None
-        self.Q6_alt2 = None
-        self.Q6_alt3 = None
-        self.Q6_alt4 = None
+        self.q6_alt1 = None
+        self.q6_alt2 = None
+        self.q6_alt3 = None
+        self.q6_alt4 = None
         
-        #Pegunta e alternativas Q7
+        #Pegunta e alternativas q7
         self.pergunta7 = None
-        self.Q7_alt1 = None
-        self.Q7_alt2 = None
-        self.Q7_alt3 = None
-        self.Q7_alt4 = None
+        self.q7_alt1 = None
+        self.q7_alt2 = None
+        self.q7_alt3 = None
+        self.q7_alt4 = None
         
-        #Pegunta e alternativas Q8
+        #Pegunta e alternativas q8
         self.pergunta8 = None
-        self.Q8_alt1 = None
-        self.Q8_alt2 = None
-        self.Q8_alt3 = None
-        self.Q8_alt4 = None
+        self.q8_alt1 = None
+        self.q8_alt2 = None
+        self.q8_alt3 = None
+        self.q8_alt4 = None
         
-        #Pegunta e alternativas Q9
+        #Pegunta e alternativas q9
         self.pergunta9 = None
-        self.Q9_alt1 = None
-        self.Q9_alt2 = None
-        self.Q9_alt3 = None
-        self.Q9_alt4 = None
+        self.q9_alt1 = None
+        self.q9_alt2 = None
+        self.q9_alt3 = None
+        self.q9_alt4 = None
         
-        #Pegunta e alternativas Q10
+        #Pegunta e alternativas q10
         self.pergunta10 = None
-        self.Q10_alt1 = None
-        self.Q10_alt2 = None
-        self.Q10_alt3 = None
-        self.Q10_alt4 = None
+        self.q10_alt1 = None
+        self.q10_alt2 = None
+        self.q10_alt3 = None
+        self.q10_alt4 = None
         
         #Objeto Quiz 1
-        self.quiz_1 = Quiz(self.pergunta1, self.Q1_alt1, self.Q1_alt2, self.Q1_alt3, self.Q1_alt4)
+        self.quiz_1 = Quiz(self.pergunta1, self.q1_alt1, self.q1_alt2, self.q1_alt3, self.q1_alt4)
         
         #Objeto Quiz 2
-        self.quiz_2 = Quiz(self.pergunta2, self.Q2_alt1, self.Q2_alt2, self.Q2_alt3, self.Q2_alt4)
+        self.quiz_2 = Quiz(self.pergunta2, self.q2_alt1, self.q2_alt2, self.q2_alt3, self.q2_alt4)
         
         #Objeto Quiz 3
-        self.quiz_3 = Quiz(self.pergunta3, self.Q3_alt1, self.Q3_alt2, self.Q3_alt3, self.Q3_alt4)
+        self.quiz_3 = Quiz(self.pergunta3, self.q3_alt1, self.q3_alt2, self.q3_alt3, self.q3_alt4)
         
         #Objeto Quiz 4
-        self.quiz_4 = Quiz(self.pergunta4, self.Q4_alt1, self.Q4_alt2, self.Q4_alt3, self.Q4_alt4)
+        self.quiz_4 = Quiz(self.pergunta4, self.q4_alt1, self.q4_alt2, self.q4_alt3, self.q4_alt4)
         
         #Objeto Quiz 5
         
-        self.quiz_5 = Quiz(self.pergunta5, self.Q5_alt1, self.Q5_alt2, self.Q5_alt3, self.Q5_alt4)
+        self.quiz_5 = Quiz(self.pergunta5, self.q5_alt1, self.q5_alt2, self.q5_alt3, self.q5_alt4)
         
         #Objeto Quiz 6
         
-        self.quiz_6 = Quiz(self.pergunta6, self.Q6_alt1, self.Q6_alt2, self.Q6_alt3, self.Q6_alt4)
+        self.quiz_6 = Quiz(self.pergunta6, self.q6_alt1, self.q6_alt2, self.q6_alt3, self.q6_alt4)
         
         #Objeto Quiz 7
         
-        self.quiz_7 = Quiz(self.pergunta7, self.Q7_alt1, self.Q7_alt2, self.Q7_alt3, self.Q7_alt4)    
+        self.quiz_7 = Quiz(self.pergunta7, self.q7_alt1, self.q7_alt2, self.q7_alt3, self.q7_alt4)    
 
         #Objeto Quiz 8
         
-        self.quiz_8 = Quiz(self.pergunta8, self.Q8_alt1, self.Q8_alt2, self.Q8_alt3, self.Q8_alt4)
+        self.quiz_8 = Quiz(self.pergunta8, self.q8_alt1, self.q8_alt2, self.q8_alt3, self.q8_alt4)
         
         #Objeto Quiz 9
         
-        self.quiz_9 = Quiz(self.pergunta9, self.Q9_alt1, self.Q9_alt2, self.Q9_alt3, self.Q9_alt4)
+        self.quiz_9 = Quiz(self.pergunta9, self.q9_alt1, self.q9_alt2, self.q9_alt3, self.q9_alt4)
         
         #Objeto Quiz 10
         
-        self.quiz_10 = Quiz(self.pergunta10, self.Q10_alt1, self.Q10_alt2, self.Q10_alt3, self.Q10_alt4)
+        self.quiz_10 = Quiz(self.pergunta10, self.q10_alt1, self.q10_alt2, self.q10_alt3, self.q10_alt4)
         
         #Backgroun level 1
         self.bg_play = pygame.image.load('images/backgrounds/bg_game.png').convert_alpha()
@@ -198,56 +222,62 @@ class Level1:
         if self.status == 'level1':
             self.screen.blit(self.bg_play, (0,0))
             
-            #Sapo Spawn 1
+            #Funções do Sapo 1
             self.frog_1.show()
             self.frog_1.movement(10)
             self.frog_1.collision_screen()
             
-            #Sapo Spawn 2    
+            #Funções do Sapo 2    
             self.frog_2.show()
             self.frog_2.movement(12)
             self.frog_2.collision_screen()
             
-            #Sapo Spawn 3
+            #Funções do Sapo 3
             self.frog_3.show()
             self.frog_3.movement(8)
             self.frog_3.collision_screen()
 
-            #Sapo Spawn 4
+            #Funções do Sapo 4
             self.frog_4.show()
             self.frog_4.movement(9)
             self.frog_4.collision_screen()
 
-            #Sapo Spawn 5
+            #Funções do Sapo 5
             self.frog_5.show()
             self.frog_5.movement(13)
             self.frog_5.collision_screen()
             
-            #Butterfly Spawn 1
+            #Funções da Butterfly 1
+            
             self.butterfly1.show()
             self.butterfly1.movement(100, 2)
             self.butterfly1.collision_screen()
 
-            #Butterfly Spawn 2
+            #Funções da Butterfly 2
+            
             self.butterfly2.show()
             self.butterfly2.movement(90, 2)
             self.butterfly2.collision_screen()
 
-            #Butterfly Spawn 3
+            #Funções da Butterfly 3
+            
             self.butterfly3.show()
             self.butterfly3.movement(100, 2)
             self.butterfly3.collision_screen()
             
             #Blit placas
+            
             self.screen.blit(self.placa1, self.plate1_pos)
             self.screen.blit(self.placa2, self.plate2_pos)
             self.screen.blit(self.placa3, self.plate3_pos)
             self.screen.blit(self.placa4, self.plate4_pos)
             self.screen.blit(self.placa5, self.plate5_pos)
             self.screen.blit(self.placa6, self.plate6_pos)
+            self.screen.blit(self.placa7, self.plate7_pos)
+            self.screen.blit(self.placa8, self.plate8_pos)
             
             #If's para mudar placa
-            
+    
             if self.status_quiz1 == True:
                 self.placa1 = self.placacorreto
             elif self.status_quiz1 == False:
@@ -277,32 +307,51 @@ class Level1:
                 self.placa6 = self.placacorreto
             elif self.status_quiz6 == False:
                 self.placa6 = self.placaerrado
-            #Character Módulos
+            
+            #Funções do Personagem
+            
             self.character.show()
             self.character.skin()
             self.character.animation()
             self.character.movement()
             self.character.collision_screen()
             
-            if self.character.collision_plate('quiz_1', self.plate1_pos, self.plate_size) == 'quiz_1':
+            if self.character.collision_plate('quiz_1', self.plate1_pos) == 'quiz_1':
                 if self.quiz1_complete == False:
                     #Onde o player sai depois do quiz
                     self.character.pos([150, 60])
                     self.status = 'quiz_1'
             # else:       
             #     pygame.draw.rect(self.screen, (0, 50, 155), pygame.Rect(270, 105, 44, 50))
-            if self.character.collision_plate('quiz_2', self.plate2_pos, self.plate_size) == 'quiz_2':
+            if self.character.collision_plate('quiz_2', self.plate2_pos) == 'quiz_2':
                 if self.quiz2_complete == False:
                     #Onde o player sai depois do quiz
                     self.character.pos([150, 330])
                     self.status = 'quiz_2'
                     
-            if self.character.collision_plate('quiz_3', self.plate3_pos, self.plate_size) == 'quiz_3':
+            if self.character.collision_plate('quiz_3', self.plate3_pos) == 'quiz_3':
                 if self.quiz3_complete == False:
                     #Onde o player sai depois do quiz
                     self.character.pos([450, 330])
                     self.status = 'quiz_3'
-                
+        
+            if self.character.collision_plate('quiz_4', self.plate4_pos) == 'quiz_4':
+                    if self.quiz4_complete == False:
+                        #Onde o player sai depois do quiz
+                        self.character.pos([560, 800])
+                        self.status = 'quiz_4'
+
+            if self.character.collision_plate('quiz_5', self.plate5_pos) == 'quiz_5':
+                    if self.quiz5_complete == False:
+                        #Onde o player sai depois do quiz
+                        self.character.pos([450, 330])
+                        self.status = 'quiz_5'
+
+            if self.character.collision_plate('quiz_6', self.plate6_pos) == 'quiz_6':
+                    if self.quiz6_complete == False:
+                        #Onde o player sai depois do quiz
+                        self.character.pos([450, 330])
+                        self.status = 'quiz_6'
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
