@@ -27,6 +27,3 @@ CREATE TABLE IF NOT EXISTS questoes(
 	alternatica_c VARCHAR(160),
 	alternatica_d VARCHAR(160)
 );
-
-INSERT INTO questoes (idQuestao, pergunta, alternativa_a, alternativa_b, alternativa_c, alternativa_d)
-VALUES();
