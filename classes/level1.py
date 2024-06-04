@@ -19,7 +19,7 @@ class Level1:
         
         #Banco de dados
         
-        mydb = mysql.connector.connect(
+        """ mydb = mysql.connector.connect(
         host = "localhost",
         user = "root",
         password = "imtdb"
@@ -36,7 +36,7 @@ class Level1:
         p7 = db.get_questions(mydb, 7)
         p8 = db.get_questions(mydb, 8)
         p9 = db.get_questions(mydb, 9)
-        p10 = db.get_questions(mydb, 10)
+        p10 = db.get_questions(mydb, 10) """
         
         #Atributos Placa
         self.plate1_pos = (260, 100)

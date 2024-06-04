@@ -46,9 +46,3 @@ class Database:
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT * FROM questoes WHERE idQuestao = %s", question)
         return mycursor.fetchone()
-    
-mydb = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "imtdb"
-    )

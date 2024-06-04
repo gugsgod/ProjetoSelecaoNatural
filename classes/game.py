@@ -24,6 +24,9 @@ class Game:
     
     def run(self):
         while True:
+            if pygame.mixer.music.get_busy() == False:
+                pygame.mixer.music.load("SoundEffects/musica/ordinary-loop-minimal-piano-182046.mp3")
+                pygame.mixer.music.play()
             if self.screen_status == 'menu':
                 if self.menu.run() == 'level1':
                     self.screen_status = 'level1'
