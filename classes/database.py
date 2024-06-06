@@ -41,8 +41,9 @@ class Database:
         mycursor.execute("INSERT INTO pontuacao VALUES (%s, %s, %s)", (usuario[0], pontos, rodada))
         db.commit()
         
-    def get_questions(db, question):
-        mycursor = db.cursor()
+    def get_questions(self, mydb, question):
+        mycursor = mydb.cursor()
         mycursor.execute("USE jogodb")
-        mycursor.execute("SELECT * FROM questoes WHERE idQuestao = %s", question)
+        mycursor.execute("SELECT * FROM questoes WHERE idQuestao = %s", [question])
         return mycursor.fetchone()
+

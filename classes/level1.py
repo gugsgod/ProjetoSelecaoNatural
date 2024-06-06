@@ -1,7 +1,5 @@
 import pygame
 from pygame.locals import *
-import sys
-import random
 from character import Character
 from fade_in import FadeIn
 from frog import Frog
@@ -19,7 +17,7 @@ class Level1:
         
         #Banco de dados
         
-        """ mydb = mysql.connector.connect(
+        mydb = mysql.connector.connect(
         host = "localhost",
         user = "root",
         password = "imtdb"
@@ -28,6 +26,7 @@ class Level1:
         db = Database()
         
         p1 = db.get_questions(mydb, 1)
+        print(p1)
         p2 = db.get_questions(mydb, 2)
         p3 = db.get_questions(mydb, 3)
         p4 = db.get_questions(mydb, 4)
@@ -36,7 +35,7 @@ class Level1:
         p7 = db.get_questions(mydb, 7)
         p8 = db.get_questions(mydb, 8)
         p9 = db.get_questions(mydb, 9)
-        p10 = db.get_questions(mydb, 10) """
+        p10 = db.get_questions(mydb, 10)
         
         #Atributos Placa
         self.plate1_pos = (260, 100)
@@ -79,75 +78,61 @@ class Level1:
         self.placaerrado = pygame.image.load("images/plates/placa_errada.png")
         
         #Pergunta e alternativas q1
-        self.pergunta1 = TextFormat.format_question('Por que alguns insetos parecem folhas ou ramos de plantas? E como isso os ajuda a escapar dos seus predadores?')
-        self.q1_alt1 = TextFormat.format_text('Essa semelhança é resultado de mutações aleatórias que foram selecionadas ao longo do tempo devido à pressão seletiva dos predadores')
-        self.q1_alt2 = TextFormat.format_text('Os insetos desenvolveram essa semelhança para atrair mais facilmente suas presas')
-        self.q1_alt3 = TextFormat.format_text('Os insetos adotam essa camuflagem para se protegerem das mudanças climáticas')
-        self.q1_alt4 = TextFormat.format_text('A semelhança com folhas e ramos permite que os insetos se comuniquem de forma eficiente entre si')
+        self.pergunta1 = TextFormat.format_question(p1[1])
+        self.q1_alt1 = TextFormat.format_text(p1[2])
+        self.q1_alt2 = TextFormat.format_text(p1[3])
+        self.q1_alt3 = TextFormat.format_text(p1[4])
+        self.q1_alt4 = TextFormat.format_text(p1[5])
         
         #Pergunta e alternativas q2
         
-        self.pergunta2 = TextFormat.format_question("Porque os tentilhões possuem diferentes formas de bico aqui nas ilhas de Galápagos?")
-        self.q2_alt1 = TextFormat.format_text("Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.")
-        self.q2_alt2 = TextFormat.format_text("Os tentilhões fizeram cirurgias plásticas em seus bicos para se adaptarem.")
-        self.q2_alt3 = TextFormat.format_text("Os tentilhões começaram a frequentar restaurantes diferentes na ilha, resultando em uma variedade de bicos.")
-        self.q2_alt4 = TextFormat.format_text("Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento.")
+        self.pergunta2 = TextFormat.format_question(p2[1])
+        self.q2_alt1 = TextFormat.format_text(p2[2])
+        self.q2_alt2 = TextFormat.format_text(p2[3])
+        self.q2_alt3 = TextFormat.format_text(p2[4])
+        self.q2_alt4 = TextFormat.format_text(p2[5])
         
         #Pergunta e alternativas q3
-        self.pergunta3 = None
-        self.q3_alt1 = None
-        self.q3_alt2 = None
-        self.q3_alt3 = None
-        self.q3_alt4 = None
+        self.pergunta3 = TextFormat.format_question(p3[1])
+        self.q3_alt1 = TextFormat.format_text(p3[2])
+        self.q3_alt2 = TextFormat.format_text(p3[3])
+        self.q3_alt3 = TextFormat.format_text(p3[4])
+        self.q3_alt4 = TextFormat.format_text(p3[5])
         
         #Pegunta e alternativas q4
-        self.pergunta4 = None
-        self.q4_alt1 = None
-        self.q4_alt2 = None
-        self.q4_alt3 = None
-        self.q4_alt4 = None
+        self.pergunta4 = TextFormat.format_question(p4[1])
+        self.q4_alt1 = TextFormat.format_text(p4[2])
+        self.q4_alt2 = TextFormat.format_text(p4[3])
+        self.q4_alt3 = TextFormat.format_text(p4[4])
+        self.q4_alt4 = TextFormat.format_text(p4[5])
         
         #Pegunta e alternativas q5
-        self.pergunta5 = None
-        self.q5_alt1 = None
-        self.q5_alt2 = None
-        self.q5_alt3 = None
-        self.q5_alt4 = None
+        self.pergunta5 = TextFormat.format_question(p5[1])
+        self.q5_alt1 = TextFormat.format_text(p5[2])
+        self.q5_alt2 = TextFormat.format_text(p5[3])
+        self.q5_alt3 = TextFormat.format_text(p5[4])
+        self.q5_alt4 = TextFormat.format_text(p5[5])
         
         #Pegunta e alternativas q6
-        self.pergunta6 = None
-        self.q6_alt1 = None
-        self.q6_alt2 = None
-        self.q6_alt3 = None
-        self.q6_alt4 = None
+        self.pergunta6 = TextFormat.format_question(p6[1])
+        self.q6_alt1 = TextFormat.format_text(p6[2])
+        self.q6_alt2 = TextFormat.format_text(p6[3])
+        self.q6_alt3 = TextFormat.format_text(p6[4])
+        self.q6_alt4 = TextFormat.format_text(p6[5])
         
         #Pegunta e alternativas q7
-        self.pergunta7 = None
-        self.q7_alt1 = None
-        self.q7_alt2 = None
-        self.q7_alt3 = None
-        self.q7_alt4 = None
+        self.pergunta7 = TextFormat.format_question(p7[1])
+        self.q7_alt1 = TextFormat.format_text(p7[2])
+        self.q7_alt2 = TextFormat.format_text(p7[3])
+        self.q7_alt3 = TextFormat.format_text(p7[4])
+        self.q7_alt4 = TextFormat.format_text(p7[5])
         
         #Pegunta e alternativas q8
-        self.pergunta8 = None
-        self.q8_alt1 = None
-        self.q8_alt2 = None
-        self.q8_alt3 = None
-        self.q8_alt4 = None
-        
-        #Pegunta e alternativas q9
-        self.pergunta9 = None
-        self.q9_alt1 = None
-        self.q9_alt2 = None
-        self.q9_alt3 = None
-        self.q9_alt4 = None
-        
-        #Pegunta e alternativas q10
-        self.pergunta10 = None
-        self.q10_alt1 = None
-        self.q10_alt2 = None
-        self.q10_alt3 = None
-        self.q10_alt4 = None
+        self.pergunta8 = TextFormat.format_question(p8[1])
+        self.q8_alt1 = TextFormat.format_text(p8[2])
+        self.q8_alt2 = TextFormat.format_text(p8[3])
+        self.q8_alt3 = TextFormat.format_text(p8[4])
+        self.q8_alt4 = TextFormat.format_text(p8[5])
         
         #Objeto Quiz 1
         self.quiz_1 = Quiz(self.pergunta1, self.q1_alt1, self.q1_alt2, self.q1_alt3, self.q1_alt4)
@@ -176,14 +161,6 @@ class Level1:
         #Objeto Quiz 8
         
         self.quiz_8 = Quiz(self.pergunta8, self.q8_alt1, self.q8_alt2, self.q8_alt3, self.q8_alt4)
-        
-        #Objeto Quiz 9
-        
-        self.quiz_9 = Quiz(self.pergunta9, self.q9_alt1, self.q9_alt2, self.q9_alt3, self.q9_alt4)
-        
-        #Objeto Quiz 10
-        
-        self.quiz_10 = Quiz(self.pergunta10, self.q10_alt1, self.q10_alt2, self.q10_alt3, self.q10_alt4)
         
         #Backgroun level 1
         self.bg_play = pygame.image.load('images/backgrounds/bg_game.png').convert_alpha()
@@ -308,6 +285,16 @@ class Level1:
             elif self.status_quiz6 == False:
                 self.placa6 = self.placaerrado
             
+            if self.status_quiz7 == True:
+                self.placa7 = self.placacorreto
+            elif self.status_quiz7 == False:
+                self.placa7 = self.placaerrado
+
+            if self.status_quiz8 == True:
+                self.placa8 = self.placacorreto
+            elif self.status_quiz8 == False:
+                self.placa8 = self.placaerrado
+
             #Funções do Personagem
             
             self.character.show()
@@ -332,26 +319,38 @@ class Level1:
             if self.character.collision_plate('quiz_3', self.plate3_pos) == 'quiz_3':
                 if self.quiz3_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([450, 330])
+                    self.character.pos([520, 330])
                     self.status = 'quiz_3'
         
             if self.character.collision_plate('quiz_4', self.plate4_pos) == 'quiz_4':
                     if self.quiz4_complete == False:
                         #Onde o player sai depois do quiz
-                        self.character.pos([560, 800])
+                        self.character.pos([530, 700])
                         self.status = 'quiz_4'
 
             if self.character.collision_plate('quiz_5', self.plate5_pos) == 'quiz_5':
                     if self.quiz5_complete == False:
                         #Onde o player sai depois do quiz
-                        self.character.pos([450, 330])
+                        self.character.pos([910, 700])
                         self.status = 'quiz_5'
 
             if self.character.collision_plate('quiz_6', self.plate6_pos) == 'quiz_6':
                     if self.quiz6_complete == False:
                         #Onde o player sai depois do quiz
-                        self.character.pos([450, 330])
+                        self.character.pos([910, 570])
                         self.status = 'quiz_6'
+                
+            if self.character.collision_plate('quiz_7', self.plate7_pos) == 'quiz_7':
+                    if self.quiz7_complete == False:
+                        #Onde o player sai depois do quiz
+                        self.character.pos([1330, 570])
+                        self.status = 'quiz_7'
+            
+            if self.character.collision_plate('quiz_8', self.plate8_pos) == 'quiz_8':
+                    if self.quiz8_complete == False:
+                        #Onde o player sai depois do quiz
+                        self.character.pos([1340, 260])
+                        self.status = 'quiz_8'
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
@@ -448,7 +447,7 @@ class Level1:
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
                         self.status_quiz4 = False
-                        self.quiz4_complete = False
+                        self.quiz4_complete = True
                         
         if self.status == 'quiz_5':
             if self.status_quiz5 == None:
@@ -471,7 +470,7 @@ class Level1:
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
                         self.status_quiz5 = False
-                        self.quiz5_complete = False
+                        self.quiz5_complete = True
                         
         if self.status == 'quiz_6':
             if self.status_quiz6 == None:
@@ -494,4 +493,50 @@ class Level1:
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
                         self.status_quiz6 = False
-                        self.quiz6_complete = False
+                        self.quiz6_complete = True
+
+        if self.status == 'quiz_7':
+            if self.status_quiz7 == None:
+                self.quiz_7.show()
+                self.quiz_7.discover_alt_correct()
+                self.status_quiz7 = self.quiz_7.click()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz7 == True:
+                self.quiz_7.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz7 = True
+                        self.quiz7_complete = True
+            if self.status_quiz7 == False:
+                self.quiz_7.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz7 = False
+                        self.quiz7_complete = True
+        
+        if self.status == 'quiz_8':
+            if self.status_quiz8 == None:
+                self.quiz_8.show()
+                self.quiz_8.discover_alt_correct()
+                self.status_quiz8 = self.quiz_8.click()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+            if self.status_quiz8 == True:
+                self.quiz_8.clicked_true()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz8 = True
+                        self.quiz8_complete = True
+            if self.status_quiz8 == False:
+                self.quiz_8.clicked_false()
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                        self.status = 'level1'
+                        self.status_quiz8 = False
+                        self.quiz8_complete = True
