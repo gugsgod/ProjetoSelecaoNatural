@@ -1,7 +1,7 @@
 USE jogodb;
 
 INSERT INTO questoes(idQuestao, pergunta, alternativa_a, alternativa_b, alternativa_c, alternativa_d)
-VALUES (
+VALUES 
     (1, "Porque os tentilhões possuem diferentes formas de bico aqui nas ilhas de Galápagos?", 
     "Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.",
      "Os tentilhões fizeram cirurgias plásticas em seus bicos para se adaptarem.", 
@@ -102,4 +102,4 @@ VALUES (
     "lei do uso e desuso.", 
     "atrofia do pulmão devido ao uso contínuo da pele.", 
     "transmissão de caracteres adquiridos aos descendentes.")
-);
+;
