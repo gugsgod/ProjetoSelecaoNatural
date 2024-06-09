@@ -16,17 +16,13 @@ class Level1:
         self.clock = pygame.time.Clock()
         
         #Banco de dados
-        
-        mydb = mysql.connector.connect(
-        host = "localhost",
         user = "root",
-        password = "imtdb"
-        )
+
+        mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
         db = Database()
         
         p1 = db.get_questions(mydb, 1)
-        print(p1)
         p2 = db.get_questions(mydb, 2)
         p3 = db.get_questions(mydb, 3)
         p4 = db.get_questions(mydb, 4)
