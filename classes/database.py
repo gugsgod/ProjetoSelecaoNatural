@@ -1,10 +1,10 @@
 import mysql.connector
 
 class Database:
-    def login(self, db, email, senha):
+    def login(self, db, user, senha):
         mycursor = db.cursor()
         mycursor.execute("USE jogodb")
-        mycursor.execute("SELECT * FROM usuarios WHERE email = %s", email)
+        mycursor.execute("SELECT * FROM usuarios WHERE email = %s", [user])
         result = mycursor.fetchone()
         try:
             if result[0] is not None:
@@ -15,7 +15,7 @@ class Database:
         except:
             print("Conta com esse email não existe")
             
-    def register(db, nome, email, senha):
+    def register(db, user, senha):
         mycursor = db.cursor()
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT max(idUsuario) FROM usuarios")
@@ -25,7 +25,7 @@ class Database:
         else:
             maxID = maxID[0] + 1
         try:
-            mycursor.execute("INSERT INTO usuarios VALUES (%s, %s, %s, %s, 1)", (maxID, nome, email, senha))
+            mycursor.execute("INSERT INTO usuarios VALUES (%s, %s, %s, %s, 1)", (maxID, user, senha))
             db.commit()
         except mysql.connector.errors.IntegrityError:
             print("Email já cadastrado")
