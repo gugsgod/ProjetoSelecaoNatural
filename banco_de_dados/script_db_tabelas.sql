@@ -4,9 +4,9 @@ USE gamedb;
 
 CREATE TABLE IF NOT EXISTS users(
 	id_user INT,
-    user VARCHAR(255) UNIQUE,
-	password VARCHAR(255)
-    PRIMARY KEY (idUsuario)
+    user VARCHAR(255) UNIQUE NOT NULL,
+	password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_user)
     );
 
 CREATE TABLE IF NOT EXISTS points(

@@ -8,14 +8,14 @@ class Database:
         result = mycursor.fetchone()
         try:
             if result[0] is not None:
-                if result[3] == password:
-                    print("Email e senha estão corretos!")
+                if result[2] == password:
+                    return True
                 else:
                     print("Senha incorreta!")
         except:
             print("Conta com esse email não existe")
             
-    def register(db, user, password):
+    def register(self, db, user, password):
         mycursor = db.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         mycursor.execute("SELECT max(id_user) FROM users")
@@ -25,10 +25,11 @@ class Database:
         else:
             maxID = maxID[0] + 1
         try:
-            mycursor.execute("INSERT INTO users VALUES (%s, %s, %s, %s, 1)", (maxID, user, password))
+            mycursor.execute("INSERT INTO users VALUES (%s, %s, %s)", (maxID, user, password))
             db.commit()
-        except mysql.connector.errors.IntegrityError:
-            print("Email já cadastrado")
+            return True
+        except Exception as error:
+            print("An exception occurred:", type(error).__name__,"-",error)
             
     def insert_points(db, points, user):
         mycursor = db.cursor(buffered=True)

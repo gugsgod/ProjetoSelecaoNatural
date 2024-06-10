@@ -60,9 +60,7 @@ class InputBox:
                 self.color = self.WHITE if self.active else self.GRAY
             if event.type == pygame.KEYDOWN:
                     if self.active:
-                        if event.key == pygame.K_RETURN:
-                                return self.text
-                        elif event.key == pygame.K_BACKSPACE:
+                        if event.key == pygame.K_BACKSPACE:
                             self.text = self.text[:-1]
                         else:
                             self.text += event.unicode
@@ -74,6 +72,7 @@ class InputBox:
                         self.text = ''
                     elif event.key == pygame.K_BACKSPACE:
                         self.text = self.text[:-1]
+        return self.text
                         
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)

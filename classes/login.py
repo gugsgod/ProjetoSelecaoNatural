@@ -53,7 +53,7 @@ class Login:
         self.screen.blit(self.edge_user, (415, 490))
         for event in pygame.event.get():
             self.user = self.user_inputbox.handle_event_user(event)
-            self.password = self.password_inputbox.handle_event(event)
+            self.password = self.password_inputbox.handle_event_user(event)
         
         self.button_quit.show()
         self.button_quit.click()
@@ -61,11 +61,18 @@ class Login:
         
         self.button_login.show()
         if self.button_login.click() == 'login':
-            self.db.login(self.mydb, self.user, self.password)
+            y = self.db.login(self.mydb, self.user, self.password)
+            if y == True:
+                return 'menu'
+
         self.text_login.show()
         
         self.button_register.show()
-        self.button_register.click()
+        if self.button_register.click() == 'register':
+            x = self.db.register(self.mydb, self.user, self.password)
+            if x == True:
+                    return 'menu'
+
         self.text_register.show()
         
         self.user_text.show()
