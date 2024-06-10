@@ -22,6 +22,7 @@ class Rank:
         
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         self.db = Database()
+        self.score = []
     
     def run(self):
         self.clock.tick(30)
@@ -31,9 +32,12 @@ class Rank:
             user = self.user_inputbox.handle_event(event)
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
-        self.id = self.db.get_id(self.mydb, user)
-        self.score = self.db.get_top_5(self.mydb, self.id)
-        print(self.score)
+            elif event.type == pygame.KEYDOWN and event.key == K_RETURN:
+                self.id = self.db.get_id(self.mydb, user)
+                self.score = self.db.get_top_5(self.mydb, self.id)
+                
+            
+                
         self.user_inputbox.draw(self.screen)
         self.text_user.show()
         self.text_rank.show()
