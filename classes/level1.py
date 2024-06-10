@@ -162,7 +162,7 @@ class Level1:
         self.quiz_8 = Quiz(self.pergunta8, self.q8_alt1, self.q8_alt2, self.q8_alt3, self.q8_alt4)
         
         #Background level 1
-        self.bg_level1 = pygame.image.load('images/backgrounds/bg_level1.png').convert_alpha()
+        self.bg_level1 = pygame.image.load('images/backgrounds/bg_leve1.png').convert_alpha()
         
         #Fase atual
         self.status = 'level1'
