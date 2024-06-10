@@ -600,5 +600,6 @@ class Level2:
                         self.status_quiz18 = False
                         self.quiz18_complete = True
         
+    @property
     def get_score(self):
         return self.score

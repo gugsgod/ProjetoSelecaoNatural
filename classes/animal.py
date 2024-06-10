@@ -6,10 +6,15 @@ class Animal:
     def __init__(self, img, pos):
         self.screen = pygame.display.set_mode((1920, 1080))
         self.img = pygame.image.load(img).convert_alpha()
+        
+        #Posição inicial do objeto
         self.pos = pos
+        
+        #Randomização da movimentação
         self.movement_random = [1, 2, 3, 4]
         self.movement_time = 0
     
+    #Função
     def show(self):
         self.screen.blit(self.img, (self.pos[0], self.pos[1]))
 
