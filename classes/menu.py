@@ -21,7 +21,7 @@ class Menu:
         self.text_rank = Text('Rank', self.font, 'BLACK', self.pos_button_rank[0] + 50, self.pos_button_rank[1] + 15)
         self.text_quit = Text('Quit', self.font, 'BLACK', self.pos_button_quit[0] + 60, self.pos_button_quit[1] + 15)
         self.button_level1 = ButtonMenu(self.pos_button_play[0],  self.pos_button_play[1], 'level1')
-        self.button_rank = ButtonMenu(self.pos_button_rank[0], self.pos_button_rank[1])
+        self.button_rank = ButtonMenu(self.pos_button_rank[0], self.pos_button_rank[1], 'rank')
         self.button_quit = ButtonMenu(self.pos_button_quit[0],  self.pos_button_quit[1], 'quit')
         self.fade_in = FadeIn()
     
@@ -33,6 +33,8 @@ class Menu:
         if self.button_level1.click() == 'level1':
             return 'level1'
         self.button_rank.show()
+        if self.button_rank.click() == 'rank':
+            return 'rank'
         self.button_quit.show()
         self.button_quit.click()
         self.text_name.show()

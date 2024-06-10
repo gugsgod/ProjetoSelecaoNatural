@@ -10,6 +10,7 @@ from fade_in import FadeIn
 from frog import Frog
 from level1 import Level1
 from menu import Menu
+from rank import Rank
 
 class Game:
     
@@ -20,6 +21,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.menu = Menu()
         self.level1 = Level1()
+        self.rank = Rank()
         self.screen_status = 'menu'
     
     def run(self):
@@ -29,13 +31,21 @@ class Game:
                 pygame.mixer.music.load("SoundEffects/musica/ordinary-loop-minimal-piano-182046.mp3")
                 pygame.mixer.music.play()
             if self.screen_status == 'menu':
-                if self.menu.run() == 'level1':
-                    self.screen_status = 'level1'
+                match self.menu.run():
+                    case 'level1':
+                        self.screen_status = 'level1'
+                    case 'rank':
+                        self.screen_status = 'rank'
             
             if self.screen_status == 'level1':
                 match self.level1.run():
                     case 'menu':
                        self.screen_status = 'menu'
+            
+            if self.screen_status == 'rank':
+                match self.rank.run():
+                    case 'menu':
+                        self.screen_status = 'menu'
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

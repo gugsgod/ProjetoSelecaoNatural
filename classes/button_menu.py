@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 import sys
-from text import Text
 
 class ButtonMenu:
     def __init__(self, posx, posy, click_action = ''):
@@ -28,6 +27,8 @@ class ButtonMenu:
             if pygame.mouse.get_pressed()[0] == 1:
                 if self.click_action == 'level1':
                     return 'level1'    
+                if self.click_action == 'rank':
+                    return 'rank'
                 if self.click_action == 'quit':
                     pygame.quit()
                     sys.exit()
