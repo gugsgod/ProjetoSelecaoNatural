@@ -32,4 +32,7 @@ class ButtonMenu:
                 if self.click_action == 'quit':
                     pygame.quit()
                     sys.exit()
-
+                if self.click_action == 'login':
+                    return 'login'
+                if self.click_action == 'register':
+                    return 'register'
