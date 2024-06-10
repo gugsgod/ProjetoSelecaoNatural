@@ -31,7 +31,7 @@ class Rank:
     def run(self):
         self.clock.tick(30)
         self.screen.blit(self.rank_bg, (0,0))
-        self.screen.blit(self.edge_user, (415,140))
+        self.screen.blit(self.edge_user, (415, 140))
         
         for event in pygame.event.get():
             user = self.user_inputbox.handle_event(event)

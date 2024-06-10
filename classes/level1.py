@@ -30,9 +30,11 @@ class Level1:
         p7 = self.db.get_questions(self.mydb, 7)
         p8 = self.db.get_questions(self.mydb, 8)
         
+        
+        self.login = Login()
+        self.user = self.login.get_user()
+        
         self.score = 0
-
-        self.email = Login.get_email()
         
         #Atributos Placa
         self.plate1_pos = (260, 100)
@@ -543,4 +545,4 @@ class Level1:
                         self.quiz8_complete = True
 
         if self.quiz1_complete and self.quiz2_complete and self.quiz3_complete and self.quiz4_complete and self.quiz5_complete and self.quiz6_complete and self.quiz7_complete and self.quiz8_complete == True:
-            self.db.insert_points(self.mydb, self.score, self.email)
+            self.db.insert_points(self.mydb, self.score, self.user)
