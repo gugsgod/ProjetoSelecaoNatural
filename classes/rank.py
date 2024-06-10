@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 import mysql.connector
-import sys
 from input_box import InputBox
 from text import Text
 from database import Database
