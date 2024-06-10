@@ -1,32 +1,31 @@
-CREATE DATABASE IF NOT EXISTS jogodb;
+CREATE DATABASE IF NOT EXISTS gamedb;
 
-USE jogodb;
+USE gamedb;
 
-CREATE TABLE IF NOT EXISTS usuarios(
-	idUsuario INT,
-    email VARCHAR(255) UNIQUE,
-	senha VARCHAR(255),
-    ident INT,
+CREATE TABLE IF NOT EXISTS users(
+	id_user INT,
+    user VARCHAR(255) UNIQUE,
+	senha VARCHAR(255)
     PRIMARY KEY (idUsuario)
     );
 
-CREATE TABLE IF NOT EXISTS pontuacao(
-	idUsuario INT,
-    pontos INT,
-    rodada INT,
-    FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario)
+CREATE TABLE IF NOT EXISTS points(
+	id_user INT,
+    score INT,
+    lap INT,
+    FOREIGN KEY (id_user) REFERENCES users(id_user)
 ); 
 
-CREATE TABLE IF NOT EXISTS questoes(
-	idQuestao INT,
-    pergunta VARCHAR(120),
-    alternativa_a VARCHAR(160),
-    alternativa_b VARCHAR(160),
-	alternativa_c VARCHAR(160),
-	alternativa_d VARCHAR(160)
+CREATE TABLE IF NOT EXISTS questions(
+	id_question INT,
+    question VARCHAR(120),
+    alt_a VARCHAR(160),
+    alt_b VARCHAR(160),
+	alt_c VARCHAR(160),
+	alt_d VARCHAR(160)
 );
 
-INSERT INTO questoes(idQuestao, pergunta, alternativa_a, alternativa_b, alternativa_c, alternativa_d)
+INSERT INTO questions(id_question, question, alt_a, alt_b, alt_c, alt_d)
 VALUES 
     (1, "Porque os tentilhões possuem diferentes formas de bico aqui nas ilhas de Galápagos?", 
     "Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.",
