@@ -14,7 +14,6 @@ class Animal:
         self.screen.blit(self.img, (self.pos[0], self.pos[1]))
 
     def movement(self, time, dis):
-        
         self.movement_time += time
         if self.movement_time >= 100:
             random.shuffle(self.movement_random)
