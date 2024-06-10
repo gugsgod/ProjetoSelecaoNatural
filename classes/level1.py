@@ -16,16 +16,16 @@ class Level1:
         self.clock = pygame.time.Clock()
         
         #Banco de dados
+        
+        mydb = mysql.connector.connect(
+        host = "localhost",
         user = "root",
         password = "40430067"
         )
-
-        mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
         db = Database()
         
         p1 = db.get_questions(mydb, 1)
-        print(p1)
         p2 = db.get_questions(mydb, 2)
         p3 = db.get_questions(mydb, 3)
         p4 = db.get_questions(mydb, 4)
@@ -36,7 +36,12 @@ class Level1:
         p9 = db.get_questions(mydb, 9)
         p10 = db.get_questions(mydb, 10)
         
+        #Pontuação
+        
+        self.score = 0
+        
         #Atributos Placa
+        
         self.plate1_pos = (260, 100)
         self.plate2_pos = (170, 460)
         self.plate3_pos = (650, 360)
@@ -47,9 +52,11 @@ class Level1:
         self.plate8_pos = (1360 , 220)
         
         #Objeto Character
+        
         self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [0, 50], 0)
         
         #Objetos Sapo
+        
         self.frog_1 = Frog('images/animals/frog.png', [500, 100])
         self.frog_2 = Frog('images/animals/frog.png', [100, 700])
         self.frog_3 = Frog('images/animals/frog.png', [800, 300])
@@ -57,11 +64,13 @@ class Level1:
         self.frog_5 = Frog('images/animals/frog.png', [1700, 900])
         
         #Objetos Borboleta
+        
         self.butterfly1 = Butterfly('images/animals/butterfly.png', [600, 200])
         self.butterfly2 = Butterfly('images/animals/butterfly.png', [640, 200])
         self.butterfly3 = Butterfly('images/animals/butterfly.png', [600, 240])
         
         #Placas LOAD
+        
         self.placa1 = pygame.image.load("images/plates/placa_1.png")
         self.placa2 = pygame.image.load("images/plates/placa_2.png")
         self.placa3 = pygame.image.load("images/plates/placa_3.png")
@@ -70,8 +79,6 @@ class Level1:
         self.placa6 = pygame.image.load("images/plates/placa_6.png")
         self.placa7 = pygame.image.load("images/plates/placa_7.png")
         self.placa8 = pygame.image.load("images/plates/placa_8.png")
-        self.placa9 = pygame.image.load("images/plates/placa_9.png")
-        #self.placa10 = pygame.image.load()
         
         self.placacorreto = pygame.image.load("images/plates/placa_certo.png")
         self.placaerrado = pygame.image.load("images/plates/placa_errada.png")
@@ -369,6 +376,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz1 = True
                         self.quiz1_complete = True
             if self.status_quiz1 == False:
@@ -393,6 +401,7 @@ class Level1:
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
                         self.status_quiz2 = True
+                        self.score += 1
                         self.quiz2_complete = True
             if self.status_quiz2 == False:
                 self.quiz_2.clicked_false()
@@ -415,6 +424,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz3 = True
                         self.quiz3_complete = True
             if self.status_quiz3 == False:
@@ -438,6 +448,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz4 = True
                         self.quiz4_complete = True
             if self.status_quiz4 == False:
@@ -461,6 +472,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz5 = True
                         self.quiz5_complete = True
             if self.status_quiz5 == False:
@@ -484,6 +496,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz6 = True
                         self.quiz6_complete = True
             if self.status_quiz6 == False:
@@ -507,6 +520,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz7 = True
                         self.quiz7_complete = True
             if self.status_quiz7 == False:
@@ -530,6 +544,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz8 = True
                         self.quiz8_complete = True
             if self.status_quiz8 == False:
