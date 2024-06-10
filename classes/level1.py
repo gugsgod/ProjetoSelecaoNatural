@@ -7,6 +7,7 @@ from butterfly import Butterfly
 from quiz import Quiz
 from text_format import *
 from database import Database
+from login import Login
 import mysql.connector
 
 class Level1:
@@ -16,20 +17,24 @@ class Level1:
         self.clock = pygame.time.Clock()
         
         #Banco de dados
-        mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
-        db = Database()
+        self.db = Database()
         
-        p1 = db.get_questions(mydb, 1)
-        p2 = db.get_questions(mydb, 2)
-        p3 = db.get_questions(mydb, 3)
-        p4 = db.get_questions(mydb, 4)
-        p5 = db.get_questions(mydb, 5)
-        p6 = db.get_questions(mydb, 6)
-        p7 = db.get_questions(mydb, 7)
-        p8 = db.get_questions(mydb, 8)
-        p9 = db.get_questions(mydb, 9)
-        p10 = db.get_questions(mydb, 10)
+        p1 = self.db.get_questions(self.mydb, 1)
+        p2 = self.db.get_questions(self.mydb, 2)
+        p3 = self.db.get_questions(self.mydb, 3)
+        p4 = self.db.get_questions(self.mydb, 4)
+        p5 = self.db.get_questions(self.mydb, 5)
+        p6 = self.db.get_questions(self.mydb, 6)
+        p7 = self.db.get_questions(self.mydb, 7)
+        p8 = self.db.get_questions(self.mydb, 8)
+        
+        
+        self.login = Login()
+        self.user = self.login.get_user()
+        
+        self.score = 0
         
         #Atributos Placa
         self.plate1_pos = (260, 100)
@@ -360,6 +365,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz1 = True
                         self.quiz1_complete = True
             if self.status_quiz1 == False:
@@ -383,6 +389,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz2 = True
                         self.quiz2_complete = True
             if self.status_quiz2 == False:
@@ -406,6 +413,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz3 = True
                         self.quiz3_complete = True
             if self.status_quiz3 == False:
@@ -429,6 +437,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz4 = True
                         self.quiz4_complete = True
             if self.status_quiz4 == False:
@@ -452,6 +461,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz5 = True
                         self.quiz5_complete = True
             if self.status_quiz5 == False:
@@ -475,6 +485,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz6 = True
                         self.quiz6_complete = True
             if self.status_quiz6 == False:
@@ -498,6 +509,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz7 = True
                         self.quiz7_complete = True
             if self.status_quiz7 == False:
@@ -521,6 +533,7 @@ class Level1:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                         self.status = 'level1'
+                        self.score += 1
                         self.status_quiz8 = True
                         self.quiz8_complete = True
             if self.status_quiz8 == False:
@@ -530,3 +543,6 @@ class Level1:
                         self.status = 'level1'
                         self.status_quiz8 = False
                         self.quiz8_complete = True
+
+        if self.quiz1_complete and self.quiz2_complete and self.quiz3_complete and self.quiz4_complete and self.quiz5_complete and self.quiz6_complete and self.quiz7_complete and self.quiz8_complete == True:
+            self.db.insert_points(self.mydb, self.score, self.user)
