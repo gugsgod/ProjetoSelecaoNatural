@@ -49,17 +49,17 @@ class CentralizeText:
             
     def centralize_question(self, list):
         size = len(list)
-        y_standart = 140
+        y_standard = 140
         for i in range(size):
             img = self.font.render(list[i], True, self.text_col)
             if i == 0 and size == 1:
                 font_size = self.font.size(list[i])
-                self.screen.blit(img, (1920/2 + font_size[0]/2 , y_standart))
+                self.screen.blit(img, (1920/2 + font_size[0]/2 , y_standard))
                 break
             if i == 0 and size == 2:
                 font_size = self.font.size(list[i])
-                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_standart - 12.5))
+                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_standard - 12.5))
             if i == 1 and size == 2:
                 font_size = self.font.size(list[i])
-                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_standart + 15))
+                self.screen.blit(img, (1920/2 - font_size[0]/2 , y_standard + 25))
                 break
