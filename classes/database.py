@@ -20,7 +20,10 @@ class Database:
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT max(idUsuario) FROM usuarios")
         maxID = mycursor.fetchone()
-        maxID = maxID[0] + 1
+        if maxID[0] == None:
+            maxID = 1
+        else:
+            maxID = maxID[0] + 1
         try:
             mycursor.execute("INSERT INTO usuarios VALUES (%s, %s, %s, %s, 1)", (maxID, nome, email, senha))
             db.commit()
