@@ -47,3 +47,9 @@ class Database:
         mycursor.execute("SELECT * FROM questoes WHERE idQuestao = %s", [question])
         return mycursor.fetchone()
 
+    def get_top_5(self, mydb, idUser):
+        mycursor = mydb.cursor()
+        mycursor.execute("USE jogodb")
+        mycursor.execute("SELECT pontos FROM pontuacao WHERE idUsuario = %s ORDER BY pontos DESC LIMIT 5", [idUser])
+        return mycursor.fetchall()
+    

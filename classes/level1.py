@@ -16,7 +16,6 @@ class Level1:
         self.clock = pygame.time.Clock()
         
         #Banco de dados
-        user = "root",
 
         mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
