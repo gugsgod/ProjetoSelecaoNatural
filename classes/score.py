@@ -31,7 +31,7 @@ class Score:
     def run(self):
         self.screen.blit(self.bg_score, (0,0))
         score_total = self.level1.get_score() + self.level2.get_score()
-        self.score_text.show_update(score_total)
+        self.score_text.show_update(str(score_total))
         
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:

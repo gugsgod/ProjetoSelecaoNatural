@@ -65,7 +65,7 @@ class Character:
 
     def collision_plate(self, action, pos):
         plate_size = [44, 50]
-        character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
+        character_surface = pygame.Rect(self.character_pos[0]+ 30, self.character_pos[1]+60, self.character_size[0]-30, self.character_size[1]-30)
         plate_surface = pygame.Rect(pos[0], pos[1], plate_size[0], plate_size[1])
         if character_surface.colliderect(plate_surface):
             return action

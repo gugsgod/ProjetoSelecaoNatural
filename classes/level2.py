@@ -49,11 +49,11 @@ class Level2:
         self.crab_3 = Crab('images/animals/crab.png', [1360, 830])
 
         #Atributos Placa
-        self.plate9_pos = (515, 310)
+        self.plate9_pos = (525, 310)
         self.plate10_pos = (430, 5)
         self.plate11_pos = (840, 80)
         self.plate12_pos = (735, 685)
-        self.plate13_pos = (75, 585)
+        self.plate13_pos = (70, 585)
         self.plate14_pos = (170, 950)
         self.plate15_pos = (1160, 850)
         self.plate16_pos = (1060, 90)
@@ -296,22 +296,23 @@ class Level2:
             self.character.animation()
             self.character.movement()
             self.character.collision_screen()
+
             if self.character.collision_plate('quiz_9', self.plate9_pos) == 'quiz_9':
                 if self.quiz9_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([370, 270])
+                    self.character.pos([400, 270])
                     self.status = 'quiz_9'
         
             if self.character.collision_plate('quiz_10', self.plate10_pos) == 'quiz_10':
                 if self.quiz10_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([370, 60])
+                    self.character.pos([400, 60])
                     self.status = 'quiz_10'
                     
             if self.character.collision_plate('quiz_11', self.plate11_pos) == 'quiz_11':
                 if self.quiz11_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([720, 60])
+                    self.character.pos([720, 55])
                     self.status = 'quiz_11'
         
             if self.character.collision_plate('quiz_12', self.plate12_pos) == 'quiz_12':
@@ -323,13 +324,13 @@ class Level2:
             if self.character.collision_plate('quiz_13', self.plate13_pos) == 'quiz_13':
                 if self.quiz13_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([165, 555])
+                    self.character.pos([150, 555])
                     self.status = 'quiz_13'
 
             if self.character.collision_plate('quiz_14', self.plate14_pos) == 'quiz_14':
                 if self.quiz14_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([165, 800])
+                    self.character.pos([155, 800])
                     self.status = 'quiz_14'
                 
             if self.character.collision_plate('quiz_15', self.plate15_pos) == 'quiz_15':
@@ -347,13 +348,13 @@ class Level2:
             if self.character.collision_plate('quiz_17', self.plate17_pos) == 'quiz_17':
                 if self.quiz17_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([1530, 140])
+                    self.character.pos([1550, 140])
                     self.status = 'quiz_17'
 
             if self.character.collision_plate('quiz_18', self.plate18_pos) == 'quiz_18':
                 if self.quiz18_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([1550, 775])
+                    self.character.pos([1550, 765])
                     self.status = 'quiz_18'
 
             if self.quiz9_complete and self.quiz10_complete and self.quiz11_complete and self.quiz12_complete and self.quiz13_complete and self.quiz14_complete and self.quiz15_complete and self.quiz16_complete and self.quiz17_complete and self.quiz18_complete == True:
@@ -372,7 +373,7 @@ class Level2:
                 self.quiz_9.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level9'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz9 = True
                         self.quiz9_complete = True
@@ -396,7 +397,7 @@ class Level2:
                 self.quiz_10.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level10'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz10 = True
                         self.quiz10_complete = True
@@ -420,7 +421,7 @@ class Level2:
                 self.quiz_11.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level11'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz11 = True
                         self.quiz11_complete = True
@@ -444,7 +445,7 @@ class Level2:
                 self.quiz_12.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level12'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz12 = True
                         self.quiz12_complete = True
@@ -468,7 +469,7 @@ class Level2:
                 self.quiz_13.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level13'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz13 = True
                         self.quiz13_complete = True
@@ -492,7 +493,7 @@ class Level2:
                 self.quiz_14.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level14'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz14 = True
                         self.quiz14_complete = True
@@ -516,7 +517,7 @@ class Level2:
                 self.quiz_15.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level15'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz15 = True
                         self.quiz15_complete = True
@@ -540,7 +541,7 @@ class Level2:
                 self.quiz_16.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level16'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz16 = True
                         self.quiz16_complete = True
@@ -564,7 +565,7 @@ class Level2:
                 self.quiz_17.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level17'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz17 = True
                         self.quiz17_complete = True
@@ -587,7 +588,7 @@ class Level2:
                 self.quiz_18.clicked_true()
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                        self.status = 'level18'
+                        self.status = 'level2'
                         self.score += 1
                         self.status_quiz18 = True
                         self.quiz18_complete = True
