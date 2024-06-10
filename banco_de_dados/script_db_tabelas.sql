@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS questions(
     alt_a VARCHAR(160),
     alt_b VARCHAR(160),
 	alt_c VARCHAR(160),
-	alt_d VARCHAR(160)
+	alt_d VARCHAR(160) 
 );
 
 INSERT INTO questions(id_question, question, alt_a, alt_b, alt_c, alt_d)
