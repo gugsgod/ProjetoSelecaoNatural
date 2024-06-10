@@ -2,7 +2,7 @@ import mysql.connector
 
 class Database:
     def login(self, db, user, password):
-        mycursor = db.cursor()
+        mycursor = db.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         mycursor.execute("SELECT * FROM users WHERE user = %s", [user])
         result = mycursor.fetchone()
@@ -16,7 +16,7 @@ class Database:
             print("Conta com esse email não existe")
             
     def register(db, user, password):
-        mycursor = db.cursor()
+        mycursor = db.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         mycursor.execute("SELECT max(id_user) FROM users")
         maxID = mycursor.fetchone()
@@ -31,7 +31,7 @@ class Database:
             print("Email já cadastrado")
             
     def insert_points(db, points, user):
-        mycursor = db.cursor()
+        mycursor = db.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         id_user = mycursor.execute("SELECT id_user FROM users WHERE user = %s", user)
         lap = mycursor.execute("SELECT max(lap) FROM points WHERE id_user = %s", id_user)
@@ -43,19 +43,19 @@ class Database:
         db.commit()
         
     def get_questions(self, mydb, question):
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         mycursor.execute("SELECT * FROM questions WHERE id_question = %s", [question])
         return mycursor.fetchone()
 
     def get_top_5(self, mydb, idUser):
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         mycursor.execute("SELECT score FROM points WHERE id_user = %s ORDER BY score DESC LIMIT 5", [idUser])
         return mycursor.fetchall()
     
     def get_id(self, mydb, email):
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         mycursor.execute("USE gamedb")
         mycursor.execute("SELECT id_user FROM users WHERE user = %s", [email])
         try:
