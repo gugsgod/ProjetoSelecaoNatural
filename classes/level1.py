@@ -161,8 +161,8 @@ class Level1:
         
         self.quiz_8 = Quiz(self.pergunta8, self.q8_alt1, self.q8_alt2, self.q8_alt3, self.q8_alt4)
         
-        #Backgroun level 1
-        self.bg_play = pygame.image.load('images/backgrounds/bg_game.png').convert_alpha()
+        #Background level 1
+        self.bg_level1 = pygame.image.load('images/backgrounds/bg_level1.png').convert_alpha()
         
         #Fase atual
         self.status = 'level1'
@@ -196,7 +196,7 @@ class Level1:
         self.clock.tick(14)
         
         if self.status == 'level1':
-            self.screen.blit(self.bg_play, (0,0))
+            self.screen.blit(self.bg_level1, (0,0))
             
             #Funções do Sapo 1
             self.frog_1.show()
