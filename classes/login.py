@@ -51,10 +51,10 @@ class Login:
         self.screen.blit(self.login_pop_up, (360, 135))
         self.screen.blit(self.edge_user, (415, 230))
         self.screen.blit(self.edge_user, (415, 490))
+        
         for event in pygame.event.get():
             self.user = self.user_inputbox.handle_event_user(event)
             self.password = self.password_inputbox.handle_event(event)
-        
         self.button_quit.show()
         self.button_quit.click()
         self.text_quit.show() 

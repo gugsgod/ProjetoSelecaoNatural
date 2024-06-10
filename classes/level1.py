@@ -162,7 +162,7 @@ class Level1:
         self.quiz_8 = Quiz(self.pergunta8, self.q8_alt1, self.q8_alt2, self.q8_alt3, self.q8_alt4)
         
         #Background level 1
-        self.bg_level1 = pygame.image.load('images/backgrounds/bg_leve1.png').convert_alpha()
+        self.bg_level1 = pygame.image.load('images/backgrounds/bg_level1.png').convert_alpha()
         
         #Fase atual
         self.status = 'level1'
@@ -545,4 +545,5 @@ class Level1:
                         self.quiz8_complete = True
 
         if self.quiz1_complete and self.quiz2_complete and self.quiz3_complete and self.quiz4_complete and self.quiz5_complete and self.quiz6_complete and self.quiz7_complete and self.quiz8_complete == True:
-            self.db.insert_points(self.mydb, self.score, self.user)
+            if self.character.collision_portal('level2', [1890, 270]) == 'level2':
+                return 'level2'
