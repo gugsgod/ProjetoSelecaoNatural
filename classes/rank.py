@@ -19,25 +19,37 @@ class Rank:
         self.user_inputbox = InputBox(425, 150, 1070, 50)
         self.text_rank = Text('TOP 5 PONTUAÇÕES:', self.font, 'BLACK', self.pos_rank[0], self.pos_rank[1])
         self.text_user = Text('Digite o nome do usuário:', self.font, 'BLACK', self.pos_text_user[0], self.pos_text_user[1])
-        
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         self.db = Database()
         self.score = []
+        self.status_score = False
+        self.top1 = Text('', self.font, 'BLACK', 880, 300)
+        self.top2 = Text('', self.font, 'BLACK', 880, 400)
+        self.top3 = Text('', self.font, 'BLACK', 880, 500)
+        self.top4 = Text('', self.font, 'BLACK', 880, 600)
+        self.top5 = Text('', self.font, 'BLACK', 880, 700)
     
     def run(self):
         self.clock.tick(30)
         self.screen.blit(self.rank_bg, (0,0))
         self.screen.blit(self.edge_user, (415,140))
+        
         for event in pygame.event.get():
             user = self.user_inputbox.handle_event(event)
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
-            elif event.type == pygame.KEYDOWN and event.key == K_RETURN:
+            if event.type == pygame.KEYDOWN and event.key == K_RETURN:
                 self.id = self.db.get_id(self.mydb, user)
                 self.score = self.db.get_top_5(self.mydb, self.id)
-                
-            
-                
+        
+        if len(self.score) > 0:
+            self.top1.show_rank(str(self.score[0][0]),'1 °. ')
+            self.top2.show_rank(str(self.score[1][0]),'2°. ')
+            self.top3.show_rank(str(self.score[2][0]),'3°. ')
+            self.top4.show_rank(str(self.score[3][0]),'4°. ')
+            self.top5.show_rank(str(self.score[4][0]),'5°. ')
+
+        
         self.user_inputbox.draw(self.screen)
         self.text_user.show()
         self.text_rank.show()

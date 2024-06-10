@@ -13,3 +13,7 @@ class Text:
     def show(self):
         img = self.font.render(self.text, True, self.text_col)
         self.screen.blit(img, (self.x, self.y))
+    
+    def show_rank(self, text = '',n = ''):
+        img = self.font.render(n + text, True, self.text_col)
+        self.screen.blit(img, (self.x, self.y))
