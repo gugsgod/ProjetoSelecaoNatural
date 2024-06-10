@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS points(
 	id_user INT,
-    points INT,
+    score INT,
     lap INT,
     FOREIGN KEY (id_user) REFERENCES users(id_user)
 ); 
