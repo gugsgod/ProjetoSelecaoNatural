@@ -59,4 +59,7 @@ class Database:
         mycursor = mydb.cursor()
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT idUsuario FROM usuarios WHERE email = %s", [email])
-        return mycursor.fetchone()[0]
+        try:
+            return mycursor.fetchone()[0]
+        except TypeError:
+            pass
