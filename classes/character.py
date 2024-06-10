@@ -15,7 +15,6 @@ class Character:
     
     def show(self):
         self.screen.blit(self.character_img, self.character_pos, (self.sprite_characterx* 96, self.sprite_charactery, 96, 96))
-        print(self.character_pos)
     
     def pos(self, character_pos):
         self.character_pos = character_pos
