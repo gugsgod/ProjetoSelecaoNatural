@@ -21,12 +21,18 @@ class Rank:
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         self.db = Database()
         self.score = []
+        self.fraco = False
         self.status_score = False
-        self.top1 = Text('', self.font, 'BLACK', 880, 300)
-        self.top2 = Text('', self.font, 'BLACK', 880, 400)
-        self.top3 = Text('', self.font, 'BLACK', 880, 500)
-        self.top4 = Text('', self.font, 'BLACK', 880, 600)
-        self.top5 = Text('', self.font, 'BLACK', 880, 700)
+        self.user = ''
+        self.nome = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
+        self.top1 = Text('', self.font, 'BLACK', 880, 400)
+        self.top2 = Text('', self.font, 'BLACK', 880, 500)
+        self.top3 = Text('', self.font, 'BLACK', 880, 600)
+        self.top4 = Text('', self.font, 'BLACK', 880, 700)
+        self.top5 = Text('', self.font, 'BLACK', 880, 800)
+        
+        tamanho = self.font.size('Esse usuário não existe')
+        self.error = Text('', self.font, 'BLACK', 1920/2 - tamanho[0]/2, 500)
     
     def run(self):
         self.clock.tick(30)
@@ -40,8 +46,17 @@ class Rank:
             if event.type == pygame.KEYDOWN and event.key == K_RETURN:
                 self.id = self.db.get_id(self.mydb, user)
                 self.score = self.db.get_top_5(self.mydb, self.id)
+                self.user = user
+                if self.id == None:
+                    self.fraco = True
+                else:
+                    self.fraco = False
         
+        if self.fraco == True:
+            self.error.show_rank('Esse usuário não existe', '')
+            
         if len(self.score) > 0:
+            self.nome.show_nome(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
             self.top1.show_rank(str(self.score[0][0]),'1 °. ')
             self.top2.show_rank(str(self.score[1][0]),'2°. ')
             self.top3.show_rank(str(self.score[2][0]),'3°. ')

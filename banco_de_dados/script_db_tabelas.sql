@@ -4,7 +4,6 @@ USE jogodb;
 
 CREATE TABLE IF NOT EXISTS usuarios(
 	idUsuario INT,
-    nome VARCHAR(255),
     email VARCHAR(255) UNIQUE,
 	senha VARCHAR(255),
     ident INT,
