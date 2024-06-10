@@ -62,14 +62,17 @@ class Character:
         if self.character_pos[1] > 990:
             self.character_pos[1] -= 14
 
-    def collision_tree(self, pos):
-        tree_size = [0, 0]
-        character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
-        tree_surface_top = pygame.Rect(pos[0], pos[1], tree_size[0], 1)
-
     def collision_plate(self, action, pos):
         plate_size = [44, 50]
         character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
         plate_surface = pygame.Rect(pos[0], pos[1], plate_size[0], plate_size[1])
         if character_surface.colliderect(plate_surface):
             return action
+    
+    def collision_portal(self, action, pos):
+        portal_size = [20, 100]
+        character_surface = pygame.Rect(self.character_pos[0], self.character_pos[1]+20, self.character_size[0], self.character_size[1])
+        portal_surface = pygame.Rect(pos[0], pos[1], portal_size[0], portal_size[1])
+        if character_surface.colliderect(portal_surface):
+            return action
+    

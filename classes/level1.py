@@ -16,6 +16,9 @@ class Level1:
         self.screen = pygame.display.set_mode((1920, 1080))
         self.clock = pygame.time.Clock()
         
+        #Background level 1
+        self.bg_level1 = pygame.image.load('images/backgrounds/bg_level1.png').convert_alpha()
+        
         #Banco de dados
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
@@ -36,16 +39,6 @@ class Level1:
         
         self.score = 0
         
-        #Atributos Placa
-        self.plate1_pos = (260, 100)
-        self.plate2_pos = (170, 460)
-        self.plate3_pos = (650, 360)
-        self.plate4_pos = (560, 850)
-        self.plate5_pos = (1030, 750)
-        self.plate6_pos = (940 , 540)
-        self.plate7_pos = (1450 , 620)
-        self.plate8_pos = (1360 , 220)
-        
         #Objeto Character
         self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [0, 50], 0)
         
@@ -61,20 +54,29 @@ class Level1:
         self.butterfly2 = Butterfly('images/animals/butterfly.png', [640, 200])
         self.butterfly3 = Butterfly('images/animals/butterfly.png', [600, 240])
         
+        #Atributos placas
+        self.plate1_pos = (260, 100)
+        self.plate2_pos = (170, 460)
+        self.plate3_pos = (650, 360)
+        self.plate4_pos = (560, 850)
+        self.plate5_pos = (1030, 750)
+        self.plate6_pos = (940 , 540)
+        self.plate7_pos = (1450 , 620)
+        self.plate8_pos = (1360 , 220)
+
         #Placas LOAD
-        self.placa1 = pygame.image.load("images/plates/placa_1.png")
-        self.placa2 = pygame.image.load("images/plates/placa_2.png")
-        self.placa3 = pygame.image.load("images/plates/placa_3.png")
-        self.placa4 = pygame.image.load("images/plates/placa_4.png")
-        self.placa5 = pygame.image.load("images/plates/placa_5.png")
-        self.placa6 = pygame.image.load("images/plates/placa_6.png")
-        self.placa7 = pygame.image.load("images/plates/placa_7.png")
-        self.placa8 = pygame.image.load("images/plates/placa_8.png")
-        self.placa9 = pygame.image.load("images/plates/placa_9.png")
-        #self.placa10 = pygame.image.load()
+        self.plate1 = pygame.image.load("images/plates/plate_1.png")
+        self.plate2 = pygame.image.load("images/plates/plate_2.png")
+        self.plate3 = pygame.image.load("images/plates/plate_3.png")
+        self.plate4 = pygame.image.load("images/plates/plate_4.png")
+        self.plate5 = pygame.image.load("images/plates/plate_5.png")
+        self.plate6 = pygame.image.load("images/plates/plate_6.png")
+        self.plate7 = pygame.image.load("images/plates/plate_7.png")
+        self.plate8 = pygame.image.load("images/plates/plate_8.png")
+
         
-        self.placacorreto = pygame.image.load("images/plates/placa_certo.png")
-        self.placaerrado = pygame.image.load("images/plates/placa_errada.png")
+        self.plate_right = pygame.image.load("images/plates/plate_right.png")
+        self.plate_wrong = pygame.image.load("images/plates/plate_wrong.png")
         
         #Pergunta e alternativas q1
         self.pergunta1 = TextFormat.format_question(p1[1])
@@ -146,23 +148,16 @@ class Level1:
         self.quiz_4 = Quiz(self.pergunta4, self.q4_alt1, self.q4_alt2, self.q4_alt3, self.q4_alt4)
         
         #Objeto Quiz 5
-        
         self.quiz_5 = Quiz(self.pergunta5, self.q5_alt1, self.q5_alt2, self.q5_alt3, self.q5_alt4)
         
         #Objeto Quiz 6
-        
         self.quiz_6 = Quiz(self.pergunta6, self.q6_alt1, self.q6_alt2, self.q6_alt3, self.q6_alt4)
         
         #Objeto Quiz 7
-        
         self.quiz_7 = Quiz(self.pergunta7, self.q7_alt1, self.q7_alt2, self.q7_alt3, self.q7_alt4)    
 
         #Objeto Quiz 8
-        
         self.quiz_8 = Quiz(self.pergunta8, self.q8_alt1, self.q8_alt2, self.q8_alt3, self.q8_alt4)
-        
-        #Background level 1
-        self.bg_level1 = pygame.image.load('images/backgrounds/bg_level1.png').convert_alpha()
         
         #Fase atual
         self.status = 'level1'
@@ -179,7 +174,7 @@ class Level1:
         self.status_quiz9 = None
         self.status_quiz10 = None
         
-        #Bloqueio das placas com base na conclusão dos quizes
+        #Bloqueio das plates com base na conclusão dos quizes
         self.quiz1_complete = False
         self.quiz2_complete = False
         self.quiz3_complete = False
@@ -239,56 +234,56 @@ class Level1:
             self.butterfly3.collision_screen()
             
             #Blit placas
-            self.screen.blit(self.placa1, self.plate1_pos)
-            self.screen.blit(self.placa2, self.plate2_pos)
-            self.screen.blit(self.placa3, self.plate3_pos)
-            self.screen.blit(self.placa4, self.plate4_pos)
-            self.screen.blit(self.placa5, self.plate5_pos)
-            self.screen.blit(self.placa6, self.plate6_pos)
-            self.screen.blit(self.placa7, self.plate7_pos)
-            self.screen.blit(self.placa8, self.plate8_pos)
+            self.screen.blit(self.plate1, self.plate1_pos)
+            self.screen.blit(self.plate2, self.plate2_pos)
+            self.screen.blit(self.plate3, self.plate3_pos)
+            self.screen.blit(self.plate4, self.plate4_pos)
+            self.screen.blit(self.plate5, self.plate5_pos)
+            self.screen.blit(self.plate6, self.plate6_pos)
+            self.screen.blit(self.plate7, self.plate7_pos)
+            self.screen.blit(self.plate8, self.plate8_pos)
             
-            #If's para mudar placa
+            #If's para mudar placas
     
             if self.status_quiz1 == True:
-                self.placa1 = self.placacorreto
+                self.plate1 = self.plate_right
             elif self.status_quiz1 == False:
-                self.placa1 = self.placaerrado
+                self.plate1 = self.plate_wrong
             
             if self.status_quiz2 == True:
-                self.placa2 = self.placacorreto
+                self.plate2 = self.plate_right
             elif self.status_quiz2 == False:
-                self.placa2 = self.placaerrado
+                self.plate2 = self.plate_wrong
                 
             if self.status_quiz3 == True:
-                self.placa3 = self.placacorreto
+                self.plate3 = self.plate_right
             elif self.status_quiz3 == False:
-                self.placa3 = self.placaerrado
+                self.plate3 = self.plate_wrong
                 
             if self.status_quiz4 == True:
-                self.placa4 = self.placacorreto
+                self.plate4 = self.plate_right
             elif self.status_quiz4 == False:
-                self.placa4 = self.placaerrado
+                self.plate4 = self.plate_wrong
                 
             if self.status_quiz5 == True:
-                self.placa5 = self.placacorreto
+                self.plate5 = self.plate_right
             elif self.status_quiz5 == False:
-                self.placa5 = self.placaerrado
+                self.plate5 = self.plate_wrong
                 
             if self.status_quiz6 == True:
-                self.placa6 = self.placacorreto
+                self.plate6 = self.plate_right
             elif self.status_quiz6 == False:
-                self.placa6 = self.placaerrado
+                self.plate6 = self.plate_wrong
             
             if self.status_quiz7 == True:
-                self.placa7 = self.placacorreto
+                self.plate7 = self.plate_right
             elif self.status_quiz7 == False:
-                self.placa7 = self.placaerrado
+                self.plate7 = self.plate_wrong
 
             if self.status_quiz8 == True:
-                self.placa8 = self.placacorreto
+                self.plate8 = self.plate_right
             elif self.status_quiz8 == False:
-                self.placa8 = self.placaerrado
+                self.plate8 = self.plate_wrong
 
             #Funções do Personagem
             
@@ -351,6 +346,9 @@ class Level1:
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
             
+            if self.quiz1_complete and self.quiz2_complete and self.quiz3_complete and self.quiz4_complete and self.quiz5_complete and self.quiz6_complete and self.quiz7_complete and self.quiz8_complete == True:
+                if self.character.collision_portal('level2', [1890, 270]) == 'level2':
+                    return 'level2'
 
         if self.status == 'quiz_1':
             if self.status_quiz1 == None:
@@ -543,6 +541,3 @@ class Level1:
                         self.status = 'level1'
                         self.status_quiz8 = False
                         self.quiz8_complete = True
-
-        if self.quiz1_complete and self.quiz2_complete and self.quiz3_complete and self.quiz4_complete and self.quiz5_complete and self.quiz6_complete and self.quiz7_complete and self.quiz8_complete == True:
-            self.db.insert_points(self.mydb, self.score, self.user)
