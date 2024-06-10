@@ -29,7 +29,7 @@ class Rank:
         self.user_exist = False
         self.status_score = False
         self.user = ''
-        self.nome = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
+        self.nome = Text('', self.font, 'BLACK', 1920/2 - self.font.size(self.user)[0]/2, 300)
         self.top1 = Text('', self.font, 'BLACK', 880, 400)
         self.top2 = Text('', self.font, 'BLACK', 880, 500)
         self.top3 = Text('', self.font, 'BLACK', 880, 600)
@@ -61,7 +61,7 @@ class Rank:
             self.error.show_rank('Esse usuário não existe', '')
             
         if len(self.score) > 0:
-            self.nome.show_nome(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
+            self.nome.show_nome(self.user)
             self.top1.show_rank(str(self.score[0][0]),'1 °. ')
             self.top2.show_rank(str(self.score[1][0]),'2°. ')
             self.top3.show_rank(str(self.score[2][0]),'3°. ')

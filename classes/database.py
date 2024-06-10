@@ -11,9 +11,9 @@ class Database:
                 if result[2] == password:
                     return True
                 else:
-                    print("Senha incorreta!")
+                    return 'senha errada'
         except:
-            print("Conta com esse email não existe")
+            return 'usuario nao existe'
             
     def register(self, db, user, password):
         mycursor = db.cursor(buffered=True)
@@ -27,9 +27,10 @@ class Database:
         try:
             mycursor.execute("INSERT INTO users VALUES (%s, %s, %s)", (maxID, user, password))
             db.commit()
-            return True
         except Exception as error:
-            print("An exception occurred:", type(error).__name__,"-",error)
+            return 'usuario ja existe'
+        else:
+            return 'criado'
             
     def insert_points(db, points, user):
         mycursor = db.cursor(buffered=True)
