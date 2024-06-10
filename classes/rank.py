@@ -69,12 +69,12 @@ class Rank:
             self.error.show_rank('Esse usuário não existe', '')
             
         if len(self.score) > 0:
-            self.name.show(self.user)
-            self.top1.show(str(self.score[0][0]),'1 °. ')
-            self.top2.show(str(self.score[1][0]),'2°. ')
-            self.top3.show(str(self.score[2][0]),'3°. ')
-            self.top4.show(str(self.score[3][0]),'4°. ')
-            self.top5.show(str(self.score[4][0]),'5°. ')
+            self.name.show_update(self.user)
+            self.top1.show_rank(str(self.score[0][0]),'1 °. ')
+            self.top2.show_rank(str(self.score[1][0]),'2°. ')
+            self.top3.show_rank(str(self.score[2][0]),'3°. ')
+            self.top4.show_rank(str(self.score[3][0]),'4°. ')
+            self.top5.show_rank(str(self.score[4][0]),'5°. ')
 
         
         self.user_inputbox.draw(self.screen)

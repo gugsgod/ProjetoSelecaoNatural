@@ -81,9 +81,6 @@ class Login:
         
         self.button_register.show()
         if self.button_register.click() == 'register':
-<<<<<<< HEAD
-            self.db.register(self.mydb, self.user, self.password)
-=======
             x = self.db.register(self.mydb, self.user, self.password)
             if x == 'criado':
                 self.mensagem = 'criado'
@@ -101,7 +98,6 @@ class Login:
                 self.not_exist_text.show()
             case '':
                 pass
->>>>>>> c4fe98422428c3c724e335b46371e41b2e292343
 
         self.text_register.show()
         

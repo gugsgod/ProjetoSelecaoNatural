@@ -50,7 +50,7 @@ class Level2:
 
         #Atributos Placa
         self.plate9_pos = (515, 310)
-        self.plate10_pos = (430, 10)
+        self.plate10_pos = (430, 5)
         self.plate11_pos = (840, 80)
         self.plate12_pos = (735, 685)
         self.plate13_pos = (75, 585)
@@ -217,14 +217,14 @@ class Level2:
             self.crab_1.collision_screen()
 
             #Funções do Carangueijo 2
-            self.crab_1.show()
-            self.crab_1.movement(9)
-            self.crab_1.collision_screen()
+            self.crab_2.show()
+            self.crab_2.movement(9)
+            self.crab_2.collision_screen()
 
             #Funções do Carangueijo 3
-            self.crab_1.show()
-            self.crab_1.movement(11)
-            self.crab_1.collision_screen()
+            self.crab_3.show()
+            self.crab_3.movement(11)
+            self.crab_3.collision_screen()
 
             #Blit placas
             self.screen.blit(self.plate9, self.plate9_pos)
@@ -299,19 +299,19 @@ class Level2:
             if self.character.collision_plate('quiz_9', self.plate9_pos) == 'quiz_9':
                 if self.quiz9_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([390, 270])
+                    self.character.pos([370, 270])
                     self.status = 'quiz_9'
         
             if self.character.collision_plate('quiz_10', self.plate10_pos) == 'quiz_10':
                 if self.quiz10_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([390, 50])
+                    self.character.pos([370, 60])
                     self.status = 'quiz_10'
                     
             if self.character.collision_plate('quiz_11', self.plate11_pos) == 'quiz_11':
                 if self.quiz11_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([720, 50])
+                    self.character.pos([720, 60])
                     self.status = 'quiz_11'
         
             if self.character.collision_plate('quiz_12', self.plate12_pos) == 'quiz_12':
@@ -323,13 +323,13 @@ class Level2:
             if self.character.collision_plate('quiz_13', self.plate13_pos) == 'quiz_13':
                 if self.quiz13_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([145, 555])
+                    self.character.pos([165, 555])
                     self.status = 'quiz_13'
 
-            if self.character.collision_plate('quiz_14', self.plate12_pos) == 'quiz_14':
+            if self.character.collision_plate('quiz_14', self.plate14_pos) == 'quiz_14':
                 if self.quiz14_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([145, 800])
+                    self.character.pos([165, 800])
                     self.status = 'quiz_14'
                 
             if self.character.collision_plate('quiz_15', self.plate15_pos) == 'quiz_15':
@@ -347,7 +347,7 @@ class Level2:
             if self.character.collision_plate('quiz_17', self.plate17_pos) == 'quiz_17':
                 if self.quiz17_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([1550, 140])
+                    self.character.pos([1530, 140])
                     self.status = 'quiz_17'
 
             if self.character.collision_plate('quiz_18', self.plate18_pos) == 'quiz_18':
