@@ -44,11 +44,8 @@ class Login:
         self.user = ''
         self.senha = ''
         
-        self.mydb = mysql.connector.connect(
-            host = "127.0.0.1",
-            user = "root",
-            password = "gustavoimt123"
-        )
+        self.mydb = mysql.connector.connect(host = "localhost", user = "root", password = "imtdb")
+        
         self.db = Database()
         
         self.mensagem = ''

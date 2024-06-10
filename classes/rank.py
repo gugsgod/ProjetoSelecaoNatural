@@ -31,7 +31,7 @@ class Rank:
         self.text_user = Text('Digite o nome do usuário:', self.font, 'BLACK', self.pos_text_user[0], self.pos_text_user[1])
 
         #Database
-        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
+        self.mydb = mysql.connector.connect(host = "localhost", user = "root", password = "imtdb")
         self.db = Database()
         self.score = []
         self.user_exist = False
