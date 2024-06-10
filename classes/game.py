@@ -8,6 +8,7 @@ from character import Character
 from fade_in import FadeIn
 from frog import Frog
 from level1 import Level1
+from level2 import Level2
 from menu import Menu
 from rank import Rank
 
@@ -20,8 +21,9 @@ class Game:
         self.clock = pygame.time.Clock()
         self.login = Login()
         self.menu = Menu()
-        self.level1 = Level1()
         self.rank = Rank()
+        self.level1 = Level1()
+        self.level2 = Level2()
         self.screen_status = 'login'
         
     def run(self):
@@ -45,6 +47,13 @@ class Game:
                 match self.level1.run():
                     case 'menu':
                        self.screen_status = 'menu'
+                    case 'level2':
+                        self.screen_status = 'level2'
+            
+            if self.screen_status == 'level2':
+                match self.level2.run():
+                    case 'score':
+                        self.screen_status = 'score'
             
             if self.screen_status == 'rank':
                 match self.rank.run():
