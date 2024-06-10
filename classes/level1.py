@@ -60,9 +60,9 @@ class Level1:
         self.plate3_pos = (650, 360)
         self.plate4_pos = (560, 850)
         self.plate5_pos = (1030, 750)
-        self.plate6_pos = (940 , 540)
-        self.plate7_pos = (1450 , 620)
-        self.plate8_pos = (1360 , 220)
+        self.plate6_pos = (940, 540)
+        self.plate7_pos = (1450, 620)
+        self.plate8_pos = (1360, 220)
 
         #Placas LOAD
         self.plate1 = pygame.image.load("images/plates/plate_1.png")
@@ -244,7 +244,6 @@ class Level1:
             self.screen.blit(self.plate8, self.plate8_pos)
             
             #If's para mudar placas
-    
             if self.status_quiz1 == True:
                 self.plate1 = self.plate_right
             elif self.status_quiz1 == False:
@@ -286,7 +285,6 @@ class Level1:
                 self.plate8 = self.plate_wrong
 
             #Funções do Personagem
-            
             self.character.show()
             self.character.skin()
             self.character.animation()
@@ -541,3 +539,6 @@ class Level1:
                         self.status = 'level1'
                         self.status_quiz8 = False
                         self.quiz8_complete = True
+    
+    def get_score(self):
+        return self.score

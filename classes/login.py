@@ -69,9 +69,7 @@ class Login:
         
         self.button_register.show()
         if self.button_register.click() == 'register':
-            x = self.db.register(self.mydb, self.user, self.password)
-            if x == True:
-                    return 'menu'
+            self.db.register(self.mydb, self.user, self.password)
 
         self.text_register.show()
         

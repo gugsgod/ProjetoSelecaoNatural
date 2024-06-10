@@ -15,13 +15,21 @@ class Rank:
         self.rank_bg = pygame.image.load('images/backgrounds/digital-art-horizon-mountains-forest-pinkish.jpg')
 
         self.edge_user = pygame.image.load('images/buttons/edge_user.png')
+
+        #Fonte
         self.font = pygame.font.Font('fonts/upheavtt.ttf', 80)
+        
+        #Posições dos textos
         self.pos_text_user = [425, 70]
         self.pos_rank = [600, 225]
+
+        #Posição inputbox
         self.user_inputbox = InputBox(425, 150, 1070, 50)
+
+        #Objetos text
         self.text_rank = Text('TOP 5 PONTUAÇÕES:', self.font, 'BLACK', self.pos_rank[0], self.pos_rank[1])
         self.text_user = Text('Digite o nome do usuário:', self.font, 'BLACK', self.pos_text_user[0], self.pos_text_user[1])
-        
+
         #Database
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         self.db = Database()
@@ -29,7 +37,7 @@ class Rank:
         self.user_exist = False
         self.status_score = False
         self.user = ''
-        self.nome = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
+        self.name = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
         self.top1 = Text('', self.font, 'BLACK', 880, 400)
         self.top2 = Text('', self.font, 'BLACK', 880, 500)
         self.top3 = Text('', self.font, 'BLACK', 880, 600)
@@ -61,12 +69,12 @@ class Rank:
             self.error.show_rank('Esse usuário não existe', '')
             
         if len(self.score) > 0:
-            self.nome.show_nome(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
-            self.top1.show_rank(str(self.score[0][0]),'1 °. ')
-            self.top2.show_rank(str(self.score[1][0]),'2°. ')
-            self.top3.show_rank(str(self.score[2][0]),'3°. ')
-            self.top4.show_rank(str(self.score[3][0]),'4°. ')
-            self.top5.show_rank(str(self.score[4][0]),'5°. ')
+            self.name.show(self.user)
+            self.top1.show(str(self.score[0][0]),'1 °. ')
+            self.top2.show(str(self.score[1][0]),'2°. ')
+            self.top3.show(str(self.score[2][0]),'3°. ')
+            self.top4.show(str(self.score[3][0]),'4°. ')
+            self.top5.show(str(self.score[4][0]),'5°. ')
 
         
         self.user_inputbox.draw(self.screen)
