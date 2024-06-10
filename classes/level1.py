@@ -20,13 +20,12 @@ class Level1:
         mydb = mysql.connector.connect(
         host = "localhost",
         user = "root",
-        password = "imtdb"
+        password = "40430067"
         )
         
         db = Database()
         
         p1 = db.get_questions(mydb, 1)
-        print(p1)
         p2 = db.get_questions(mydb, 2)
         p3 = db.get_questions(mydb, 3)
         p4 = db.get_questions(mydb, 4)
