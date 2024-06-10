@@ -128,3 +128,8 @@ VALUES
     "atrofia do pulmão devido ao uso contínuo da pele.", 
     "transmissão de caracteres adquiridos aos descendentes.")
 ;
+
+INSERT INTO points
+VALUES(1,12,1),(1,14,2),(1,18,3),(1,9,4),(1,4,5);
+INSERT INTO points
+VALUES(2,2,1),(2,15,2),(2,8,3),(2,12,4),(2,14,5);
