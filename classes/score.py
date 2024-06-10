@@ -27,6 +27,13 @@ class Score:
 
         #Objetos text
         self.score_text = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
+        
+        #Database
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
+        self.db = Database()
+        
+        #Objeto Login
+        self.login = Login()
 
     def run(self):
         self.screen.blit(self.bg_score, (0,0))
@@ -35,6 +42,6 @@ class Score:
         
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return 'menu'
+                self.db.insert_points(self.mydb, self.score_total, self.db.get_id(self.mydb, self.login.get_user()))
+                return 'menu'
 
-        
