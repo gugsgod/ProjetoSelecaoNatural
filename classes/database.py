@@ -52,4 +52,3 @@ class Database:
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT pontos FROM pontuacao WHERE idUsuario = %s ORDER BY pontos DESC LIMIT 5", [idUser])
         return mycursor.fetchall()
-    
