@@ -22,7 +22,7 @@ class InputBox:
     
     def handle_event(self, event):
         self.len_text = len(self.text)
-        if self.len_text < 56:
+        if self.len_text < 55:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.rect.collidepoint(event.pos):
                     self.active = not self.active
@@ -32,8 +32,8 @@ class InputBox:
             if event.type == pygame.KEYDOWN:
                     if self.active:
                         if event.key == pygame.K_RETURN:
-                            return self.text
                             self.text = ''
+                            return self.text
                         elif event.key == pygame.K_BACKSPACE:
                             self.text = self.text[:-1]
                         else:
@@ -46,11 +46,7 @@ class InputBox:
                         self.text = ''
                     elif event.key == pygame.K_BACKSPACE:
                         self.text = self.text[:-1]
-    
-    def update(self):
-        width = max(1070, self.font.size(self.text)[0]+10)
-        self.rect.w = width
-
+        
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
         self.draw_text(surface, self.text, self.font, self.BLACK, self.rect.x+5, self.rect.y+5)

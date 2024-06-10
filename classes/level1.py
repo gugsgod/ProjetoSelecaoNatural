@@ -16,7 +16,6 @@ class Level1:
         self.clock = pygame.time.Clock()
         
         #Banco de dados
-
         mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
         db = Database()
@@ -220,25 +219,21 @@ class Level1:
             self.frog_5.collision_screen()
             
             #Funções da Butterfly 1
-            
             self.butterfly1.show()
             self.butterfly1.movement(100, 2)
             self.butterfly1.collision_screen()
 
             #Funções da Butterfly 2
-            
             self.butterfly2.show()
             self.butterfly2.movement(90, 2)
             self.butterfly2.collision_screen()
 
             #Funções da Butterfly 3
-            
             self.butterfly3.show()
             self.butterfly3.movement(100, 2)
             self.butterfly3.collision_screen()
             
             #Blit placas
-            
             self.screen.blit(self.placa1, self.plate1_pos)
             self.screen.blit(self.placa2, self.plate2_pos)
             self.screen.blit(self.placa3, self.plate3_pos)
