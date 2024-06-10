@@ -1,7 +1,7 @@
 import mysql.connector
 
 class Database:
-    def login(db, email, senha):
+    def login(self, db, email, senha):
         mycursor = db.cursor()
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT * FROM usuarios WHERE email = %s", email)
