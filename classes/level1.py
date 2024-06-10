@@ -16,16 +16,16 @@ class Level1:
         self.clock = pygame.time.Clock()
         
         #Banco de dados
-        
-        mydb = mysql.connector.connect(
-        host = "localhost",
         user = "root",
         password = "40430067"
         )
+
+        mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
         db = Database()
         
         p1 = db.get_questions(mydb, 1)
+        print(p1)
         p2 = db.get_questions(mydb, 2)
         p3 = db.get_questions(mydb, 3)
         p4 = db.get_questions(mydb, 4)
@@ -322,34 +322,34 @@ class Level1:
                     self.status = 'quiz_3'
         
             if self.character.collision_plate('quiz_4', self.plate4_pos) == 'quiz_4':
-                    if self.quiz4_complete == False:
-                        #Onde o player sai depois do quiz
-                        self.character.pos([530, 700])
-                        self.status = 'quiz_4'
+                if self.quiz4_complete == False:
+                    #Onde o player sai depois do quiz
+                    self.character.pos([530, 700])
+                    self.status = 'quiz_4'
 
             if self.character.collision_plate('quiz_5', self.plate5_pos) == 'quiz_5':
-                    if self.quiz5_complete == False:
-                        #Onde o player sai depois do quiz
-                        self.character.pos([910, 700])
-                        self.status = 'quiz_5'
+                if self.quiz5_complete == False:
+                    #Onde o player sai depois do quiz
+                    self.character.pos([910, 700])
+                    self.status = 'quiz_5'
 
             if self.character.collision_plate('quiz_6', self.plate6_pos) == 'quiz_6':
-                    if self.quiz6_complete == False:
-                        #Onde o player sai depois do quiz
-                        self.character.pos([910, 570])
-                        self.status = 'quiz_6'
+                if self.quiz6_complete == False:
+                    #Onde o player sai depois do quiz
+                    self.character.pos([910, 570])
+                    self.status = 'quiz_6'
                 
             if self.character.collision_plate('quiz_7', self.plate7_pos) == 'quiz_7':
-                    if self.quiz7_complete == False:
-                        #Onde o player sai depois do quiz
-                        self.character.pos([1330, 570])
-                        self.status = 'quiz_7'
+                if self.quiz7_complete == False:
+                     #Onde o player sai depois do quiz
+                    self.character.pos([1330, 570])
+                    self.status = 'quiz_7'
             
             if self.character.collision_plate('quiz_8', self.plate8_pos) == 'quiz_8':
-                    if self.quiz8_complete == False:
-                        #Onde o player sai depois do quiz
-                        self.character.pos([1340, 260])
-                        self.status = 'quiz_8'
+                if self.quiz8_complete == False:
+                    #Onde o player sai depois do quiz
+                    self.character.pos([1340, 260])
+                    self.status = 'quiz_8'
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
