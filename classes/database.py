@@ -36,11 +36,11 @@ class Database:
             return 'criado'
     
     #Função para inserir pontos no banco de dados
-    def insert_points(db, points, user):
+    def insert_points(self, db, points, user):
         mycursor = db.cursor(buffered=True)
         mycursor.execute("USE gamedb")
-        id_user = mycursor.execute("SELECT id_user FROM users WHERE user = %s", user)
-        lap = mycursor.execute("SELECT max(lap) FROM points WHERE id_user = %s", id_user)
+        id_user = mycursor.execute("SELECT id_user FROM users WHERE user = %s", [user])
+        lap = mycursor.execute("SELECT max(lap) FROM points WHERE id_user = %s", [id_user])
         if lap == None:
             lap = 1
         else:

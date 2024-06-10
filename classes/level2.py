@@ -37,7 +37,7 @@ class Level2:
         
         self.login = Login()
         self.user = self.login.get_user()
-        
+
         self.score = 0
 
         #Objeto Character
@@ -209,8 +209,6 @@ class Level2:
         
         if self.status == 'level2':
             self.screen.blit(self.bg_level2, (0,0))
-
-            print(self.score)
             
             #Funções do Carangueijo 1
             self.crab_1.show()
@@ -358,7 +356,7 @@ class Level2:
                     self.character.pos([1550, 765])
                     self.status = 'quiz_18'
 
-            if self.quiz9_complete and self.quiz10_complete and self.quiz11_complete and self.quiz12_complete and self.quiz13_complete and self.quiz14_complete and self.quiz15_complete and self.quiz16_complete and self.quiz17_complete and self.quiz18_complete == True:
+            if self.quiz9_complete == True and self.quiz10_complete == True and self.quiz11_complete == True and self.quiz12_complete == True and self.quiz13_complete == True and self.quiz14_complete == True and self.quiz15_complete == True and self.quiz16_complete == True and self.quiz17_complete == True and self.quiz18_complete == True:
                 if self.character.collision_plate('end', self.plate_end_pos) == 'end':
                     return 'score'
             
@@ -601,6 +599,5 @@ class Level2:
                         self.status_quiz18 = False
                         self.quiz18_complete = True
         
-    @property
     def get_score(self):
         return self.score

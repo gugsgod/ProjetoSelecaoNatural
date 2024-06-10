@@ -31,13 +31,13 @@ class Score:
         #Objeto Login
         self.login = Login()
     
-    def run(self):
+    def run(self, x, y, user):
+        self.score = x + y
         self.screen.blit(self.bg_score, (0,0))
         self.score_text.show_update(str(self.score))
         
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                self.db.insert_points(self.mydb, self.score, self.db.get_id(self.mydb, self.login.get_user()))
                 return 'menu'
 
     def add(self):

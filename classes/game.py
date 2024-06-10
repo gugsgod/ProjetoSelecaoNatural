@@ -56,11 +56,13 @@ class Game:
 
             if self.screen_status == 'level2':
                 match self.level2.run():
+                    case 'menu':
+                        self.screen_status = 'menu'
                     case 'score':
                         self.screen_status = 'score'
             
             if self.screen_status == 'score':
-                match self.score.run():
+                match self.score.run(self.level1.get_score(), self.level2.get_score(), self.login.get_user()):
                     case 'menu':
                         self.screen_status = 'menu'
 
