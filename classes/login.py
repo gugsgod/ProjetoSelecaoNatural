@@ -14,6 +14,7 @@ class Login:
         self.login_pop_up = pygame.image.load('images/backgrounds/login_pop_up.png')
         self.edge_user = pygame.image.load('images/buttons/edge_user.png')
         self.font = pygame.font.Font('fonts/upheavtt.ttf', 80)
+        self.font_menor = pygame.font.Font('fonts/upheavtt.ttf', 60)
         self.user_inputbox = InputBox(425, 240, 1070, 50)
         self.password_inputbox = InputBox(425, 500, 1070, 50)
         
@@ -23,6 +24,11 @@ class Login:
         self.pos_button_quit = [1163.5, 750]
         self.pos_button_login = [463.5, 750]
         self.pos_button_register = [813.5, 750]
+        
+        self.created_text = Text('Conta foi criada', self.font, 'BLACK', 1920/2 - self.font.size('Usuario foi criado')[0]/2, 650)
+        self.wrong_pass_text = Text('A senha está incorreta', self.font, 'BLACK', 1920/2 - self.font.size('A senha está incorreta')[0]/2, 650)
+        self.already_exists_text = Text('Conta já existe', self.font, 'BLACK', 1920/2 - self.font.size('Conta já existe')[0]/2, 650)
+        self.not_exist_text = Text('Conta não existe', self.font, 'BLACK', 1920/2 - self.font.size('Conta não existe')[0]/2, 650)
         
         self.user_text = Text('Usuário:', self.font, 'BLACK', self.pos_user_text[0], self.pos_user_text[1])
         self.password_text = Text('Senha:', self.font, 'BLACK', self.pos_password_text[0], self.pos_password_text[1])
@@ -44,6 +50,8 @@ class Login:
             password = "gustavoimt123"
         )
         self.db = Database()
+        
+        self.mensagem = ''
 
     def run(self):
         self.clock.tick(30)
@@ -64,12 +72,36 @@ class Login:
             y = self.db.login(self.mydb, self.user, self.password)
             if y == True:
                 return 'menu'
+            elif y == 'senha errada':
+                self.mensagem ='senha errada'
+            elif y == 'usuario nao existe':
+                self.mensagem = 'usuario nao existe'
 
         self.text_login.show()
         
         self.button_register.show()
         if self.button_register.click() == 'register':
+<<<<<<< HEAD
             self.db.register(self.mydb, self.user, self.password)
+=======
+            x = self.db.register(self.mydb, self.user, self.password)
+            if x == 'criado':
+                self.mensagem = 'criado'
+            elif x == 'usuario ja existe':
+                self.mensagem = 'usuario ja existe'
+        
+        match self.mensagem:
+            case 'criado':
+                self.created_text.show()
+            case 'senha errada':
+                self.wrong_pass_text.show()
+            case 'usuario ja existe':
+                self.already_exists_text.show()
+            case 'usuario nao existe':
+                self.not_exist_text.show()
+            case '':
+                pass
+>>>>>>> c4fe98422428c3c724e335b46371e41b2e292343
 
         self.text_register.show()
         
@@ -80,3 +112,4 @@ class Login:
         
     def get_user(self):
         return self.user
+    
