@@ -37,7 +37,6 @@ class Database:
             rodada = 1
         else:
             rodada = rodada[0] + 1
-        print(rodada)
         mycursor.execute("INSERT INTO pontuacao VALUES (%s, %s, %s)", (usuario[0], pontos, rodada))
         db.commit()
         
