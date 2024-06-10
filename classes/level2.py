@@ -209,7 +209,8 @@ class Level2:
         
         if self.status == 'level2':
             self.screen.blit(self.bg_level2, (0,0))
-           
+
+            print(self.score)
             
             #Funções do Carangueijo 1
             self.crab_1.show()
@@ -306,7 +307,7 @@ class Level2:
             if self.character.collision_plate('quiz_10', self.plate10_pos) == 'quiz_10':
                 if self.quiz10_complete == False:
                     #Onde o player sai depois do quiz
-                    self.character.pos([400, 60])
+                    self.character.pos([400, 55])
                     self.status = 'quiz_10'
                     
             if self.character.collision_plate('quiz_11', self.plate11_pos) == 'quiz_11':

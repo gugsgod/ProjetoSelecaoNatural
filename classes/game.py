@@ -51,7 +51,9 @@ class Game:
                        self.screen_status = 'menu'
                     case 'level2':
                         self.screen_status = 'level2'
-            
+                    case 'save_score':
+                        self.status_score = True
+
             if self.screen_status == 'level2':
                 match self.level2.run():
                     case 'score':
