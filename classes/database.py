@@ -51,3 +51,9 @@ class Database:
         mycursor.execute("USE jogodb")
         mycursor.execute("SELECT pontos FROM pontuacao WHERE idUsuario = %s ORDER BY pontos DESC LIMIT 5", [idUser])
         return mycursor.fetchall()
+    
+    def get_id(self, mydb, email):
+        mycursor = mydb.cursor()
+        mycursor.execute("USE jogodb")
+        mycursor.execute("SELECT idUsuario FROM usuarios WHERE email = %s", [email])
+        return mycursor.fetchone()[0]
