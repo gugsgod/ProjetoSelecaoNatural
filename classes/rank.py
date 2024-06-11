@@ -74,6 +74,6 @@ class Rank:
             self.top4.show_rank(str(self.score[3][0]),'4°. ')
             self.top5.show_rank(str(self.score[4][0]),'5°. ')
 
-        self.name_user.show_centralize(self.user)
+        self.name_user.show_centralize(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
         self.user_inputbox.draw(self.screen)
         self.text_rank.show()
