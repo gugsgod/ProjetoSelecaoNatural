@@ -17,6 +17,10 @@ class Text:
     def show_update(self, text):
         img = self.font.render(text, True, self.text_col)
         self.screen.blit(img, (self.x, self.y))
+    
+    def show_centralize(self, x, y, text = ''):
+        img = self.font.render(text, True, self.text_col)
+        self.screen.blit(img, (x, y))
 
     def show_rank(self, text = '', n = ''):
         img = self.font.render(n + text, True, self.text_col)

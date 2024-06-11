@@ -25,7 +25,7 @@ class Login:
         self.pos_button_login = [463.5, 750]
         self.pos_button_register = [813.5, 750]
         
-        self.created_text = Text('Conta foi criada', self.font, 'BLACK', 1920/2 - self.font.size('Usuario foi criado')[0]/2, 650)
+        self.created_text = Text('Conta foi criada', self.font, 'BLACK', 1920/2 - self.font.size('Conta foi criada')[0]/2, 650)
         self.wrong_pass_text = Text('A senha está incorreta', self.font, 'BLACK', 1920/2 - self.font.size('A senha está incorreta')[0]/2, 650)
         self.already_exists_text = Text('Conta já existe', self.font, 'BLACK', 1920/2 - self.font.size('Conta já existe')[0]/2, 650)
         self.not_exist_text = Text('Conta não existe', self.font, 'BLACK', 1920/2 - self.font.size('Conta não existe')[0]/2, 650)
@@ -44,7 +44,7 @@ class Login:
         self.user = ''
         self.senha = ''
         
-        self.mydb = mysql.connector.connect(host = "localhost", user = "root", password = "imtdb")
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
         self.db = Database()
         
@@ -97,7 +97,6 @@ class Login:
                 pass
 
         self.text_register.show()
-        
         self.user_text.show()
         self.password_text.show()
         self.password_inputbox.draw_password(self.screen)

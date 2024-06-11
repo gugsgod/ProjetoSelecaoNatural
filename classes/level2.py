@@ -19,7 +19,7 @@ class Level2:
         self.bg_level2 = pygame.image.load('images/backgrounds/bg_level2.png').convert_alpha()
 
         #Banco de dados
-        self.mydb = mysql.connector.connect(host = "localhost", user = "root", password = "imtdb")
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         
         self.db = Database()
         

@@ -31,13 +31,13 @@ class Rank:
         self.text_user = Text('Digite o nome do usuário:', self.font, 'BLACK', self.pos_text_user[0], self.pos_text_user[1])
 
         #Database
-        self.mydb = mysql.connector.connect(host = "localhost", user = "root", password = "imtdb")
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
         self.db = Database()
         self.score = []
         self.user_exist = False
         self.status_score = False
         self.user = ''
-        self.name = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
+        self.name_user = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
         self.top1 = Text('', self.font, 'BLACK', 880, 400)
         self.top2 = Text('', self.font, 'BLACK', 880, 500)
         self.top3 = Text('', self.font, 'BLACK', 880, 600)
@@ -53,13 +53,12 @@ class Rank:
         self.screen.blit(self.edge_user, (415, 140))
         
         for event in pygame.event.get():
-            user = self.user_inputbox.handle_event(event)
+            self.user = self.user_inputbox.handle_event(event)
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
             if event.type == pygame.KEYDOWN and event.key == K_RETURN:
-                self.id = self.db.get_id(self.mydb, user)
+                self.id = self.db.get_id(self.mydb, self.user)
                 self.score = self.db.get_top_5(self.mydb, self.id)
-                self.user = user
                 if self.id == None:
                     self.user_exist = True
                 else:
@@ -69,14 +68,12 @@ class Rank:
             self.error.show_rank('Esse usuário não existe', '')
             
         if len(self.score) > 0:
-            self.name.show_update(self.user)
             self.top1.show_rank(str(self.score[0][0]),'1 °. ')
             self.top2.show_rank(str(self.score[1][0]),'2°. ')
             self.top3.show_rank(str(self.score[2][0]),'3°. ')
             self.top4.show_rank(str(self.score[3][0]),'4°. ')
             self.top5.show_rank(str(self.score[4][0]),'5°. ')
 
-        
+        self.name_user.show_centralize(self.user)
         self.user_inputbox.draw(self.screen)
-        self.text_user.show()
         self.text_rank.show()
