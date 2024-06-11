@@ -32,10 +32,7 @@ class InputBox:
             if event.type == pygame.KEYDOWN:
                     if self.active:
                         if event.key == pygame.K_RETURN:
-                            try:
                                 return self.text
-                            finally:
-                                self.text = ''
                         elif event.key == pygame.K_BACKSPACE:
                             self.text = self.text[:-1]
                         else:
@@ -43,10 +40,7 @@ class InputBox:
         else:
             if event.type == pygame.KEYDOWN:
                 if self.active:
-                    if event.key == pygame.K_RETURN:
-                        print(self.text)
-                        self.text = ''
-                    elif event.key == pygame.K_BACKSPACE:
+                    if event.key == pygame.K_BACKSPACE:
                         self.text = self.text[:-1]
 
     def handle_event_user(self, event):
@@ -67,10 +61,7 @@ class InputBox:
         else:
             if event.type == pygame.KEYDOWN:
                 if self.active:
-                    if event.key == pygame.K_RETURN:
-                        print(self.text)
-                        self.text = ''
-                    elif event.key == pygame.K_BACKSPACE:
+                    if event.key == pygame.K_BACKSPACE:
                         self.text = self.text[:-1]
         return self.text
                         

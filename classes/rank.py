@@ -37,7 +37,8 @@ class Rank:
         self.user_exist = False
         self.status_score = False
         self.user = ''
-        self.status_user = False
+
+        
         self.name_user = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
         self.top1 = Text('', self.font, 'BLACK', 880, 400)
         self.top2 = Text('', self.font, 'BLACK', 880, 500)
@@ -54,13 +55,14 @@ class Rank:
         self.screen.blit(self.edge_user, (415, 140))
         
         for event in pygame.event.get():
-            self.user = self.user_inputbox.handle_event(event)
+            user = self.user_inputbox.handle_event(event)
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
             if event.type == pygame.KEYDOWN and event.key == K_RETURN:
                 self.status_user = True
                 self.id = self.db.get_id(self.mydb, self.user)
                 self.score = self.db.get_top_5(self.mydb, self.id)
+                self.user = user
                 if self.id == None:
                     self.user_exist = True
                 else:
@@ -76,7 +78,7 @@ class Rank:
             self.top4.show_rank(str(self.score[3][0]),'4°. ')
             self.top5.show_rank(str(self.score[4][0]),'5°. ')
 
-        if self.status_user == True:
-            self.name_user.show_centralize(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
+    
+        self.name_user.show_centralize(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
         self.user_inputbox.draw(self.screen)
         self.text_rank.show()

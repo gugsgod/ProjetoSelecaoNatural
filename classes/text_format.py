@@ -1,7 +1,6 @@
 class TextFormat:
     
     def format_text(wished_str):
-        run = True
         list_sep = []
         amount_char = len(wished_str)
         if amount_char <= 40:
