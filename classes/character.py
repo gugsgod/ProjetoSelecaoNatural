@@ -4,8 +4,9 @@ from pygame.locals import *
 class Character:
     def __init__(self, character_img, sprite_charactery, sprite_characterx, character_size, character_pos, skiny):
         self.screen = pygame.display.set_mode((1920, 1080))
-        self.character_img = pygame.image.load(character_img).convert_alpha()
-        self.character_img = pygame.transform.scale(self.character_img, (736 * 3, 512 * 3))
+        self.character_img = character_img
+        self.character_img_load = pygame.image.load(self.character_img).convert_alpha()
+        self.character_img_load_transform = pygame.transform.scale(self.character_img_load, (736 * 3, 512 * 3))
         self.sprite_charactery = sprite_charactery
         self.sprite_characterx = sprite_characterx
         self.character_size = character_size
@@ -14,7 +15,7 @@ class Character:
         
     
     def show(self):
-        self.screen.blit(self.character_img, self.character_pos, (self.sprite_characterx* 96, self.sprite_charactery, 96, 96))
+        self.screen.blit(self.character_img_load_transform, self.character_pos, (self.sprite_characterx* 96, self.sprite_charactery, 96, 96))
     
     def pos(self, character_pos):
         self.character_pos = character_pos
