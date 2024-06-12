@@ -60,7 +60,7 @@ class Rank:
                     return 'menu'
             if event.type == pygame.KEYDOWN and event.key == K_RETURN:
                 self.status_user = True
-                self.id = self.db.get_id(self.mydb, self.user)
+                self.id = self.db.get_id(self.mydb, user)
                 self.score = self.db.get_top_5(self.mydb, self.id)
                 self.user = user
                 if self.id == None:
@@ -81,4 +81,5 @@ class Rank:
     
         self.name_user.show_centralize(1920/2 - self.font.size(self.user)[0]/2, 300, self.user)
         self.user_inputbox.draw(self.screen)
+        self.text_user.show()
         self.text_rank.show()

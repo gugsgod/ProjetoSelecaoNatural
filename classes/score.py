@@ -22,7 +22,7 @@ class Score:
         
         #Objetos text
         self.score_text = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
-        self.pontuation_text = Text('Sua Pontuação É:', self.font, 'BLACK', 1920/2 - 4/2, 300)
+        self.pontuation_text = Text('Sua Pontuação É:', self.font, 'BLACK', 800, 220)
         
         #Database
         self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
