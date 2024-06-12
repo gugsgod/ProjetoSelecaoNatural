@@ -56,7 +56,7 @@ class Rank:
         for event in pygame.event.get():
             user = self.user_inputbox.handle_event(event)
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                    return 'menu'
+                return 'menu'
             if event.type == pygame.KEYDOWN and event.key == K_RETURN:
                 self.id = self.db.get_id(self.mydb, user)
                 self.score = self.db.get_top_5(self.mydb, self.id)

@@ -1,5 +1,4 @@
 import pygame
-import sys
 
 class InputBox:
     def __init__(self, x, y, width, height, text=''):
