@@ -6,7 +6,6 @@ from crab import Crab
 from quiz import Quiz
 from text_format import *
 from database import Database
-from login import Login
 import mysql.connector
 
 class Level2:
@@ -33,10 +32,6 @@ class Level2:
         p16 = self.db.get_questions(self.mydb, 16)
         p17 = self.db.get_questions(self.mydb, 17)
         p18 = self.db.get_questions(self.mydb, 18)
-        
-        
-        self.login = Login()
-        self.user = self.login.get_user()
 
         self.score = 0
 
@@ -356,6 +351,10 @@ class Level2:
                     self.character.pos([1550, 765])
                     self.status = 'quiz_18'
 
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
+                    return 'menu'
+                
             if self.quiz9_complete == True and self.quiz10_complete == True and self.quiz11_complete == True and self.quiz12_complete == True and self.quiz13_complete == True and self.quiz14_complete == True and self.quiz15_complete == True and self.quiz16_complete == True and self.quiz17_complete == True and self.quiz18_complete == True:
                 if self.character.collision_plate('end', self.plate_end_pos) == 'end':
                     return 'score'
@@ -598,6 +597,6 @@ class Level2:
                         self.status = 'level2'
                         self.status_quiz18 = False
                         self.quiz18_complete = True
-        
+
     def get_score(self):
         return self.score

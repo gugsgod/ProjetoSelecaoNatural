@@ -7,7 +7,6 @@ from butterfly import Butterfly
 from quiz import Quiz
 from text_format import *
 from database import Database
-from login import Login
 import mysql.connector
 
 class Level1:
@@ -32,9 +31,6 @@ class Level1:
         p6 = self.db.get_questions(self.mydb, 6)
         p7 = self.db.get_questions(self.mydb, 7)
         p8 = self.db.get_questions(self.mydb, 8)
-        
-        self.login = Login()
-        self.user = self.login.get_user()
         
         #Objeto Character
         self.character = Character('images/player/Scientists.png', 0, 0, [75, 60], [0, 50], 0)
@@ -547,3 +543,5 @@ class Level1:
     
     def get_score(self):
         return self.score
+    
+    

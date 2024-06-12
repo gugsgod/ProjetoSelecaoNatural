@@ -37,20 +37,19 @@ class Rank:
         self.user_exist = False
         self.status_score = False
         self.user = ''
-
-        
         self.name_user = Text('', self.font, 'BLACK', 1920/2 - 4/2, 300)
         self.top1 = Text('', self.font, 'BLACK', 880, 400)
         self.top2 = Text('', self.font, 'BLACK', 880, 500)
         self.top3 = Text('', self.font, 'BLACK', 880, 600)
         self.top4 = Text('', self.font, 'BLACK', 880, 700)
         self.top5 = Text('', self.font, 'BLACK', 880, 800)
-        
         size_user_not_exist = self.font.size('Esse usuário não existe')
         self.error = Text('', self.font, 'BLACK', 1920/2 - size_user_not_exist[0]/2, 500)
     
     def run(self):
         self.clock.tick(30)
+        self.mydb = mysql.connector.connect(host = "127.0.0.1", user = "root", password = "gustavoimt123")
+        self.db = Database()
         self.screen.blit(self.rank_bg, (0,0))
         self.screen.blit(self.edge_user, (415, 140))
         
@@ -59,7 +58,6 @@ class Rank:
             if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
                     return 'menu'
             if event.type == pygame.KEYDOWN and event.key == K_RETURN:
-                self.status_user = True
                 self.id = self.db.get_id(self.mydb, user)
                 self.score = self.db.get_top_5(self.mydb, self.id)
                 self.user = user
@@ -71,11 +69,15 @@ class Rank:
         if self.user_exist == True:
             self.error.show_rank('Esse usuário não existe', '')
             
-        if len(self.score) > 0:
+        if len(self.score) >= 1:
             self.top1.show_rank(str(self.score[0][0]),'1 °. ')
+        if len(self.score) >= 2:
             self.top2.show_rank(str(self.score[1][0]),'2°. ')
+        if len(self.score) >= 3:
             self.top3.show_rank(str(self.score[2][0]),'3°. ')
+        if len(self.score) >= 4:
             self.top4.show_rank(str(self.score[3][0]),'4°. ')
+        if len(self.score) >= 5:
             self.top5.show_rank(str(self.score[4][0]),'5°. ')
 
     

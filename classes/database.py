@@ -39,12 +39,14 @@ class Database:
     def insert_points(self, db, score, user):
         mycursor = db.cursor(buffered=True)
         mycursor.execute("USE gamedb")
-        id_user = mycursor.execute("SELECT id_user FROM users WHERE user = %s", (user))
-        lap = mycursor.execute("SELECT max(lap) FROM points WHERE id_user = %s", (id_user))
-        if lap == None:
+        mycursor.execute("SELECT id_user FROM users WHERE user = %s", (user,))
+        id_user = mycursor.fetchone()[0]
+        mycursor.execute("SELECT MAX(lap) FROM points WHERE id_user = %s", (id_user,))
+        max_lap = mycursor.fetchone()[0]
+        if max_lap == None:
             lap = 1
         else:
-            lap = lap[0] + 1
+            lap = max_lap + 1
         mycursor.execute("INSERT INTO points VALUES (%s, %s, %s)", (id_user, score, lap))
         db.commit()
         
@@ -56,10 +58,10 @@ class Database:
         return mycursor.fetchone()
 
     #Função para pegar as top 5 pontuações de um usuario
-    def get_top_5(self, mydb, idUser):
+    def get_top_5(self, mydb, id_user):
         mycursor = mydb.cursor(buffered=True)
         mycursor.execute("USE gamedb")
-        mycursor.execute("SELECT score FROM points WHERE id_user = %s ORDER BY score DESC LIMIT 5", [idUser])
+        mycursor.execute("SELECT score FROM points WHERE id_user = %s ORDER BY score DESC LIMIT 5", (id_user,))
         return mycursor.fetchall()
     
     #Função para pegar id de um certo usuario

@@ -64,6 +64,8 @@ class Game:
             if self.screen_status == 'score':
                 match self.score.run(self.level1.get_score(), self.level2.get_score(), self.login.get_user()):
                     case 'menu':
+                        self.level1.__init__()
+                        self.level2.__init__()
                         self.screen_status = 'menu'
 
             for event in pygame.event.get():
