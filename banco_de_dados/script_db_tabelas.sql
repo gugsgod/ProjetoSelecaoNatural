@@ -62,11 +62,11 @@ VALUES
     "Houve mutações específicas para os ambientes ao norte e ao sul do rio.", 
     "Promove a competição entre roedores brancos e castanhos.", 
     "Aumenta a probabilidade de sobrevivência apenas dos roedores brancos."),
-    (8, "Porque os tentilhões possuem diferentes formas de bico nas ilhas de Galápagos?", 
-    "Sob pressões seletivas diferentes, as condições ambientais nas ilhas levaram à seleção de diferentes características nos tentilhões.", 
-    "Os tentilhões fizeram cirurgias plásticas em seus bicos para se adaptarem.", 
-    "Os tentilhões começaram a frequentar restaurantes diferentes na ilha, resultando em uma variedade de bicos.", 
-    "Para evitar brigas por comida, os tentilhões desenvolveram bicos especializados em tipos diferentes de alimento."),
+    (8, "Quais são as características representativas dos anfíbios em relação à sua dependência da pele para atividades vitais?", 
+    "seleção de adaptações em função do meio ambiente em que vivem.", 
+    "lei do uso e desuso.", 
+    "atrofia do pulmão devido ao uso contínuo da pele.", 
+    "transmissão de caracteres adquiridos aos descendentes."),
     (9, "Quais características definem a maior adaptação entre indivíduos da mesma espécie?", 
     "Vivem mais e reproduzem mais", 
     "Comem mais e apresentam cores mais vibrantes", 
@@ -121,10 +121,5 @@ VALUES
     "Disruptiva.", 
     "Direcional.", 
     "Destrutiva.", 
-    "Estabilizadora."),
-    (20, "Quais são as características representativas dos anfíbios em relação à sua dependência da pele para atividades vitais?", 
-    "seleção de adaptações em função do meio ambiente em que vivem.", 
-    "lei do uso e desuso.", 
-    "atrofia do pulmão devido ao uso contínuo da pele.", 
-    "transmissão de caracteres adquiridos aos descendentes.")
+    "Estabilizadora.")
 ;
